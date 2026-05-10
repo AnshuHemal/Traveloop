@@ -45,6 +45,9 @@ export function DashboardNav({ user }: DashboardNavProps) {
           <Link href="/explore" className="rounded-lg px-3.5 py-2 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-foreground transition-colors">
             Explore
           </Link>
+          <Link href="/activities" className="rounded-lg px-3.5 py-2 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-foreground transition-colors">
+            Activities
+          </Link>
         </nav>
 
         {/* Right side */}
@@ -165,6 +168,10 @@ export function DashboardNav({ user }: DashboardNavProps) {
               <Link href="/explore" onClick={() => setMobileOpen(false)}
                 className="rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-foreground transition-colors">
                 Explore
+              </Link>
+              <Link href="/activities" onClick={() => setMobileOpen(false)}
+                className="rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-foreground transition-colors">
+                Activities
               </Link>
               <div className="mt-2 border-t border-border pt-2">
                 <Link

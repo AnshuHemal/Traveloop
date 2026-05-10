@@ -191,10 +191,19 @@ export function TripHeader({ trip }: TripHeaderProps) {
             >
               Edit trip
             </Link>
-            <button className="flex items-center gap-1.5 rounded-xl border border-border bg-background/80 px-4 py-2 text-sm font-medium text-foreground backdrop-blur-sm hover:bg-background transition-colors">
+            <Link
+              href={`/trips/${trip.id}/budget`}
+              className="flex items-center gap-1.5 rounded-xl border border-border bg-background/80 px-4 py-2 text-sm font-medium text-foreground backdrop-blur-sm hover:bg-background transition-colors"
+            >
+              Budget
+            </Link>
+            <Link
+              href={`/trips/${trip.id}/share`}
+              className="flex items-center gap-1.5 rounded-xl border border-border bg-background/80 px-4 py-2 text-sm font-medium text-foreground backdrop-blur-sm hover:bg-background transition-colors"
+            >
               <Share2 className="size-4" />
               Share
-            </button>
+            </Link>
           </div>
         </div>
       </div>
