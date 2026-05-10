@@ -69,7 +69,7 @@ export function Features() {
   return (
     <section id="features" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        {/* Header */}
+        {}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -91,7 +91,7 @@ export function Features() {
           </p>
         </motion.div>
 
-        {/* Grid */}
+        {}
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {FEATURES.map((feature, i) => (
             <motion.div

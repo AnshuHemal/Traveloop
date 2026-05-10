@@ -38,7 +38,7 @@ export function CityCard({ city, index, onAddToTrip, view }: CityCardProps) {
         className="group overflow-hidden rounded-2xl border border-border bg-card transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
       >
         <div className="flex items-start gap-4 p-4">
-          {/* Emoji thumbnail */}
+          {}
           <div className={cn(
             "flex size-16 shrink-0 items-center justify-center rounded-xl bg-linear-to-br text-3xl transition-transform group-hover:scale-105",
             city.gradient,
@@ -46,7 +46,7 @@ export function CityCard({ city, index, onAddToTrip, view }: CityCardProps) {
             {city.emoji}
           </div>
 
-          {/* Main content */}
+          {}
           <div className="flex min-w-0 flex-1 flex-col gap-1.5">
             <div className="flex items-start justify-between gap-3">
               <div>
@@ -61,7 +61,7 @@ export function CityCard({ city, index, onAddToTrip, view }: CityCardProps) {
                 <p className="text-xs text-muted-foreground">{city.country}</p>
               </div>
 
-              {/* Right meta */}
+              {}
               <div className="hidden flex-col items-end gap-1 sm:flex">
                 <span className={cn("text-sm font-bold", COST_COLORS[city.costIndex])}>
                   {COST_LABELS[city.costIndex]}
@@ -76,7 +76,7 @@ export function CityCard({ city, index, onAddToTrip, view }: CityCardProps) {
               {city.description}
             </p>
 
-            {/* Tags */}
+            {}
             <div className="flex flex-wrap gap-1">
               {city.tags.slice(0, 4).map((tag) => (
                 <span key={tag} className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
@@ -85,7 +85,7 @@ export function CityCard({ city, index, onAddToTrip, view }: CityCardProps) {
               ))}
             </div>
 
-            {/* Meta row */}
+            {}
             <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
               <span className="flex items-center gap-1">
                 <Star className="size-3 fill-amber-400 text-amber-400" />
@@ -98,7 +98,7 @@ export function CityCard({ city, index, onAddToTrip, view }: CityCardProps) {
             </div>
           </div>
 
-          {/* Add button */}
+          {}
           <button
             onClick={() => onAddToTrip(city)}
             className={cn(
@@ -114,7 +114,6 @@ export function CityCard({ city, index, onAddToTrip, view }: CityCardProps) {
     );
   }
 
-  // Grid view
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -125,7 +124,7 @@ export function CityCard({ city, index, onAddToTrip, view }: CityCardProps) {
     >
       <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-200 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/8">
 
-        {/* Card header */}
+        {}
         <div className={cn("relative flex h-36 items-center justify-center bg-linear-to-br", city.gradient)}>
           <motion.span
             className="text-5xl"
@@ -135,12 +134,12 @@ export function CityCard({ city, index, onAddToTrip, view }: CityCardProps) {
             {city.emoji}
           </motion.span>
 
-          {/* Region badge */}
+          {}
           <span className="absolute left-3 top-3 rounded-full border border-border/50 bg-background/80 px-2.5 py-0.5 text-[10px] font-semibold text-foreground backdrop-blur-sm">
             {city.region}
           </span>
 
-          {/* Cost badge */}
+          {}
           <span className={cn(
             "absolute right-3 top-3 rounded-full bg-background/80 px-2.5 py-0.5 text-xs font-bold backdrop-blur-sm",
             COST_COLORS[city.costIndex],
@@ -148,7 +147,7 @@ export function CityCard({ city, index, onAddToTrip, view }: CityCardProps) {
             {COST_LABELS[city.costIndex]}
           </span>
 
-          {/* Popularity stars */}
+          {}
           <div className="absolute bottom-3 left-3 flex items-center gap-0.5">
             {Array.from({ length: 5 }).map((_, i) => (
               <Star
@@ -164,7 +163,7 @@ export function CityCard({ city, index, onAddToTrip, view }: CityCardProps) {
           </div>
         </div>
 
-        {/* Card body */}
+        {}
         <div className="flex flex-1 flex-col p-4">
           <div className="mb-1 flex items-start justify-between gap-2">
             <div>
@@ -183,7 +182,7 @@ export function CityCard({ city, index, onAddToTrip, view }: CityCardProps) {
             {city.description}
           </p>
 
-          {/* Tags */}
+          {}
           <div className="mb-3 flex flex-wrap gap-1">
             {city.tags.slice(0, 3).map((tag) => (
               <span key={tag} className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
@@ -192,7 +191,7 @@ export function CityCard({ city, index, onAddToTrip, view }: CityCardProps) {
             ))}
           </div>
 
-          {/* Expandable highlights */}
+          {}
           <button
             onClick={() => setExpanded((v) => !v)}
             className="mb-3 flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
@@ -218,13 +217,13 @@ export function CityCard({ city, index, onAddToTrip, view }: CityCardProps) {
             </motion.div>
           )}
 
-          {/* Best months */}
+          {}
           <div className="mb-4 flex items-center gap-1.5 text-xs text-muted-foreground">
             <Calendar className="size-3 text-primary shrink-0" />
             Best: {city.bestMonths.slice(0, 4).join(", ")}
           </div>
 
-          {/* Add to trip button */}
+          {}
           <button
             onClick={() => onAddToTrip(city)}
             className={cn(

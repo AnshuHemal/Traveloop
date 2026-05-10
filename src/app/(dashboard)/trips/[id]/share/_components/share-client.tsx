@@ -62,7 +62,7 @@ export function ShareClient({ tripId, tripTitle, shareToken: initialToken, appUr
 
   return (
     <div className="flex flex-col gap-6">
-      {/* Status card */}
+      {}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
@@ -96,7 +96,7 @@ export function ShareClient({ tripId, tripTitle, shareToken: initialToken, appUr
           </div>
         </div>
 
-        {/* Share URL */}
+        {}
         <AnimatePresence>
           {shareUrl && (
             <motion.div
@@ -136,7 +136,7 @@ export function ShareClient({ tripId, tripTitle, shareToken: initialToken, appUr
         </AnimatePresence>
       </motion.div>
 
-      {/* Actions */}
+      {}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
@@ -179,7 +179,7 @@ export function ShareClient({ tripId, tripTitle, shareToken: initialToken, appUr
         )}
       </motion.div>
 
-      {/* Info cards */}
+      {}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}

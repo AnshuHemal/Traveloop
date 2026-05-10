@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "motion/react";
 import { Upload, X, ImageIcon, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-// Curated cover image options (Unsplash-style gradient placeholders)
 const PRESET_COVERS = [
   { id: "paris",     emoji: "🗼", label: "Paris",     gradient: "from-rose-400 via-pink-500 to-rose-600" },
   { id: "tokyo",     emoji: "🗾", label: "Tokyo",     gradient: "from-violet-400 via-purple-500 to-violet-600" },
@@ -55,7 +54,7 @@ export function CoverUpload({ value, onChange }: CoverUploadProps) {
 
   return (
     <div className="flex flex-col gap-3">
-      {/* Preview */}
+      {}
       <AnimatePresence mode="wait">
         {value ? (
           <motion.div
@@ -67,7 +66,7 @@ export function CoverUpload({ value, onChange }: CoverUploadProps) {
             className="relative overflow-hidden rounded-xl"
           >
             {isCustomImage ? (
-              // eslint-disable-next-line @next/next/no-img-element
+
               <img
                 src={value}
                 alt="Cover"
@@ -110,7 +109,7 @@ export function CoverUpload({ value, onChange }: CoverUploadProps) {
         )}
       </AnimatePresence>
 
-      {/* Tabs */}
+      {}
       <div className="flex rounded-lg border border-border bg-muted/30 p-0.5">
         {(["presets", "upload"] as const).map((t) => (
           <button

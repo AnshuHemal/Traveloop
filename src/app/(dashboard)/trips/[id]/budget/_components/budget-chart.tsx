@@ -21,7 +21,6 @@ interface BudgetChartProps {
   currency: string;
 }
 
-// ── Custom tooltip ────────────────────────────────────────────────────────────
 function CustomPieTooltip({
   active, payload, currency,
 }: {
@@ -65,7 +64,6 @@ function CustomBarTooltip({
   );
 }
 
-// ── Donut chart ───────────────────────────────────────────────────────────────
 export function BudgetDonut({ slices, total, currency }: BudgetChartProps) {
   if (total === 0) {
     return (
@@ -109,7 +107,7 @@ export function BudgetDonut({ slices, total, currency }: BudgetChartProps) {
           </PieChart>
         </ResponsiveContainer>
 
-        {/* Center label */}
+        {}
         <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center">
           <p className="text-xl font-bold text-foreground leading-tight">
             {formatCurrency(total, currency)}
@@ -118,7 +116,7 @@ export function BudgetDonut({ slices, total, currency }: BudgetChartProps) {
         </div>
       </div>
 
-      {/* Legend */}
+      {}
       <div className="grid w-full grid-cols-2 gap-x-4 gap-y-2">
         {data.map((item, i) => {
           const pct = Math.round((item.value / total) * 100);
@@ -141,7 +139,6 @@ export function BudgetDonut({ slices, total, currency }: BudgetChartProps) {
   );
 }
 
-// ── Bar chart (by stop) ───────────────────────────────────────────────────────
 interface BarData {
   name: string;
   activities: number;

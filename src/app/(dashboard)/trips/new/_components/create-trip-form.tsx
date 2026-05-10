@@ -52,13 +52,13 @@ export function CreateTripForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-0">
-      {/* ── Left + Right two-column layout on large screens ── */}
+      {}
       <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
 
-        {/* ── LEFT: Main form fields ── */}
+        {}
         <div className="flex flex-col gap-6">
 
-          {/* Trip name */}
+          {}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -96,7 +96,7 @@ export function CreateTripForm() {
             )}
           </motion.div>
 
-          {/* Description */}
+          {}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -118,7 +118,7 @@ export function CreateTripForm() {
             />
           </motion.div>
 
-          {/* Date range */}
+          {}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -159,14 +159,14 @@ export function CreateTripForm() {
             </div>
           </motion.div>
 
-          {/* Currency + Visibility row */}
+          {}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.2 }}
             className="grid grid-cols-2 gap-4"
           >
-            {/* Currency */}
+            {}
             <div className="flex flex-col gap-2">
               <Label className="text-sm font-semibold">
                 <DollarSign className="size-3.5 text-primary" />
@@ -198,7 +198,7 @@ export function CreateTripForm() {
               </div>
             </div>
 
-            {/* Visibility */}
+            {}
             <div className="flex flex-col gap-2">
               <Label className="text-sm font-semibold">
                 <Globe className="size-3.5 text-primary" />
@@ -229,7 +229,7 @@ export function CreateTripForm() {
             </div>
           </motion.div>
 
-          {/* Global error */}
+          {}
           <AnimatePresence>
             {state.message && (
               <motion.div
@@ -243,7 +243,7 @@ export function CreateTripForm() {
             )}
           </AnimatePresence>
 
-          {/* Submit */}
+          {}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -277,14 +277,14 @@ export function CreateTripForm() {
           </motion.div>
         </div>
 
-        {/* ── RIGHT: Cover photo ── */}
+        {}
         <motion.div
           initial={{ opacity: 0, x: 16 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.45, delay: 0.12 }}
           className="flex flex-col gap-4"
         >
-          {/* Cover photo section */}
+          {}
           <div className="rounded-2xl border border-border bg-card p-5">
             <div className="mb-4 flex items-center gap-2">
               <div className="flex size-7 items-center justify-center rounded-lg bg-primary/10">
@@ -298,7 +298,7 @@ export function CreateTripForm() {
             <CoverUpload value={coverImage} onChange={setCoverImage} />
           </div>
 
-          {/* Trip preview card */}
+          {}
           <AnimatePresence>
             {title && (
               <motion.div
@@ -342,7 +342,7 @@ export function CreateTripForm() {
         </motion.div>
       </div>
 
-      {/* ── Activity suggestions ── */}
+      {}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

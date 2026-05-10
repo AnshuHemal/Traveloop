@@ -36,7 +36,6 @@ const fmtDate = (d: Date | null) =>
 export function EditStopModal({ stop, tripId, open, onClose }: EditStopModalProps) {
   const [isPending, startTransition] = useTransition();
 
-  // Local form state pre-filled from stop
   const [cityName,      setCityName]      = useState(stop.cityName);
   const [countryName,   setCountryName]   = useState(stop.countryName);
   const [arrivalDate,   setArrivalDate]   = useState(fmtDate(stop.arrivalDate));
@@ -44,7 +43,6 @@ export function EditStopModal({ stop, tripId, open, onClose }: EditStopModalProp
   const [nights,        setNights]        = useState(String(stop.nights));
   const [notes,         setNotes]         = useState(stop.notes ?? "");
 
-  // Reset when stop changes (e.g. different stop opened)
   useEffect(() => {
     setCityName(stop.cityName);
     setCountryName(stop.countryName);
@@ -81,7 +79,7 @@ export function EditStopModal({ stop, tripId, open, onClose }: EditStopModalProp
     <AnimatePresence>
       {open && (
         <>
-          {/* Backdrop */}
+          {}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -91,7 +89,7 @@ export function EditStopModal({ stop, tripId, open, onClose }: EditStopModalProp
             onClick={onClose}
           />
 
-          {/* Modal */}
+          {}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -99,7 +97,7 @@ export function EditStopModal({ stop, tripId, open, onClose }: EditStopModalProp
             transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
             className="fixed inset-x-4 top-[10%] z-50 mx-auto max-w-lg overflow-hidden rounded-2xl border border-border bg-card shadow-2xl shadow-black/20 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 sm:w-full"
           >
-            {/* Header */}
+            {}
             <div className="flex items-center justify-between border-b border-border px-6 py-4">
               <div className="flex items-center gap-2.5">
                 <div className="flex size-8 items-center justify-center rounded-lg bg-primary/10">
@@ -118,11 +116,11 @@ export function EditStopModal({ stop, tripId, open, onClose }: EditStopModalProp
               </button>
             </div>
 
-            {/* Form */}
+            {}
             <form onSubmit={handleSubmit} className="p-6">
               <div className="flex flex-col gap-5">
 
-                {/* City + Country */}
+                {}
                 <div className="grid grid-cols-2 gap-3">
                   <div className="flex flex-col gap-2">
                     <Label htmlFor="editCity" className="text-sm font-semibold">
@@ -153,7 +151,7 @@ export function EditStopModal({ stop, tripId, open, onClose }: EditStopModalProp
                   </div>
                 </div>
 
-                {/* Date range */}
+                {}
                 <div className="grid grid-cols-2 gap-3">
                   <div className="flex flex-col gap-2">
                     <Label htmlFor="editArrival" className="text-sm font-semibold">
@@ -185,7 +183,7 @@ export function EditStopModal({ stop, tripId, open, onClose }: EditStopModalProp
                   </div>
                 </div>
 
-                {/* Nights */}
+                {}
                 <div className="flex flex-col gap-2">
                   <Label htmlFor="editNights" className="text-sm font-semibold">
                     <Moon className="size-3.5 text-primary" />
@@ -203,7 +201,7 @@ export function EditStopModal({ stop, tripId, open, onClose }: EditStopModalProp
                   />
                 </div>
 
-                {/* Notes */}
+                {}
                 <div className="flex flex-col gap-2">
                   <Label htmlFor="editNotes" className="text-sm font-semibold">
                     <FileText className="size-3.5 text-primary" />
@@ -220,7 +218,7 @@ export function EditStopModal({ stop, tripId, open, onClose }: EditStopModalProp
                   />
                 </div>
 
-                {/* Actions */}
+                {}
                 <div className="flex gap-3">
                   <button
                     type="button"

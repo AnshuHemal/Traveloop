@@ -64,7 +64,7 @@ export function HowItWorks() {
         </motion.div>
 
         <div className="relative">
-          {/* Connector line */}
+          {}
           <div
             aria-hidden
             className="absolute left-1/2 top-8 hidden h-[calc(100%-4rem)] w-px -translate-x-1/2 bg-linear-to-b from-primary/30 via-primary/20 to-transparent lg:block"

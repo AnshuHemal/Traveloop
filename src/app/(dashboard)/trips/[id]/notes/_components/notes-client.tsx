@@ -44,7 +44,6 @@ export function NotesClient({ tripId, notes, stops }: NotesClientProps) {
   function openEdit(note: Note) { setEditNote(note); setShowEditor(true); }
   function closeEditor() { setShowEditor(false); setEditNote(null); }
 
-  // Filter
   let filtered = notes.filter((n) => {
     if (filterStop !== "ALL") {
       if (filterStop === "TRIP" && n.stopId !== null) return false;
@@ -55,7 +54,6 @@ export function NotesClient({ tripId, notes, stops }: NotesClientProps) {
     return true;
   });
 
-  // Sort
   filtered = [...filtered].sort((a, b) => {
     if (sortBy === "pinned") {
       if (a.pinned !== b.pinned) return a.pinned ? -1 : 1;
@@ -66,12 +64,11 @@ export function NotesClient({ tripId, notes, stops }: NotesClientProps) {
       if (a.date) return -1;
       if (b.date) return 1;
     }
-    // newest (default) — pinned always first
+
     if (a.pinned !== b.pinned) return a.pinned ? -1 : 1;
     return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
   });
 
-  // Group
   let groups: { label: string; notes: Note[] }[] = [];
   if (groupBy === "stop") {
     const tripLevel = filtered.filter((n) => !n.stopId);
@@ -104,14 +101,14 @@ export function NotesClient({ tripId, notes, stops }: NotesClientProps) {
     <>
       <div className="flex flex-col gap-6">
 
-        {/* ── Toolbar ── */}
+        {}
         <motion.div
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35 }}
           className="flex flex-col gap-3"
         >
-          {/* Search + Add */}
+          {}
           <div className="flex gap-3">
             <div className="relative flex-1">
               <Search className="absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
@@ -142,11 +139,11 @@ export function NotesClient({ tripId, notes, stops }: NotesClientProps) {
             </button>
           </div>
 
-          {/* Filter row */}
+          {}
           <div className="flex flex-wrap items-center gap-2">
             <SlidersHorizontal className="size-3.5 text-muted-foreground" />
 
-            {/* Stop filter */}
+            {}
             <div className="relative">
               <select value={filterStop} onChange={(e) => setFilterStop(e.target.value)}
                 className={cn(
@@ -161,7 +158,7 @@ export function NotesClient({ tripId, notes, stops }: NotesClientProps) {
               <ChevronDown className="pointer-events-none absolute right-2 top-1/2 size-3 -translate-y-1/2 text-muted-foreground" />
             </div>
 
-            {/* Group by */}
+            {}
             <div className="relative">
               <select value={groupBy} onChange={(e) => setGroupBy(e.target.value as typeof groupBy)}
                 className="h-8 appearance-none rounded-lg border border-border bg-background pl-3 pr-7 text-xs font-medium outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/50 dark:bg-input/30">
@@ -172,7 +169,7 @@ export function NotesClient({ tripId, notes, stops }: NotesClientProps) {
               <ChevronDown className="pointer-events-none absolute right-2 top-1/2 size-3 -translate-y-1/2 text-muted-foreground" />
             </div>
 
-            {/* Sort */}
+            {}
             <div className="relative">
               <select value={sortBy} onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
                 className="h-8 appearance-none rounded-lg border border-border bg-background pl-3 pr-7 text-xs font-medium outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/50 dark:bg-input/30">
@@ -184,7 +181,7 @@ export function NotesClient({ tripId, notes, stops }: NotesClientProps) {
               <ChevronDown className="pointer-events-none absolute right-2 top-1/2 size-3 -translate-y-1/2 text-muted-foreground" />
             </div>
 
-            {/* Stats */}
+            {}
             <div className="ml-auto flex items-center gap-3 text-xs text-muted-foreground">
               {pinnedCount > 0 && (
                 <span className="flex items-center gap-1">
@@ -197,7 +194,7 @@ export function NotesClient({ tripId, notes, stops }: NotesClientProps) {
           </div>
         </motion.div>
 
-        {/* ── Empty state ── */}
+        {}
         {notes.length === 0 ? (
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -231,7 +228,7 @@ export function NotesClient({ tripId, notes, stops }: NotesClientProps) {
             <p className="text-sm text-muted-foreground">No notes match your search</p>
           </motion.div>
         ) : (
-          /* ── Notes grid ── */
+
           <div className="flex flex-col gap-6">
             <AnimatePresence>
               {groups.map((group) => (
@@ -267,7 +264,7 @@ export function NotesClient({ tripId, notes, stops }: NotesClientProps) {
         )}
       </div>
 
-      {/* Note editor modal */}
+      {}
       <NoteEditor
         tripId={tripId}
         stops={stops}

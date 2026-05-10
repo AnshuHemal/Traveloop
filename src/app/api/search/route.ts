@@ -15,7 +15,6 @@ export async function GET(req: NextRequest) {
 
   const userId = session.user.id;
 
-  // Search trips
   const trips = await prisma.trip.findMany({
     where: {
       userId,
@@ -33,7 +32,6 @@ export async function GET(req: NextRequest) {
     orderBy: { updatedAt: "desc" },
   });
 
-  // Search stops (cities)
   const stops = await prisma.stop.findMany({
     where: {
       trip: { userId },
@@ -50,7 +48,6 @@ export async function GET(req: NextRequest) {
     orderBy: { createdAt: "desc" },
   });
 
-  // Search activities
   const activities = await prisma.activity.findMany({
     where: {
       stop: { trip: { userId } },

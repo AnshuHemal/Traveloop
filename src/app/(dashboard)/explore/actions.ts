@@ -11,7 +11,6 @@ export async function addCityToTrip(
 ): Promise<{ error?: string; stopId?: string }> {
   const user = await requireUser();
 
-  // Verify ownership
   const trip = await prisma.trip.findUnique({
     where: { id: tripId },
     select: { userId: true },
@@ -21,7 +20,7 @@ export async function addCityToTrip(
   if (trip.userId !== user.id) return { error: "Not authorised." };
 
   try {
-    // Get current max order
+
     const maxOrder = await prisma.stop.aggregate({
       where: { tripId },
       _max: { order: true },
@@ -34,7 +33,7 @@ export async function addCityToTrip(
         cityName:    city.name,
         countryName: city.country,
         countryCode: city.countryCode,
-        nights:      3, // sensible default
+        nights:      3,
         order,
       },
     });

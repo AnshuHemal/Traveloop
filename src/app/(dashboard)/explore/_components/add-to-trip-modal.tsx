@@ -36,7 +36,6 @@ export function AddToTripModal({ city, trips, open, onClose }: AddToTripModalPro
   const [isPending, startTransition] = useTransition();
   const [success, setSuccess] = useState(false);
 
-  // Reset on open
   useEffect(() => {
     if (open) { setSelectedTripId(null); setSuccess(false); }
   }, [open]);
@@ -61,7 +60,7 @@ export function AddToTripModal({ city, trips, open, onClose }: AddToTripModalPro
     <AnimatePresence>
       {open && (
         <>
-          {/* Backdrop */}
+          {}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -71,7 +70,7 @@ export function AddToTripModal({ city, trips, open, onClose }: AddToTripModalPro
             onClick={onClose}
           />
 
-          {/* Modal */}
+          {}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -79,7 +78,7 @@ export function AddToTripModal({ city, trips, open, onClose }: AddToTripModalPro
             transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
             className="fixed inset-x-4 top-[15%] z-50 mx-auto max-w-md overflow-hidden rounded-2xl border border-border bg-card shadow-2xl shadow-black/20 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 sm:w-full"
           >
-            {/* Header */}
+            {}
             <div className={cn("relative overflow-hidden px-6 py-5 bg-linear-to-br", city.gradient)}>
               <div aria-hidden className="pointer-events-none absolute -right-8 -top-8 size-32 rounded-full bg-white/10 blur-2xl" />
               <div className="relative flex items-center justify-between gap-3">
@@ -99,7 +98,7 @@ export function AddToTripModal({ city, trips, open, onClose }: AddToTripModalPro
               </div>
             </div>
 
-            {/* Body */}
+            {}
             <div className="p-6">
               {success ? (
                 <motion.div
@@ -149,7 +148,7 @@ export function AddToTripModal({ city, trips, open, onClose }: AddToTripModalPro
                             : "border-border hover:border-primary/30 hover:bg-muted/50",
                         )}
                       >
-                        {/* Radio indicator */}
+                        {}
                         <div className={cn(
                           "flex size-5 shrink-0 items-center justify-center rounded-full border-2 transition-all",
                           selectedTripId === trip.id
@@ -182,7 +181,7 @@ export function AddToTripModal({ city, trips, open, onClose }: AddToTripModalPro
                     ))}
                   </div>
 
-                  {/* Actions */}
+                  {}
                   <div className="mt-5 flex gap-3">
                     <button
                       onClick={onClose}
@@ -203,7 +202,7 @@ export function AddToTripModal({ city, trips, open, onClose }: AddToTripModalPro
                     </button>
                   </div>
 
-                  {/* Create new trip link */}
+                  {}
                   <div className="mt-3 text-center">
                     <Link
                       href={`/trips/new?destination=${encodeURIComponent(city.name)}`}

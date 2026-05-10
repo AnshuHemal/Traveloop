@@ -13,7 +13,6 @@ async function assertTripOwner(tripId: string, userId: string) {
   if (trip.userId !== userId) throw new Error("Not authorised");
 }
 
-// ── Create note ───────────────────────────────────────────────────────────────
 const NoteSchema = z.object({
   tripId:  z.string(),
   stopId:  z.string().optional(),
@@ -72,7 +71,6 @@ export async function createNote(
   }
 }
 
-// ── Update note ───────────────────────────────────────────────────────────────
 export async function updateNote(
   _prev: NoteState,
   formData: FormData,
@@ -117,7 +115,6 @@ export async function updateNote(
   }
 }
 
-// ── Delete note ───────────────────────────────────────────────────────────────
 export async function deleteNote(
   noteId: string,
   tripId: string,
@@ -133,7 +130,6 @@ export async function deleteNote(
   return {};
 }
 
-// ── Toggle pin ────────────────────────────────────────────────────────────────
 export async function toggleNotePin(
   noteId: string,
   tripId: string,

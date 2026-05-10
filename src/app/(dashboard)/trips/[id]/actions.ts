@@ -5,7 +5,6 @@ import { requireUser } from "@/lib/session";
 import { prisma } from "@/lib/prisma";
 import { z } from "zod";
 
-// ── helpers ───────────────────────────────────────────────────────────────────
 async function assertTripOwner(tripId: string, userId: string) {
   const trip = await prisma.trip.findUnique({
     where: { id: tripId },
@@ -15,8 +14,6 @@ async function assertTripOwner(tripId: string, userId: string) {
   if (trip.userId !== userId) throw new Error("Not authorised");
   return trip;
 }
-
-// ── Stop actions ──────────────────────────────────────────────────────────────
 
 const AddStopSchema = z.object({
   tripId:        z.string(),
@@ -61,7 +58,6 @@ export async function addStop(
   try {
     await assertTripOwner(tripId, user.id);
 
-    // Get current max order
     const maxOrder = await prisma.stop.aggregate({
       where: { tripId },
       _max: { order: true },
@@ -152,8 +148,6 @@ export async function updateStop(
   revalidatePath(`/trips/${tripId}`);
   return {};
 }
-
-// ── Activity actions ──────────────────────────────────────────────────────────
 
 const AddActivitySchema = z.object({
   stopId:      z.string(),
@@ -265,7 +259,6 @@ export async function toggleActivityBooked(
   return {};
 }
 
-// ── Trip update ───────────────────────────────────────────────────────────────
 export async function updateTripStatus(
   tripId: string,
   status: "DRAFT" | "PLANNED" | "ONGOING" | "COMPLETED",
@@ -280,8 +273,6 @@ export async function updateTripStatus(
   revalidatePath(`/trips/${tripId}`);
   return {};
 }
-
-// ── Full trip update (edit page) ──────────────────────────────────────────────
 
 const UpdateTripSchema = z.object({
   tripId:      z.string(),
@@ -351,8 +342,6 @@ export async function updateTrip(
   revalidatePath("/dashboard");
   return { success: true };
 }
-
-// ── Update activity ───────────────────────────────────────────────────────────
 
 const UpdateActivitySchema = z.object({
   activityId:  z.string(),

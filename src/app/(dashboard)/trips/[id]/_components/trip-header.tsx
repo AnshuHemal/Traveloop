@@ -64,21 +64,21 @@ export function TripHeader({ trip }: TripHeaderProps) {
 
   return (
     <div className="flex flex-col gap-4">
-      {/* Hero banner */}
+      {}
       <div className={cn(
         "relative overflow-hidden rounded-2xl bg-linear-to-br px-6 py-8 sm:px-8 sm:py-10",
         gradient,
       )}>
-        {/* Decorative blobs */}
+        {}
         <div aria-hidden className="pointer-events-none absolute -right-12 -top-12 size-48 rounded-full bg-primary/8 blur-3xl" />
         <div aria-hidden className="pointer-events-none absolute bottom-0 left-1/3 size-32 rounded-full bg-primary/5 blur-2xl" />
 
         <div className="relative flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-          {/* Left: title + meta */}
+          {}
           <div className="flex flex-col gap-3">
-            {/* Status + visibility */}
+            {}
             <div className="flex flex-wrap items-center gap-2">
-              {/* Status dropdown */}
+              {}
               <div className="relative">
                 <button
                   onClick={() => setStatusMenuOpen((v) => !v)}
@@ -130,7 +130,7 @@ export function TripHeader({ trip }: TripHeaderProps) {
                 </AnimatePresence>
               </div>
 
-              {/* Visibility */}
+              {}
               <span className="flex items-center gap-1 rounded-full border border-border bg-background/60 px-2.5 py-1 text-xs font-medium text-muted-foreground backdrop-blur-sm">
                 {trip.visibility === "PUBLIC" ? (
                   <><Globe className="size-3" /> Public</>
@@ -140,19 +140,19 @@ export function TripHeader({ trip }: TripHeaderProps) {
               </span>
             </div>
 
-            {/* Title */}
+            {}
             <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
               {trip.title}
             </h1>
 
-            {/* Description */}
+            {}
             {trip.description && (
               <p className="max-w-xl text-sm text-muted-foreground leading-relaxed">
                 {trip.description}
               </p>
             )}
 
-            {/* Meta row */}
+            {}
             <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
               {trip._count.stops > 0 && (
                 <span className="flex items-center gap-1.5">
@@ -173,7 +173,7 @@ export function TripHeader({ trip }: TripHeaderProps) {
             </div>
           </div>
 
-          {/* Right: action buttons — removed, tabs handle navigation */}
+          {}
           <div className="flex flex-wrap items-center gap-2">
             <Link
               href="/trips"

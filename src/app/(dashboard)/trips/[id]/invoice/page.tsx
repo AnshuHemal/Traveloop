@@ -41,7 +41,6 @@ export default async function InvoicePage({ params }: PageProps) {
   if (!trip) notFound();
   if (trip.userId !== user.id) notFound();
 
-  // Build line items from activities + expenses
   const lineItems: {
     id: string;
     category: string;
@@ -55,7 +54,7 @@ export default async function InvoicePage({ params }: PageProps) {
   }[] = [];
 
   for (const stop of trip.stops) {
-    // Activities
+
     for (const act of stop.activities) {
       if (act.cost > 0) {
         lineItems.push({
@@ -71,7 +70,7 @@ export default async function InvoicePage({ params }: PageProps) {
         });
       }
     }
-    // Expenses
+
     for (const exp of stop.expenses) {
       lineItems.push({
         id:         exp.id,
@@ -95,7 +94,6 @@ export default async function InvoicePage({ params }: PageProps) {
   );
   const grandTotal = activityTotal + expenseTotal;
 
-  // Generate a deterministic invoice ID from the trip ID
   const invoiceId = `INV-${trip.id.slice(0, 8).toUpperCase()}`;
 
   return (

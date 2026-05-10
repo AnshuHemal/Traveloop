@@ -31,10 +31,8 @@ export default async function ExplorePage({ searchParams }: PageProps) {
   const maxCost = parseInt(params.maxCost ?? "0", 10);
   const sort    = params.sort    ?? "popularity";
 
-  // Filter cities
   const filteredCities = filterCities(CITIES, q, region, maxCost, sort);
 
-  // Fetch user's trips for "Add to trip" modal
   const trips = await prisma.trip.findMany({
     where: { userId: user.id, status: { not: "COMPLETED" } },
     select: {
@@ -46,7 +44,6 @@ export default async function ExplorePage({ searchParams }: PageProps) {
     orderBy: { updatedAt: "desc" },
   });
 
-  // Stats
   const budgetCities  = CITIES.filter((c) => c.costIndex <= 2).length;
   const popularCities = CITIES.filter((c) => c.popularity >= 4).length;
   const regions       = [...new Set(CITIES.map((c) => c.region))].length;
@@ -54,14 +51,14 @@ export default async function ExplorePage({ searchParams }: PageProps) {
   return (
     <div className="flex flex-col gap-8 pb-16">
 
-      {/* ── Hero banner ── */}
+      {}
       <FadeIn direction="down">
         <div className="relative overflow-hidden rounded-2xl bg-linear-to-br from-primary via-primary/90 to-primary/70 px-6 py-10 sm:px-10 sm:py-14">
-          {/* Decorative blobs */}
+          {}
           <div aria-hidden className="pointer-events-none absolute -right-16 -top-16 size-64 rounded-full bg-white/10 blur-3xl" />
           <div aria-hidden className="pointer-events-none absolute bottom-0 left-1/4 size-48 rounded-full bg-white/8 blur-2xl" />
 
-          {/* Floating destination pills */}
+          {}
           <div className="absolute right-6 top-6 hidden flex-col gap-2 lg:flex">
             {["🗼 Paris", "🗾 Tokyo", "🏝️ Santorini", "🌴 Bali"].map((pill, i) => (
               <span
@@ -91,7 +88,7 @@ export default async function ExplorePage({ searchParams }: PageProps) {
               Discover cities, compare budgets, and add destinations directly to your trip itinerary.
             </p>
 
-            {/* Mini stats */}
+            {}
             <div className="flex flex-wrap gap-3">
               {[
                 { icon: Globe,      label: `${regions} regions`,          bg: "bg-white/15" },
@@ -111,7 +108,7 @@ export default async function ExplorePage({ searchParams }: PageProps) {
         </div>
       </FadeIn>
 
-      {/* ── Toolbar ── */}
+      {}
       <FadeIn delay={0.1}>
         <Suspense>
           <ExploreToolbar
@@ -121,7 +118,7 @@ export default async function ExplorePage({ searchParams }: PageProps) {
         </Suspense>
       </FadeIn>
 
-      {/* ── City grid / list ── */}
+      {}
       <FadeIn delay={0.15}>
         <ExploreClient cities={filteredCities} trips={trips} />
       </FadeIn>

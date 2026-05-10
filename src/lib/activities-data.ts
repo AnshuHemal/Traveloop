@@ -1,4 +1,4 @@
-// ─── Activity template database ───────────────────────────────────────────────
+
 
 export type ActivityCategory =
   | "SIGHTSEEING" | "FOOD" | "TRANSPORT" | "ACCOMMODATION"
@@ -16,10 +16,10 @@ export interface ActivityTemplate {
   durationRange: DurationRange;
   durationLabel: string;
   costTier: CostTier;
-  avgCost: number;          // USD
-  rating: number;           // 1–5
+  avgCost: number;
+  rating: number;
   tags: string[];
-  cities: string[];         // city IDs this is relevant for (empty = universal)
+  cities: string[];
   highlights: string[];
   tips: string;
   gradient: string;
@@ -27,7 +27,7 @@ export interface ActivityTemplate {
 }
 
 export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
-  // ── Sightseeing ──────────────────────────────────────────────────────────────
+
   {
     id: "city-walking-tour",
     name: "City Walking Tour",
@@ -101,7 +101,6 @@ export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
     popular: true,
   },
 
-  // ── Food ─────────────────────────────────────────────────────────────────────
   {
     id: "food-tour",
     name: "Street Food Tour",
@@ -175,7 +174,6 @@ export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
     popular: false,
   },
 
-  // ── Adventure ─────────────────────────────────────────────────────────────────
   {
     id: "hiking",
     name: "Scenic Hiking Trail",
@@ -249,7 +247,6 @@ export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
     popular: false,
   },
 
-  // ── Culture ───────────────────────────────────────────────────────────────────
   {
     id: "temple-visit",
     name: "Temple & Shrine Visit",
@@ -305,7 +302,6 @@ export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
     popular: false,
   },
 
-  // ── Wellness ──────────────────────────────────────────────────────────────────
   {
     id: "spa-day",
     name: "Traditional Spa & Massage",
@@ -343,7 +339,6 @@ export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
     popular: false,
   },
 
-  // ── Shopping ──────────────────────────────────────────────────────────────────
   {
     id: "bazaar-shopping",
     name: "Grand Bazaar & Souks",
@@ -381,7 +376,6 @@ export const ACTIVITY_TEMPLATES: ActivityTemplate[] = [
     popular: false,
   },
 
-  // ── Nightlife ─────────────────────────────────────────────────────────────────
   {
     id: "rooftop-bar",
     name: "Rooftop Bar & Cocktails",
@@ -476,14 +470,12 @@ export function filterActivities(
 ): ActivityTemplate[] {
   let result = [...activities];
 
-  // City filter — show universal + city-specific
   if (cityId) {
     result = result.filter(
       (a) => a.cities.length === 0 || a.cities.includes(cityId),
     );
   }
 
-  // Search
   if (query.trim()) {
     const q = query.toLowerCase();
     result = result.filter(
@@ -495,22 +487,18 @@ export function filterActivities(
     );
   }
 
-  // Category
   if (category && category !== "ALL") {
     result = result.filter((a) => a.category === category);
   }
 
-  // Duration
   if (duration && duration !== "ALL") {
     result = result.filter((a) => a.durationRange === duration);
   }
 
-  // Cost tier
   if (costTier && costTier !== "ALL") {
     result = result.filter((a) => a.costTier === costTier);
   }
 
-  // Sort
   switch (sortBy) {
     case "rating":
       result.sort((a, b) => b.rating - a.rating);
@@ -530,7 +518,7 @@ export function filterActivities(
       result.sort((a, b) => a.name.localeCompare(b.name));
       break;
     default:
-      // popular first, then by rating
+
       result.sort((a, b) => {
         if (a.popular !== b.popular) return a.popular ? -1 : 1;
         return b.rating - a.rating;

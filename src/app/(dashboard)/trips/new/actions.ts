@@ -45,7 +45,6 @@ export async function createTrip(
   const { title, description, startDate, endDate, currency, visibility, coverImage } =
     parsed.data;
 
-  // Validate date range
   if (startDate && endDate && new Date(startDate) > new Date(endDate)) {
     return {
       errors: { endDate: ["End date must be after start date"] },

@@ -35,19 +35,19 @@ export default async function TripLayout({ children, params }: LayoutProps) {
 
   return (
     <div className="flex flex-col gap-0 pb-16">
-      {/* ── Trip header (shared across all sub-pages) ── */}
+      {}
       <FadeIn direction="down">
         <TripHeader trip={trip} />
       </FadeIn>
 
-      {/* ── Navigation tabs ── */}
+      {}
       <FadeIn delay={0.08}>
         <div className="mt-6">
           <TripNavTabs tripId={trip.id} stopCount={trip._count.stops} />
         </div>
       </FadeIn>
 
-      {/* ── Page content ── */}
+      {}
       <FadeIn delay={0.12}>
         <div className="mt-6">
           {children}

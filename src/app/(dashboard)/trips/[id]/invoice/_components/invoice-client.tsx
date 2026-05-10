@@ -110,7 +110,7 @@ export function InvoiceClient({ data }: InvoiceClientProps) {
   return (
     <div className="flex flex-col gap-6">
 
-      {/* ── Action bar ── */}
+      {}
       <motion.div
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
@@ -147,7 +147,7 @@ export function InvoiceClient({ data }: InvoiceClientProps) {
         </div>
       </motion.div>
 
-      {/* ── Invoice document ── */}
+      {}
       <motion.div
         ref={invoiceRef}
         initial={{ opacity: 0, y: 20 }}
@@ -155,10 +155,10 @@ export function InvoiceClient({ data }: InvoiceClientProps) {
         transition={{ duration: 0.45, delay: 0.05 }}
         className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm print:shadow-none print:border-0"
       >
-        {/* Invoice header */}
+        {}
         <div className="bg-linear-to-br from-primary/15 via-primary/8 to-transparent px-8 py-8">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
-            {/* Left: trip info */}
+            {}
             <div className="flex items-start gap-5">
               <div className="flex size-16 shrink-0 items-center justify-center rounded-2xl bg-background/80 backdrop-blur-sm shadow-sm text-3xl">
                 ✈️
@@ -185,7 +185,7 @@ export function InvoiceClient({ data }: InvoiceClientProps) {
               </div>
             </div>
 
-            {/* Right: invoice meta */}
+            {}
             <div className="flex flex-col gap-2 text-sm sm:text-right">
               <div>
                 <p className="text-xs text-muted-foreground">Invoice ID</p>
@@ -203,7 +203,7 @@ export function InvoiceClient({ data }: InvoiceClientProps) {
           </div>
         </div>
 
-        {/* Line items table */}
+        {}
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
@@ -279,17 +279,17 @@ export function InvoiceClient({ data }: InvoiceClientProps) {
           </table>
         </div>
 
-        {/* Totals section */}
+        {}
         <div className="border-t border-border px-8 py-6">
           <div className="flex flex-col items-end gap-0">
             <div className="w-full max-w-xs flex flex-col gap-2">
-              {/* Subtotal */}
+              {}
               <div className="flex items-center justify-between text-sm">
                 <span className="text-muted-foreground">Subtotal</span>
                 <span className="font-mono font-medium text-foreground">{formatCurrency(subtotal, data.currency)}</span>
               </div>
 
-              {/* Activity vs Expense breakdown */}
+              {}
               {data.activityTotal > 0 && data.expenseTotal > 0 && (
                 <>
                   <div className="flex items-center justify-between text-xs text-muted-foreground pl-3">
@@ -303,7 +303,7 @@ export function InvoiceClient({ data }: InvoiceClientProps) {
                 </>
               )}
 
-              {/* Tax */}
+              {}
               <div className="flex items-center justify-between text-sm">
                 <button
                   onClick={() => setShowTaxEdit((v) => !v)}
@@ -340,7 +340,7 @@ export function InvoiceClient({ data }: InvoiceClientProps) {
                 )}
               </AnimatePresence>
 
-              {/* Discount */}
+              {}
               <div className="flex items-center justify-between text-sm">
                 <span className="text-muted-foreground">Discount</span>
                 <div className="flex items-center gap-2">
@@ -355,10 +355,10 @@ export function InvoiceClient({ data }: InvoiceClientProps) {
                 </div>
               </div>
 
-              {/* Divider */}
+              {}
               <div className="my-1 h-px bg-border" />
 
-              {/* Grand total */}
+              {}
               <div className="flex items-center justify-between">
                 <span className="text-base font-bold text-foreground">Grand Total</span>
                 <motion.span
@@ -388,7 +388,7 @@ export function InvoiceClient({ data }: InvoiceClientProps) {
           </div>
         </div>
 
-        {/* Invoice footer */}
+        {}
         <div className="border-t border-border bg-muted/20 px-8 py-4">
           <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-xs text-muted-foreground">
@@ -399,7 +399,7 @@ export function InvoiceClient({ data }: InvoiceClientProps) {
         </div>
       </motion.div>
 
-      {/* ── Budget insights sidebar card ── */}
+      {}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}

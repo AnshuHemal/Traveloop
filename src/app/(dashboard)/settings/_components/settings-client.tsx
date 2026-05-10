@@ -31,7 +31,7 @@ export function SettingsClient({ user }: SettingsClientProps) {
 
   return (
     <div className="grid gap-6 lg:grid-cols-[220px_1fr]">
-      {/* Sidebar */}
+      {}
       <motion.div
         initial={{ opacity: 0, x: -16 }}
         animate={{ opacity: 1, x: 0 }}
@@ -64,7 +64,7 @@ export function SettingsClient({ user }: SettingsClientProps) {
         </div>
       </motion.div>
 
-      {/* Content */}
+      {}
       <AnimatePresence mode="wait">
         <motion.div
           key={activeTab}

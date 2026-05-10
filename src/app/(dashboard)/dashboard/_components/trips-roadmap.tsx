@@ -28,12 +28,11 @@ const STATUS_COLORS: Record<string, { bar: string; dot: string; label: string }>
 };
 
 export function TripsRoadmap({ trips }: TripsRoadmapProps) {
-  // Only show trips with dates
+
   const datedTrips = trips.filter((t) => t.startDate && t.endDate);
 
   if (datedTrips.length === 0) return null;
 
-  // Find the overall date range
   const allDates = datedTrips.flatMap((t) => [
     new Date(t.startDate!),
     new Date(t.endDate!),
@@ -41,7 +40,6 @@ export function TripsRoadmap({ trips }: TripsRoadmapProps) {
   const minDate = new Date(Math.min(...allDates.map((d) => d.getTime())));
   const maxDate = new Date(Math.max(...allDates.map((d) => d.getTime())));
 
-  // Pad by 7 days on each side
   const rangeStart = new Date(minDate);
   rangeStart.setDate(rangeStart.getDate() - 7);
   const rangeEnd = new Date(maxDate);
@@ -57,7 +55,6 @@ export function TripsRoadmap({ trips }: TripsRoadmapProps) {
   const todayPct = pct(today);
   const showToday = isAfter(today, rangeStart) && isBefore(today, rangeEnd);
 
-  // Month markers
   const months: { label: string; pct: number }[] = [];
   const cursor = new Date(rangeStart);
   cursor.setDate(1);
@@ -87,7 +84,7 @@ export function TripsRoadmap({ trips }: TripsRoadmapProps) {
         transition={{ duration: 0.4, delay: 0.05 }}
         className="overflow-hidden rounded-2xl border border-border bg-card p-5"
       >
-        {/* Month labels */}
+        {}
         <div className="relative mb-2 h-5">
           {months.map((m) => (
             <span
@@ -100,9 +97,9 @@ export function TripsRoadmap({ trips }: TripsRoadmapProps) {
           ))}
         </div>
 
-        {/* Timeline grid */}
+        {}
         <div className="relative">
-          {/* Background grid lines */}
+          {}
           <div className="absolute inset-0 flex">
             {months.map((m) => (
               <div
@@ -113,7 +110,7 @@ export function TripsRoadmap({ trips }: TripsRoadmapProps) {
             ))}
           </div>
 
-          {/* Today line */}
+          {}
           {showToday && (
             <div
               className="absolute top-0 bottom-0 z-10 w-0.5 bg-primary/60"
@@ -125,7 +122,7 @@ export function TripsRoadmap({ trips }: TripsRoadmapProps) {
             </div>
           )}
 
-          {/* Trip bars */}
+          {}
           <div className="flex flex-col gap-3 py-2">
             {datedTrips.map((trip, i) => {
               const start = pct(new Date(trip.startDate!));
@@ -142,7 +139,7 @@ export function TripsRoadmap({ trips }: TripsRoadmapProps) {
                   transition={{ duration: 0.35, delay: i * 0.06 }}
                   className="relative flex h-10 items-center"
                 >
-                  {/* City label on left */}
+                  {}
                   <div className="absolute right-full mr-2 hidden w-24 text-right sm:block">
                     <p className="truncate text-xs font-medium text-foreground">{trip.title}</p>
                     {trip.stops.length > 0 && (
@@ -152,7 +149,7 @@ export function TripsRoadmap({ trips }: TripsRoadmapProps) {
                     )}
                   </div>
 
-                  {/* Bar */}
+                  {}
                   <Link
                     href={`/trips/${trip.id}`}
                     className="absolute group flex h-8 items-center overflow-hidden rounded-lg transition-all hover:brightness-110 hover:shadow-md"
@@ -160,7 +157,7 @@ export function TripsRoadmap({ trips }: TripsRoadmapProps) {
                     title={trip.title}
                   >
                     <div className={cn("h-full w-full rounded-lg", colors.bar, isActive && "animate-pulse")} />
-                    {/* Label inside bar if wide enough */}
+                    {}
                     {width > 8 && (
                       <span className="absolute inset-0 flex items-center px-2 text-[10px] font-semibold text-white/90 truncate">
                         {trip.title}
@@ -168,7 +165,7 @@ export function TripsRoadmap({ trips }: TripsRoadmapProps) {
                     )}
                   </Link>
 
-                  {/* Start dot */}
+                  {}
                   <div
                     className={cn("absolute size-2.5 rounded-full border-2 border-background z-10", colors.dot)}
                     style={{ left: `${start}%`, transform: "translateX(-50%)" }}
@@ -179,7 +176,7 @@ export function TripsRoadmap({ trips }: TripsRoadmapProps) {
           </div>
         </div>
 
-        {/* Legend */}
+        {}
         <div className="mt-4 flex flex-wrap items-center gap-4 border-t border-border pt-3">
           {Object.entries(STATUS_COLORS).map(([key, cfg]) => (
             <span key={key} className="flex items-center gap-1.5 text-xs text-muted-foreground">

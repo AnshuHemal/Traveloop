@@ -63,7 +63,7 @@ export function AddItemModal({ tripId, open, onClose }: AddItemModalProps) {
             transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
             className="fixed inset-x-4 top-[10%] z-50 mx-auto max-w-md overflow-hidden rounded-2xl border border-border bg-card shadow-2xl sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 sm:w-full"
           >
-            {/* Header */}
+            {}
             <div className="flex items-center justify-between border-b border-border px-6 py-4">
               <div className="flex items-center gap-2.5">
                 <div className="flex size-8 items-center justify-center rounded-lg bg-primary/10">
@@ -82,7 +82,7 @@ export function AddItemModal({ tripId, open, onClose }: AddItemModalProps) {
               <input type="hidden" name="essential" value={String(essential)} />
 
               <div className="flex flex-col gap-5">
-                {/* Item name */}
+                {}
                 <div className="flex flex-col gap-2">
                   <Label htmlFor="itemName" className="text-sm font-semibold">
                     <Package className="size-3.5 text-primary" />
@@ -92,7 +92,7 @@ export function AddItemModal({ tripId, open, onClose }: AddItemModalProps) {
                   {state.errors?.name && <p className="text-xs text-destructive">{state.errors.name[0]}</p>}
                 </div>
 
-                {/* Category */}
+                {}
                 <div className="flex flex-col gap-2">
                   <Label className="text-sm font-semibold">
                     <Tag className="size-3.5 text-primary" />
@@ -114,7 +114,7 @@ export function AddItemModal({ tripId, open, onClose }: AddItemModalProps) {
                   </div>
                 </div>
 
-                {/* Quantity + Essential row */}
+                {}
                 <div className="grid grid-cols-2 gap-3">
                   <div className="flex flex-col gap-2">
                     <Label htmlFor="quantity" className="text-sm font-semibold">
@@ -141,7 +141,7 @@ export function AddItemModal({ tripId, open, onClose }: AddItemModalProps) {
                   </div>
                 </div>
 
-                {/* Notes */}
+                {}
                 <div className="flex flex-col gap-2">
                   <Label htmlFor="itemNotes" className="text-sm font-semibold">
                     <FileText className="size-3.5 text-primary" />

@@ -77,7 +77,7 @@ export function NoteCard({ note, tripId, index, onEdit }: NoteCardProps) {
         note.pinned && "ring-1 ring-primary/30",
       )}
     >
-      {/* Card header */}
+      {}
       <div className={cn("flex items-start justify-between gap-3 px-4 py-3", styles.header)}>
         <div className="flex min-w-0 flex-1 flex-col gap-1">
           <div className="flex items-center gap-2">
@@ -89,7 +89,7 @@ export function NoteCard({ note, tripId, index, onEdit }: NoteCardProps) {
             </h3>
           </div>
 
-          {/* Meta badges */}
+          {}
           <div className="flex flex-wrap items-center gap-1.5">
             {note.stop && (
               <span className={cn("flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold", styles.badge)}>
@@ -106,7 +106,7 @@ export function NoteCard({ note, tripId, index, onEdit }: NoteCardProps) {
           </div>
         </div>
 
-        {/* Actions */}
+        {}
         <div className="flex shrink-0 items-center gap-1 opacity-0 transition-opacity group-hover:opacity-100">
           <button
             onClick={handlePin}
@@ -149,14 +149,14 @@ export function NoteCard({ note, tripId, index, onEdit }: NoteCardProps) {
         </div>
       </div>
 
-      {/* Content */}
+      {}
       <div className="px-4 py-3">
         <p className="whitespace-pre-wrap text-sm text-foreground/90 leading-relaxed line-clamp-4">
           {note.content}
         </p>
       </div>
 
-      {/* Footer */}
+      {}
       <div className="flex items-center justify-between border-t border-border/40 px-4 py-2">
         <span className="flex items-center gap-1 text-[10px] text-muted-foreground">
           <Clock className="size-2.5" />

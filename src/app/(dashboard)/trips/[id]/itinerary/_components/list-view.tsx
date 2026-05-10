@@ -77,11 +77,11 @@ export function ListView({ stops, currency }: ListViewProps) {
             transition={{ duration: 0.4, delay: stopIdx * 0.08 }}
             className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm"
           >
-            {/* City header */}
+            {}
             <div className={cn("bg-linear-to-br px-6 py-5", gradient)}>
               <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
-                  {/* Number + emoji */}
+                  {}
                   <div className="flex items-center gap-2">
                     <div className="flex size-8 items-center justify-center rounded-full bg-background/80 text-sm font-bold text-foreground shadow-sm">
                       {stopIdx + 1}
@@ -89,14 +89,14 @@ export function ListView({ stops, currency }: ListViewProps) {
                     <span className="text-3xl">{emoji}</span>
                   </div>
 
-                  {/* City info */}
+                  {}
                   <div>
                     <h3 className="text-lg font-bold text-foreground">{stop.cityName}</h3>
                     <p className="text-xs text-muted-foreground">{stop.countryName}</p>
                   </div>
                 </div>
 
-                {/* Right meta */}
+                {}
                 <div className="hidden flex-wrap items-center gap-2 sm:flex">
                   {dateRange && (
                     <span className="flex items-center gap-1 rounded-lg bg-background/70 px-2.5 py-1 text-xs font-medium text-foreground backdrop-blur-sm">
@@ -117,7 +117,7 @@ export function ListView({ stops, currency }: ListViewProps) {
                 </div>
               </div>
 
-              {/* Mobile meta */}
+              {}
               <div className="mt-2 flex flex-wrap gap-2 sm:hidden">
                 {dateRange && (
                   <span className="flex items-center gap-1 text-xs text-muted-foreground">
@@ -132,9 +132,9 @@ export function ListView({ stops, currency }: ListViewProps) {
               </div>
             </div>
 
-            {/* Activities */}
+            {}
             <div className="p-5">
-              {/* Notes */}
+              {}
               {stop.notes && (
                 <div className="mb-4 rounded-xl bg-muted/30 px-4 py-3">
                   <p className="text-xs text-muted-foreground leading-relaxed">📝 {stop.notes}</p>
@@ -148,7 +148,7 @@ export function ListView({ stops, currency }: ListViewProps) {
                 </div>
               ) : (
                 <>
-                  {/* Activity count header */}
+                  {}
                   <div className="mb-3 flex items-center justify-between">
                     <span className="text-sm font-semibold text-foreground">
                       {stop.activities.length} {stop.activities.length === 1 ? "activity" : "activities"}
@@ -160,7 +160,7 @@ export function ListView({ stops, currency }: ListViewProps) {
                     )}
                   </div>
 
-                  {/* Compact activity list */}
+                  {}
                   <div className="flex flex-col gap-2">
                     {stop.activities
                       .sort((a, b) => {
@@ -178,7 +178,7 @@ export function ListView({ stops, currency }: ListViewProps) {
                       ))}
                   </div>
 
-                  {/* Stop total */}
+                  {}
                   {stopCost > 0 && (
                     <div className="mt-4 flex items-center justify-between rounded-xl bg-muted/30 px-4 py-2.5">
                       <span className="text-xs text-muted-foreground">Stop budget</span>

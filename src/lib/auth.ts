@@ -6,7 +6,7 @@ import { prisma } from "@/lib/prisma";
 import { sendOTPEmail } from "@/lib/email";
 
 const OTP_LENGTH = 6;
-const OTP_EXPIRES_IN = 600; // 10 minutes
+const OTP_EXPIRES_IN = 600;
 const OTP_CHARSET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 
 function generateOTP(): string {

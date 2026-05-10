@@ -80,7 +80,7 @@ const DEFAULT_SUGGESTIONS = [
 export function ActivitySuggestions({ destination }: ActivitySuggestionsProps) {
   return (
     <div className="flex flex-col gap-4">
-      {/* Header */}
+      {}
       <div className="flex items-center gap-2">
         <div className="flex size-7 items-center justify-center rounded-lg bg-primary/10">
           <Sparkles className="size-4 text-primary" />
@@ -100,7 +100,7 @@ export function ActivitySuggestions({ destination }: ActivitySuggestionsProps) {
         </div>
       </div>
 
-      {/* Grid */}
+      {}
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         {DEFAULT_SUGGESTIONS.map((activity, i) => (
           <motion.div
@@ -110,7 +110,7 @@ export function ActivitySuggestions({ destination }: ActivitySuggestionsProps) {
             transition={{ duration: 0.35, delay: i * 0.06 }}
             className="group relative overflow-hidden rounded-xl border border-border bg-card transition-all duration-200 hover:border-primary/30 hover:shadow-md hover:shadow-primary/5 hover:-translate-y-0.5 cursor-default"
           >
-            {/* Gradient header */}
+            {}
             <div className={cn("flex h-20 items-center justify-center bg-linear-to-br", activity.color)}>
               <motion.span
                 className="text-3xl"
@@ -119,7 +119,7 @@ export function ActivitySuggestions({ destination }: ActivitySuggestionsProps) {
               >
                 {activity.emoji}
               </motion.span>
-              {/* Tag */}
+              {}
               <span className={cn(
                 "absolute right-2 top-2 rounded-full px-2 py-0.5 text-[10px] font-semibold",
                 activity.tagColor,
@@ -128,7 +128,7 @@ export function ActivitySuggestions({ destination }: ActivitySuggestionsProps) {
               </span>
             </div>
 
-            {/* Body */}
+            {}
             <div className="p-3">
               <p className="mb-0.5 text-xs font-semibold text-foreground line-clamp-1">
                 {activity.name}

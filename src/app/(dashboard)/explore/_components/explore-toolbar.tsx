@@ -58,7 +58,7 @@ export function ExploreToolbar({ totalCount, filteredCount }: ExploreToolbarProp
       transition={{ duration: 0.35 }}
       className="flex flex-col gap-3"
     >
-      {/* Search bar */}
+      {}
       <div className="relative">
         <Search className="absolute left-4 top-1/2 size-4.5 -translate-y-1/2 text-muted-foreground" />
         <input
@@ -83,11 +83,11 @@ export function ExploreToolbar({ totalCount, filteredCount }: ExploreToolbarProp
         )}
       </div>
 
-      {/* Filters row */}
+      {}
       <div className="flex flex-wrap items-center gap-2">
         <SlidersHorizontal className="size-3.5 text-muted-foreground" />
 
-        {/* Region tabs */}
+        {}
         <div className="flex flex-wrap gap-1.5">
           {REGIONS.map((r) => (
             <button
@@ -105,7 +105,7 @@ export function ExploreToolbar({ totalCount, filteredCount }: ExploreToolbarProp
           ))}
         </div>
 
-        {/* Cost filter */}
+        {}
         <div className="relative ml-auto">
           <select
             value={maxCost}
@@ -124,7 +124,7 @@ export function ExploreToolbar({ totalCount, filteredCount }: ExploreToolbarProp
           <ChevronDown className="pointer-events-none absolute right-2 top-1/2 size-3 -translate-y-1/2 text-muted-foreground" />
         </div>
 
-        {/* Sort */}
+        {}
         <div className="relative">
           <select
             value={sort}
@@ -142,7 +142,7 @@ export function ExploreToolbar({ totalCount, filteredCount }: ExploreToolbarProp
           <ChevronDown className="pointer-events-none absolute right-2 top-1/2 size-3 -translate-y-1/2 text-muted-foreground" />
         </div>
 
-        {/* Clear */}
+        {}
         {hasFilters && (
           <motion.button
             initial={{ opacity: 0, scale: 0.9 }}
@@ -157,7 +157,7 @@ export function ExploreToolbar({ totalCount, filteredCount }: ExploreToolbarProp
           </motion.button>
         )}
 
-        {/* Count */}
+        {}
         <span className="text-xs text-muted-foreground">
           {filteredCount === totalCount
             ? `${totalCount} cities`

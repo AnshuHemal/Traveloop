@@ -26,7 +26,7 @@ export function ExploreClient({ cities, trips }: ExploreClientProps) {
 
   return (
     <>
-      {/* View toggle */}
+      {}
       <div className="flex items-center justify-between gap-4">
         <p className="text-sm text-muted-foreground">
           {cities.length === 0
@@ -52,7 +52,7 @@ export function ExploreClient({ cities, trips }: ExploreClientProps) {
         </div>
       </div>
 
-      {/* City grid / list */}
+      {}
       <AnimatePresence mode="wait">
         {cities.length === 0 ? (
           <motion.div
@@ -107,7 +107,7 @@ export function ExploreClient({ cities, trips }: ExploreClientProps) {
         )}
       </AnimatePresence>
 
-      {/* Add to trip modal */}
+      {}
       <AddToTripModal
         city={selectedCity ?? { id: "", name: "", country: "", countryCode: "", region: "", emoji: "✈️", description: "", costIndex: 1, popularity: 1, avgDailyBudget: 0, bestMonths: [], tags: [], highlights: [], gradient: "" }}
         trips={trips}

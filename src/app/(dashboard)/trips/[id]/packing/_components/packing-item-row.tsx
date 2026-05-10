@@ -71,7 +71,7 @@ export function PackingItemRow({ item, tripId, index }: PackingItemRowProps) {
           : "border-border bg-background hover:border-primary/20 hover:shadow-sm",
       )}
     >
-      {/* Custom checkbox */}
+      {}
       <button
         onClick={handleToggle}
         disabled={isPending}
@@ -97,10 +97,10 @@ export function PackingItemRow({ item, tripId, index }: PackingItemRowProps) {
         ) : null}
       </button>
 
-      {/* Category emoji */}
+      {}
       <span className="text-base shrink-0">{cat.emoji}</span>
 
-      {/* Content */}
+      {}
       <div className="flex min-w-0 flex-1 flex-col">
         <div className="flex items-center gap-2">
           <span className={cn(
@@ -123,7 +123,7 @@ export function PackingItemRow({ item, tripId, index }: PackingItemRowProps) {
         )}
       </div>
 
-      {/* Delete */}
+      {}
       <button
         onClick={handleDelete}
         disabled={isPending}

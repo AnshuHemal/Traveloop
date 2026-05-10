@@ -57,7 +57,7 @@ export function TripActionsMenu({ trip }: TripActionsMenuProps) {
       } else {
         toast.success("Trip duplicated! Opening edit page…");
         close();
-        // Hard navigate so the new trip's layout loads fresh
+
         window.location.href = `/trips/${result.id}/edit`;
       }
     });
@@ -97,7 +97,7 @@ export function TripActionsMenu({ trip }: TripActionsMenuProps) {
 
   return (
     <div className="relative" onClick={(e) => e.preventDefault()}>
-      {/* Trigger */}
+      {}
       <button
         onClick={(e) => { e.preventDefault(); e.stopPropagation(); setOpen((v) => !v); }}
         className={cn(
@@ -114,7 +114,7 @@ export function TripActionsMenu({ trip }: TripActionsMenuProps) {
         )}
       </button>
 
-      {/* Dropdown */}
+      {}
       <AnimatePresence>
         {open && (
           <>
@@ -128,7 +128,7 @@ export function TripActionsMenu({ trip }: TripActionsMenuProps) {
             >
               {!showDeleteConfirm ? (
                 <>
-                  {/* Primary actions */}
+                  {}
                   <div className="p-1">
                     <MenuItem
                       icon={<Eye className="size-3.5" />}
@@ -150,7 +150,7 @@ export function TripActionsMenu({ trip }: TripActionsMenuProps) {
 
                   <div className="mx-1 my-0.5 h-px bg-border" />
 
-                  {/* Status actions */}
+                  {}
                   {statusActions.length > 0 && (
                     <>
                       <div className="p-1">
@@ -168,7 +168,7 @@ export function TripActionsMenu({ trip }: TripActionsMenuProps) {
                     </>
                   )}
 
-                  {/* Visibility */}
+                  {}
                   <div className="p-1">
                     <MenuItem
                       icon={trip.visibility === "PUBLIC"
@@ -182,7 +182,7 @@ export function TripActionsMenu({ trip }: TripActionsMenuProps) {
 
                   <div className="mx-1 my-0.5 h-px bg-border" />
 
-                  {/* Delete */}
+                  {}
                   <div className="p-1">
                     <MenuItem
                       icon={<Trash2 className="size-3.5" />}
@@ -193,7 +193,7 @@ export function TripActionsMenu({ trip }: TripActionsMenuProps) {
                   </div>
                 </>
               ) : (
-                /* Delete confirmation */
+
                 <div className="p-4">
                   <p className="mb-1 text-sm font-semibold text-foreground">Delete trip?</p>
                   <p className="mb-4 text-xs text-muted-foreground leading-relaxed">

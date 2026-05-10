@@ -28,7 +28,7 @@ interface RecentTripsSectionProps {
 export function RecentTripsSection({ trips, totalCount }: RecentTripsSectionProps) {
   return (
     <section>
-      {/* Section header */}
+      {}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
@@ -64,7 +64,7 @@ export function RecentTripsSection({ trips, totalCount }: RecentTripsSectionProp
         </div>
       </motion.div>
 
-      {/* Trip grid */}
+      {}
       {trips.length === 0 ? (
         <EmptyTripsInline />
       ) : (

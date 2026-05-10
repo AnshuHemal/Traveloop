@@ -48,13 +48,13 @@ function LogoMark({ size }: { size: number }) {
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      {/* Globe circle */}
+      {}
       <circle cx="20" cy="20" r="18" stroke="currentColor" strokeWidth="2.5" className="text-primary" />
-      {/* Latitude lines */}
+      {}
       <ellipse cx="20" cy="20" rx="10" ry="18" stroke="currentColor" strokeWidth="2" className="text-primary" strokeDasharray="0" />
-      {/* Horizontal equator */}
+      {}
       <line x1="2" y1="20" x2="38" y2="20" stroke="currentColor" strokeWidth="2" className="text-primary" />
-      {/* Path / route line */}
+      {}
       <path
         d="M8 28 Q14 14 20 20 Q26 26 32 12"
         stroke="currentColor"
@@ -62,7 +62,7 @@ function LogoMark({ size }: { size: number }) {
         strokeLinecap="round"
         className="text-primary"
       />
-      {/* Destination pin */}
+      {}
       <circle cx="32" cy="12" r="3" fill="currentColor" className="text-primary" />
     </svg>
   );

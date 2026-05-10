@@ -34,10 +34,10 @@ export function MarketingNav() {
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        {/* Logo */}
+        {}
         <Logo size={28} />
 
-        {/* Desktop nav */}
+        {}
         <nav className="hidden items-center gap-1 md:flex">
           {NAV_LINKS.map((link) => (
             <Link
@@ -50,7 +50,7 @@ export function MarketingNav() {
           ))}
         </nav>
 
-        {/* Desktop CTA */}
+        {}
         <div className="hidden items-center gap-3 md:flex">
           <Link href="/login" className={cn(buttonVariants({ variant: "ghost", size: "sm" }))}>
             Sign in
@@ -60,7 +60,7 @@ export function MarketingNav() {
           </Link>
         </div>
 
-        {/* Mobile menu button */}
+        {}
         <button
           className="flex size-9 items-center justify-center rounded-lg text-muted-foreground hover:bg-accent hover:text-foreground transition-colors md:hidden"
           onClick={() => setMobileOpen((v) => !v)}
@@ -70,7 +70,7 @@ export function MarketingNav() {
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div

@@ -18,7 +18,6 @@ export async function generateShareLink(
   if (!trip) return { error: "Trip not found." };
   if (trip.userId !== user.id) return { error: "Not authorised." };
 
-  // Reuse existing token or generate new one
   const token = trip.shareToken ?? nanoid(12);
 
   try {

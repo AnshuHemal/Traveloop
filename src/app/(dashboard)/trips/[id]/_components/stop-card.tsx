@@ -107,10 +107,10 @@ export function StopCard({
           "hover:border-primary/20 hover:shadow-md hover:shadow-primary/5",
         )}
       >
-        {/* Stop header */}
+        {}
         <div className={cn("relative bg-linear-to-br", gradient)}>
           <div className="flex items-center gap-3 px-5 py-4">
-            {/* Drag handle */}
+            {}
             <div
               className="flex size-8 shrink-0 cursor-grab items-center justify-center rounded-lg text-muted-foreground/50 hover:bg-black/5 hover:text-muted-foreground transition-colors active:cursor-grabbing"
               title="Drag to reorder"
@@ -118,15 +118,15 @@ export function StopCard({
               <GripVertical className="size-4" />
             </div>
 
-            {/* Stop number */}
+            {}
             <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-background/80 text-sm font-bold text-foreground backdrop-blur-sm shadow-sm">
               {index + 1}
             </div>
 
-            {/* Emoji */}
+            {}
             <span className="text-3xl">{emoji}</span>
 
-            {/* City info */}
+            {}
             <div className="flex min-w-0 flex-1 flex-col">
               <h3 className="font-bold text-foreground text-base leading-tight">
                 {stop.cityName}
@@ -134,7 +134,7 @@ export function StopCard({
               <p className="text-xs text-muted-foreground">{stop.countryName}</p>
             </div>
 
-            {/* Meta badges */}
+            {}
             <div className="hidden flex-wrap items-center gap-2 sm:flex">
               {dateRange && (
                 <span className="flex items-center gap-1 rounded-full bg-background/70 px-2.5 py-1 text-xs font-medium text-foreground backdrop-blur-sm">
@@ -154,7 +154,7 @@ export function StopCard({
               )}
             </div>
 
-            {/* Actions */}
+            {}
             <div className="flex items-center gap-1">
               <button
                 onClick={() => setShowEditStop(true)}
@@ -185,7 +185,7 @@ export function StopCard({
             </div>
           </div>
 
-          {/* Mobile meta row */}
+          {}
           {(dateRange || stop.nights) && (
             <div className="flex flex-wrap gap-2 px-5 pb-3 sm:hidden">
               {dateRange && (
@@ -202,7 +202,7 @@ export function StopCard({
           )}
         </div>
 
-        {/* Expandable body */}
+        {}
         <AnimatePresence initial={false}>
           {expanded && (
             <motion.div
@@ -213,7 +213,7 @@ export function StopCard({
               className="overflow-hidden"
             >
               <div className="px-5 pb-5 pt-4">
-                {/* Notes */}
+                {}
                 {stop.notes && (
                   <div className="mb-4 flex items-start gap-2 rounded-xl bg-muted/40 px-3 py-2.5">
                     <FileText className="mt-0.5 size-3.5 shrink-0 text-muted-foreground" />
@@ -221,7 +221,7 @@ export function StopCard({
                   </div>
                 )}
 
-                {/* Activities header */}
+                {}
                 <div className="mb-3 flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <span className="text-sm font-semibold text-foreground">Activities</span>
@@ -245,7 +245,7 @@ export function StopCard({
                   </button>
                 </div>
 
-                {/* Activities list */}
+                {}
                 {stop.activities.length === 0 ? (
                   <motion.div
                     initial={{ opacity: 0 }}
@@ -286,7 +286,7 @@ export function StopCard({
                   </AnimatePresence>
                 )}
 
-                {/* Stop budget summary */}
+                {}
                 {totalCost > 0 && (
                   <div className="mt-4 flex flex-col gap-1.5 rounded-xl bg-muted/30 px-4 py-3">
                     {activityCost > 0 && expenseCost > 0 && (
@@ -316,7 +316,7 @@ export function StopCard({
         </AnimatePresence>
       </motion.div>
 
-      {/* Add activity modal */}
+      {}
       <AddActivityModal
         stopId={stop.id}
         tripId={tripId}
@@ -325,7 +325,7 @@ export function StopCard({
         onClose={() => setShowAddActivity(false)}
       />
 
-      {/* Edit stop modal */}
+      {}
       <EditStopModal
         stop={stop}
         tripId={tripId}

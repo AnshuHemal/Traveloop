@@ -57,7 +57,6 @@ export function AddStopModal({ tripId, open, onClose, defaultDestination }: AddS
       )
     : POPULAR_CITIES.slice(0, 8);
 
-  // Close on success
   useEffect(() => {
     if (state.success) {
       formRef.current?.reset();
@@ -67,7 +66,6 @@ export function AddStopModal({ tripId, open, onClose, defaultDestination }: AddS
     }
   }, [state.success, onClose]);
 
-  // Focus city input when modal opens
   useEffect(() => {
     if (open) setTimeout(() => cityInputRef.current?.focus(), 100);
   }, [open]);
@@ -82,7 +80,7 @@ export function AddStopModal({ tripId, open, onClose, defaultDestination }: AddS
     <AnimatePresence>
       {open && (
         <>
-          {/* Backdrop */}
+          {}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -92,7 +90,7 @@ export function AddStopModal({ tripId, open, onClose, defaultDestination }: AddS
             onClick={onClose}
           />
 
-          {/* Modal */}
+          {}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -100,7 +98,7 @@ export function AddStopModal({ tripId, open, onClose, defaultDestination }: AddS
             transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
             className="fixed inset-x-4 top-[10%] z-50 mx-auto max-w-lg overflow-hidden rounded-2xl border border-border bg-card shadow-2xl shadow-black/20 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 sm:w-full"
           >
-            {/* Header */}
+            {}
             <div className="flex items-center justify-between border-b border-border px-6 py-4">
               <div className="flex items-center gap-2.5">
                 <div className="flex size-8 items-center justify-center rounded-lg bg-primary/10">
@@ -116,7 +114,7 @@ export function AddStopModal({ tripId, open, onClose, defaultDestination }: AddS
               </button>
             </div>
 
-            {/* Form */}
+            {}
             <form ref={formRef} action={formAction} className="p-6">
               <input type="hidden" name="tripId" value={tripId} />
               {selectedCity && (
@@ -127,7 +125,7 @@ export function AddStopModal({ tripId, open, onClose, defaultDestination }: AddS
               )}
 
               <div className="flex flex-col gap-5">
-                {/* City search */}
+                {}
                 <div className="flex flex-col gap-2">
                   <Label className="text-sm font-semibold">
                     <MapPin className="size-3.5 text-primary" />
@@ -163,7 +161,7 @@ export function AddStopModal({ tripId, open, onClose, defaultDestination }: AddS
                       </span>
                     )}
 
-                    {/* Suggestions dropdown */}
+                    {}
                     <AnimatePresence>
                       {showSuggestions && filtered.length > 0 && (
                         <motion.div
@@ -198,7 +196,7 @@ export function AddStopModal({ tripId, open, onClose, defaultDestination }: AddS
                   )}
                 </div>
 
-                {/* Date range */}
+                {}
                 <div className="grid grid-cols-2 gap-3">
                   <div className="flex flex-col gap-2">
                     <Label htmlFor="arrivalDate" className="text-sm font-semibold">
@@ -216,7 +214,7 @@ export function AddStopModal({ tripId, open, onClose, defaultDestination }: AddS
                   </div>
                 </div>
 
-                {/* Nights */}
+                {}
                 <div className="flex flex-col gap-2">
                   <Label htmlFor="nights" className="text-sm font-semibold">
                     <Moon className="size-3.5 text-primary" />
@@ -233,7 +231,7 @@ export function AddStopModal({ tripId, open, onClose, defaultDestination }: AddS
                   />
                 </div>
 
-                {/* Notes */}
+                {}
                 <div className="flex flex-col gap-2">
                   <Label htmlFor="notes" className="text-sm font-semibold">
                     <FileText className="size-3.5 text-primary" />
@@ -248,14 +246,14 @@ export function AddStopModal({ tripId, open, onClose, defaultDestination }: AddS
                   />
                 </div>
 
-                {/* Error */}
+                {}
                 {state.message && (
                   <p className="rounded-lg bg-destructive/10 border border-destructive/20 px-3 py-2 text-sm text-destructive">
                     {state.message}
                   </p>
                 )}
 
-                {/* Actions */}
+                {}
                 <div className="flex gap-3">
                   <button
                     type="button"

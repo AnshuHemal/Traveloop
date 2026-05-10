@@ -7,7 +7,7 @@ export const metadata: Metadata = { title: "Page not found — Traveloop" };
 export default function RootNotFound() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center px-4 text-center">
-      {/* Background */}
+      {}
       <div aria-hidden className="pointer-events-none fixed inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_30%,oklch(0.92_0.06_185/0.25)_0%,transparent_70%)]" />
 
       <div className="relative z-10 flex flex-col items-center gap-6">

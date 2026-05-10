@@ -77,7 +77,7 @@ export default async function SharedTripPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-muted/20">
-      {/* Minimal nav */}
+      {}
       <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-md">
         <div className="mx-auto flex h-14 max-w-4xl items-center justify-between px-4 sm:px-6">
           <Logo size={24} />
@@ -97,7 +97,7 @@ export default async function SharedTripPage({ params }: PageProps) {
 
       <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6 pb-16">
 
-        {/* Trip hero */}
+        {}
         <FadeIn direction="down" className="mb-8">
           <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
             <div className="bg-linear-to-br from-primary/20 via-primary/10 to-transparent px-6 py-8 sm:px-8">
@@ -145,7 +145,7 @@ export default async function SharedTripPage({ params }: PageProps) {
           </div>
         </FadeIn>
 
-        {/* Timeline */}
+        {}
         <StaggerChildren className="flex flex-col gap-0">
           {trip.stops.map((stop, stopIdx) => {
             const emoji = DESTINATION_EMOJIS[stop.countryName] ?? "📍";
@@ -159,7 +159,7 @@ export default async function SharedTripPage({ params }: PageProps) {
 
             return (
               <div key={stop.id} className="flex gap-5">
-                {/* Spine */}
+                {}
                 <div className="flex flex-col items-center">
                   <FadeIn>
                     <div className={cn("flex size-10 shrink-0 items-center justify-center rounded-full border-4 border-background text-lg shadow-md", dotColor)}>
@@ -169,7 +169,7 @@ export default async function SharedTripPage({ params }: PageProps) {
                   {!isLast && <div className={cn("w-0.5 flex-1 my-2 rounded-full min-h-8 opacity-30", dotColor)} />}
                 </div>
 
-                {/* Content */}
+                {}
                 <FadeIn className={cn("flex-1 pb-8", isLast && "pb-0")}>
                   <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                     <div>
@@ -231,7 +231,7 @@ export default async function SharedTripPage({ params }: PageProps) {
           })}
         </StaggerChildren>
 
-        {/* CTA */}
+        {}
         <FadeIn delay={0.3} className="mt-12">
           <div className="rounded-2xl bg-linear-to-br from-primary via-primary/90 to-primary/70 px-6 py-8 text-center">
             <p className="mb-2 text-lg font-bold text-white">Plan your own adventure</p>

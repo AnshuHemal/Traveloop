@@ -7,8 +7,6 @@ datasource db {
   provider = "postgresql"
 }
 
-// ─── Better Auth core tables ──────────────────────────────────────────────────
-
 model User {
   id            String    @id @default(cuid())
   name          String
@@ -71,8 +69,6 @@ model Verification {
   @@map("verifications")
 }
 
-// ─── Traveloop app models ─────────────────────────────────────────────────────
-
 model Trip {
   id          String     @id @default(cuid())
   userId      String
@@ -88,10 +84,10 @@ model Trip {
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
 
-  user  User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  stops Stop[]
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  stops       Stop[]
   packingList PackingList?
-  notes TripNote[]
+  notes       TripNote[]
 
   @@index([userId])
   @@map("trips")
@@ -171,15 +167,15 @@ enum ActivityCategory {
 }
 
 model Expense {
-  id       String          @id @default(cuid())
-  stopId   String
-  category ExpenseCategory
-  label    String
-  amount   Float
-  currency String          @default("USD")
-  date     DateTime?
-  notes    String?
-  createdAt DateTime       @default(now())
+  id        String          @id @default(cuid())
+  stopId    String
+  category  ExpenseCategory
+  label     String
+  amount    Float
+  currency  String          @default("USD")
+  date      DateTime?
+  notes     String?
+  createdAt DateTime        @default(now())
 
   stop Stop @relation(fields: [stopId], references: [id], onDelete: Cascade)
 
@@ -198,8 +194,6 @@ enum ExpenseCategory {
   MISC
 }
 
-// ─── Packing Checklist ────────────────────────────────────────────────────────
-
 model PackingList {
   id        String   @id @default(cuid())
   tripId    String   @unique
@@ -213,17 +207,17 @@ model PackingList {
 }
 
 model PackingItem {
-  id             String              @id @default(cuid())
-  packingListId  String
-  name           String
-  category       PackingCategory     @default(OTHER)
-  packed         Boolean             @default(false)
-  essential      Boolean             @default(false)
-  quantity       Int                 @default(1)
-  notes          String?
-  order          Int                 @default(0)
-  createdAt      DateTime            @default(now())
-  updatedAt      DateTime            @updatedAt
+  id            String          @id @default(cuid())
+  packingListId String
+  name          String
+  category      PackingCategory @default(OTHER)
+  packed        Boolean         @default(false)
+  essential     Boolean         @default(false)
+  quantity      Int             @default(1)
+  notes         String?
+  order         Int             @default(0)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
 
   packingList PackingList @relation(fields: [packingListId], references: [id], onDelete: Cascade)
 
@@ -242,8 +236,6 @@ enum PackingCategory {
   FOOD_SNACKS
   OTHER
 }
-
-// ─── Trip Notes / Journal ─────────────────────────────────────────────────────
 
 model TripNote {
   id        String    @id @default(cuid())

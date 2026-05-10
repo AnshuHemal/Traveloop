@@ -7,7 +7,6 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { z } from "zod";
 
-// ── Update profile name ───────────────────────────────────────────────────────
 const UpdateProfileSchema = z.object({
   name: z.string().min(1, "Name is required").max(100),
 });
@@ -43,7 +42,6 @@ export async function updateProfile(
   return { success: true };
 }
 
-// ── Change password ───────────────────────────────────────────────────────────
 const ChangePasswordSchema = z.object({
   currentPassword: z.string().min(1, "Current password is required"),
   newPassword:     z.string().min(8, "New password must be at least 8 characters"),
@@ -67,7 +65,7 @@ export async function changePassword(
   _prev: ChangePasswordState,
   formData: FormData,
 ): Promise<ChangePasswordState> {
-  // Ensure user is authenticated
+
   await requireUser();
 
   const raw = {

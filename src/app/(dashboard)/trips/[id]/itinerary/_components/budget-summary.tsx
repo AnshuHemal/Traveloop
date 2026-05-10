@@ -46,7 +46,7 @@ interface BudgetSummaryProps {
 }
 
 export function BudgetSummary({ stops, currency }: BudgetSummaryProps) {
-  // Aggregate by category
+
   const byCategory: Record<string, number> = {};
   let total = 0;
 
@@ -63,7 +63,6 @@ export function BudgetSummary({ stops, currency }: BudgetSummaryProps) {
     .sort(([, a], [, b]) => b - a)
     .slice(0, 6);
 
-  // Per-stop totals
   const stopTotals = stops
     .map((s) => ({
       name: s.cityName,
@@ -81,7 +80,7 @@ export function BudgetSummary({ stops, currency }: BudgetSummaryProps) {
       transition={{ duration: 0.4 }}
       className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm"
     >
-      {/* Header */}
+      {}
       <div className="flex items-center gap-2.5 border-b border-border px-5 py-4">
         <div className="flex size-8 items-center justify-center rounded-lg bg-primary/10">
           <PieChart className="size-4 text-primary" />
@@ -90,7 +89,7 @@ export function BudgetSummary({ stops, currency }: BudgetSummaryProps) {
       </div>
 
       <div className="p-5 flex flex-col gap-5">
-        {/* Total */}
+        {}
         <div className="flex items-center justify-between rounded-xl bg-primary/8 border border-primary/20 px-4 py-3">
           <div className="flex items-center gap-2">
             <DollarSign className="size-4 text-primary" />
@@ -101,7 +100,7 @@ export function BudgetSummary({ stops, currency }: BudgetSummaryProps) {
           </span>
         </div>
 
-        {/* By category */}
+        {}
         {categories.length > 0 && (
           <div className="flex flex-col gap-2.5">
             <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
@@ -131,7 +130,7 @@ export function BudgetSummary({ stops, currency }: BudgetSummaryProps) {
           </div>
         )}
 
-        {/* By stop */}
+        {}
         {stopTotals.length > 1 && (
           <div className="flex flex-col gap-2">
             <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">

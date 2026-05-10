@@ -76,7 +76,7 @@ export function ActivityCard({
       layout
       className="group overflow-hidden rounded-2xl border border-border bg-card transition-all duration-200 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/8"
     >
-      {/* Card header */}
+      {}
       <div className={cn("relative flex h-28 items-center justify-center bg-linear-to-br", activity.gradient)}>
         <motion.span
           className="text-5xl"
@@ -86,14 +86,14 @@ export function ActivityCard({
           {activity.emoji}
         </motion.span>
 
-        {/* Popular badge */}
+        {}
         {activity.popular && (
           <span className="absolute left-3 top-3 flex items-center gap-1 rounded-full bg-primary/90 px-2.5 py-0.5 text-[10px] font-bold text-primary-foreground backdrop-blur-sm">
             🔥 Popular
           </span>
         )}
 
-        {/* Cost badge */}
+        {}
         <span className={cn(
           "absolute right-3 top-3 rounded-full px-2.5 py-0.5 text-xs font-bold backdrop-blur-sm",
           costColor,
@@ -101,22 +101,22 @@ export function ActivityCard({
           {activity.costTier === "free" ? "Free" : costLabel}
         </span>
 
-        {/* Rating */}
+        {}
         <div className="absolute bottom-3 left-3 flex items-center gap-1 rounded-full bg-background/80 px-2 py-0.5 backdrop-blur-sm">
           <Star className="size-3 fill-amber-400 text-amber-400" />
           <span className="text-[10px] font-semibold text-foreground">{activity.rating}</span>
         </div>
 
-        {/* Duration */}
+        {}
         <div className="absolute bottom-3 right-3 flex items-center gap-1 rounded-full bg-background/80 px-2 py-0.5 backdrop-blur-sm">
           <Clock className="size-3 text-primary" />
           <span className="text-[10px] font-medium text-foreground">{activity.durationLabel}</span>
         </div>
       </div>
 
-      {/* Card body */}
+      {}
       <div className="p-4">
-        {/* Title + category */}
+        {}
         <div className="mb-1.5 flex items-start justify-between gap-2">
           <div>
             <h3 className="font-bold text-foreground group-hover:text-primary transition-colors leading-tight">
@@ -134,12 +134,12 @@ export function ActivityCard({
           )}
         </div>
 
-        {/* Description */}
+        {}
         <p className="mb-3 text-xs text-muted-foreground leading-relaxed line-clamp-2">
           {activity.description}
         </p>
 
-        {/* Tags */}
+        {}
         <div className="mb-3 flex flex-wrap gap-1">
           {activity.tags.slice(0, 4).map((tag) => (
             <span key={tag} className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
@@ -148,7 +148,7 @@ export function ActivityCard({
           ))}
         </div>
 
-        {/* Expandable details */}
+        {}
         <button
           onClick={() => setExpanded((v) => !v)}
           className="mb-3 flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors"
@@ -168,7 +168,7 @@ export function ActivityCard({
               className="mb-3 overflow-hidden"
             >
               <div className="flex flex-col gap-2.5 rounded-xl bg-muted/30 p-3">
-                {/* Highlights */}
+                {}
                 <div>
                   <p className="mb-1.5 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
                     Highlights
@@ -183,7 +183,7 @@ export function ActivityCard({
                   </div>
                 </div>
 
-                {/* Tips */}
+                {}
                 <div>
                   <p className="mb-1 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
                     💡 Tip
@@ -195,7 +195,7 @@ export function ActivityCard({
           )}
         </AnimatePresence>
 
-        {/* Add to trip button */}
+        {}
         <div className="relative">
           {!hasStops ? (
             <button
@@ -205,7 +205,7 @@ export function ActivityCard({
               Add a stop to your trip first
             </button>
           ) : stops.length === 1 ? (
-            // Single stop — direct add
+
             <button
               onClick={() => handleAdd(stops[0])}
               disabled={isPending || addedStopIds.has(stops[0].id)}
@@ -225,7 +225,7 @@ export function ActivityCard({
               )}
             </button>
           ) : (
-            // Multiple stops — show picker
+
             <>
               <button
                 onClick={() => setShowStopPicker((v) => !v)}

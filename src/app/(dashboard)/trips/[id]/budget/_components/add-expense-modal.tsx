@@ -65,7 +65,7 @@ export function AddExpenseModal({ tripId, stops, open, onClose }: AddExpenseModa
             transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
             className="fixed inset-x-4 top-[12%] z-50 mx-auto max-w-md overflow-hidden rounded-2xl border border-border bg-card shadow-2xl sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 sm:w-full"
           >
-            {/* Header */}
+            {}
             <div className="flex items-center justify-between border-b border-border px-6 py-4">
               <div className="flex items-center gap-2.5">
                 <div className="flex size-8 items-center justify-center rounded-lg bg-primary/10">
@@ -82,7 +82,7 @@ export function AddExpenseModal({ tripId, stops, open, onClose }: AddExpenseModa
               <input type="hidden" name="tripId" value={tripId} />
               <div className="flex flex-col gap-4">
 
-                {/* Stop selector */}
+                {}
                 {stops.length > 0 && (
                   <div className="flex flex-col gap-2">
                     <Label className="text-sm font-semibold">
@@ -104,7 +104,7 @@ export function AddExpenseModal({ tripId, stops, open, onClose }: AddExpenseModa
                   </div>
                 )}
 
-                {/* Category */}
+                {}
                 <div className="flex flex-col gap-2">
                   <Label className="text-sm font-semibold">
                     <Tag className="size-3.5 text-primary" />
@@ -127,7 +127,7 @@ export function AddExpenseModal({ tripId, stops, open, onClose }: AddExpenseModa
                   </div>
                 </div>
 
-                {/* Label */}
+                {}
                 <div className="flex flex-col gap-2">
                   <Label htmlFor="expLabel" className="text-sm font-semibold">
                     <FileText className="size-3.5 text-primary" />
@@ -137,7 +137,7 @@ export function AddExpenseModal({ tripId, stops, open, onClose }: AddExpenseModa
                   {state.errors?.label && <p className="text-xs text-destructive">{state.errors.label[0]}</p>}
                 </div>
 
-                {/* Amount + Date */}
+                {}
                 <div className="grid grid-cols-2 gap-3">
                   <div className="flex flex-col gap-2">
                     <Label htmlFor="amount" className="text-sm font-semibold">
@@ -156,7 +156,7 @@ export function AddExpenseModal({ tripId, stops, open, onClose }: AddExpenseModa
                   </div>
                 </div>
 
-                {/* Notes */}
+                {}
                 <div className="flex flex-col gap-2">
                   <Label htmlFor="expNotes" className="text-sm font-semibold">
                     Notes <span className="text-xs font-normal text-muted-foreground">(optional)</span>

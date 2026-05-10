@@ -55,7 +55,7 @@ export function ForgotPasswordForm() {
     <FadeIn className="flex flex-col gap-5">
       <div className="rounded-2xl border border-border bg-card/80 backdrop-blur-sm px-8 py-9 shadow-xl shadow-black/5">
 
-        {/* Header */}
+        {}
         <FadeIn direction="down" delay={0.05} className="mb-7 flex flex-col items-center gap-3 text-center">
           <motion.div
             className="flex size-16 items-center justify-center rounded-2xl bg-primary/10 ring-1 ring-primary/20"
@@ -76,7 +76,7 @@ export function ForgotPasswordForm() {
           </div>
         </FadeIn>
 
-        {/* Form */}
+        {}
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <FadeIn delay={0.1} className="flex flex-col gap-1.5">
             <Label htmlFor="email" className="text-sm font-medium">Email address</Label>
@@ -135,7 +135,7 @@ export function ForgotPasswordForm() {
 
       </div>
 
-      {/* Back link */}
+      {}
       <FadeIn direction="none" delay={0.22}>
         <p className="text-center text-sm text-muted-foreground">
           Remember your password?{" "}

@@ -49,26 +49,22 @@ export function BudgetClient({ tripId, currency, stops }: BudgetClientProps) {
   const [showAddExpense, setShowAddExpense] = useState(false);
   const [activeTab, setActiveTab] = useState<"overview" | "expenses" | "by-stop">("overview");
 
-  // Aggregate all expenses
   const allExpenses = stops.flatMap((s) =>
     s.expenses.map((e) => ({ ...e, stop: { cityName: s.cityName } })),
   );
 
-  // Activity costs (from itinerary)
   const activityTotal = stops.reduce(
     (acc, s) => acc + s.activities.reduce((a, act) => a + act.cost, 0), 0,
   );
 
-  // Expense total
   const expenseTotal = allExpenses.reduce((acc, e) => acc + e.amount, 0);
   const grandTotal = activityTotal + expenseTotal;
 
-  // By category (expenses only)
   const byCategory: Record<string, number> = {};
   for (const e of allExpenses) {
     byCategory[e.category] = (byCategory[e.category] ?? 0) + e.amount;
   }
-  // Add activities as a category
+
   if (activityTotal > 0) byCategory["ACTIVITIES"] = (byCategory["ACTIVITIES"] ?? 0) + activityTotal;
 
   const donutSlices = Object.entries(byCategory)
@@ -81,7 +77,6 @@ export function BudgetClient({ tripId, currency, stops }: BudgetClientProps) {
       emoji: CATEGORY_CONFIG[cat]?.emoji ?? "📌",
     }));
 
-  // By stop
   const byStop = stops.map((s) => ({
     name: s.cityName,
     activities: s.activities.reduce((acc, a) => acc + a.cost, 0),
@@ -93,7 +88,7 @@ export function BudgetClient({ tripId, currency, stops }: BudgetClientProps) {
 
   return (
     <>
-      {/* Stats row */}
+      {}
       <div className="grid grid-cols-3 gap-4">
         {[
           { icon: DollarSign, label: "Grand total",    value: formatCurrency(grandTotal,    currency), color: "text-primary",    bg: "bg-primary/10" },
@@ -118,7 +113,7 @@ export function BudgetClient({ tripId, currency, stops }: BudgetClientProps) {
         ))}
       </div>
 
-      {/* Tabs + Add button */}
+      {}
       <div className="flex items-center justify-between gap-4">
         <div className="flex overflow-hidden rounded-xl border border-border bg-muted/30 p-0.5">
           {(["overview", "expenses", "by-stop"] as const).map((tab) => (
@@ -145,7 +140,7 @@ export function BudgetClient({ tripId, currency, stops }: BudgetClientProps) {
         </button>
       </div>
 
-      {/* Tab content */}
+      {}
       <AnimatePresence mode="wait">
         {activeTab === "overview" && (
           <motion.div
@@ -156,15 +151,15 @@ export function BudgetClient({ tripId, currency, stops }: BudgetClientProps) {
             transition={{ duration: 0.25 }}
             className="flex flex-col gap-6"
           >
-            {/* Top row: donut + category bars */}
+            {}
             <div className="grid gap-6 lg:grid-cols-2">
-              {/* Recharts Donut */}
+              {}
               <div className="rounded-2xl border border-border bg-card p-6">
                 <h3 className="mb-4 font-bold text-foreground">Spending breakdown</h3>
                 <BudgetDonut slices={donutSlices} total={grandTotal} currency={currency} />
               </div>
 
-              {/* Category list */}
+              {}
               <div className="rounded-2xl border border-border bg-card p-6">
                 <h3 className="mb-4 font-bold text-foreground">By category</h3>
                 {donutSlices.length === 0 ? (
@@ -207,7 +202,7 @@ export function BudgetClient({ tripId, currency, stops }: BudgetClientProps) {
               </div>
             </div>
 
-            {/* Recharts Bar chart by stop */}
+            {}
             {byStop.length > 1 && (
               <div className="rounded-2xl border border-border bg-card p-6">
                 <h3 className="mb-4 font-bold text-foreground">Budget by city</h3>
@@ -297,7 +292,7 @@ export function BudgetClient({ tripId, currency, stops }: BudgetClientProps) {
                       </div>
                     )}
                   </div>
-                  {/* Bar */}
+                  {}
                   <div className="mt-3 h-2 overflow-hidden rounded-full bg-muted">
                     <motion.div
                       className="h-full rounded-full bg-primary"
@@ -316,7 +311,7 @@ export function BudgetClient({ tripId, currency, stops }: BudgetClientProps) {
         )}
       </AnimatePresence>
 
-      {/* Add expense modal */}
+      {}
       <AddExpenseModal
         tripId={tripId}
         stops={stopsList}

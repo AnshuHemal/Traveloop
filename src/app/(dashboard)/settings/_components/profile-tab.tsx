@@ -29,7 +29,6 @@ export function ProfileTab({ user }: ProfileTabProps) {
 
   const isDirty = name.trim() !== (user.name ?? "").trim();
 
-  // Show toast on success
   useEffect(() => {
     if (state.success) {
       toast.success("Profile updated successfully!");
@@ -41,7 +40,7 @@ export function ProfileTab({ user }: ProfileTabProps) {
 
   return (
     <div className="rounded-2xl border border-border bg-card p-6">
-      {/* Header */}
+      {}
       <div className="mb-6 flex items-center gap-3">
         <div className="flex size-10 items-center justify-center rounded-xl bg-primary/10">
           <User className="size-5 text-primary" />
@@ -53,7 +52,7 @@ export function ProfileTab({ user }: ProfileTabProps) {
       </div>
 
       <form action={formAction} className="flex flex-col gap-6">
-        {/* Avatar section */}
+        {}
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
@@ -84,14 +83,14 @@ export function ProfileTab({ user }: ProfileTabProps) {
           </div>
         </motion.div>
 
-        {/* Form fields */}
+        {}
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35, delay: 0.05 }}
           className="grid gap-4 sm:grid-cols-2"
         >
-          {/* Name */}
+          {}
           <div className="flex flex-col gap-2">
             <Label htmlFor="name" className="text-sm font-semibold">
               <User className="size-3.5 text-primary" />
@@ -119,7 +118,7 @@ export function ProfileTab({ user }: ProfileTabProps) {
             )}
           </div>
 
-          {/* Email (read-only) */}
+          {}
           <div className="flex flex-col gap-2">
             <Label className="text-sm font-semibold">
               <Mail className="size-3.5 text-primary" />
@@ -141,7 +140,7 @@ export function ProfileTab({ user }: ProfileTabProps) {
           </div>
         </motion.div>
 
-        {/* Success banner */}
+        {}
         <AnimatePresence>
           {state.success && (
             <motion.div
@@ -156,7 +155,7 @@ export function ProfileTab({ user }: ProfileTabProps) {
           )}
         </AnimatePresence>
 
-        {/* Save button */}
+        {}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

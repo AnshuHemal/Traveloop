@@ -61,7 +61,7 @@ const DESTINATIONS = [
 export function TopDestinations() {
   return (
     <section>
-      {/* Section header */}
+      {}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
@@ -81,7 +81,7 @@ export function TopDestinations() {
         </Link>
       </motion.div>
 
-      {/* Horizontal scroll on mobile, grid on desktop */}
+      {}
       <div className="flex gap-3 overflow-x-auto pb-2 sm:grid sm:grid-cols-5 sm:overflow-visible sm:pb-0 scrollbar-none [&::-webkit-scrollbar]:hidden">
         {DESTINATIONS.map((dest, i) => (
           <motion.div
@@ -96,7 +96,7 @@ export function TopDestinations() {
               className="group block"
             >
               <div className="overflow-hidden rounded-2xl border border-border bg-card transition-all duration-200 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1">
-                {/* Card visual */}
+                {}
                 <div className={cn(
                   "relative flex h-24 items-center justify-center bg-linear-to-br",
                   dest.gradient,
@@ -108,7 +108,7 @@ export function TopDestinations() {
                   >
                     {dest.emoji}
                   </motion.span>
-                  {/* Tag */}
+                  {}
                   <span className={cn(
                     "absolute right-2 top-2 rounded-full px-2 py-0.5 text-[10px] font-semibold",
                     dest.tagColor,
@@ -117,7 +117,7 @@ export function TopDestinations() {
                   </span>
                 </div>
 
-                {/* Card info */}
+                {}
                 <div className="p-3">
                   <p className="font-semibold text-foreground group-hover:text-primary transition-colors text-sm leading-tight">
                     {dest.city}

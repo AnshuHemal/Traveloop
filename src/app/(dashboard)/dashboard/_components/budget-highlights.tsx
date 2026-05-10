@@ -55,7 +55,6 @@ function calcTripBudget(trip: BudgetHighlightsProps["trips"][0]) {
 export function BudgetHighlights({ trips }: BudgetHighlightsProps) {
   if (trips.length === 0) return null;
 
-  // Pick the trip with the highest budget
   const tripsWithBudget = trips
     .map((t) => ({ ...t, ...calcTripBudget(t) }))
     .filter((t) => t.total > 0)
@@ -92,7 +91,7 @@ export function BudgetHighlights({ trips }: BudgetHighlightsProps) {
       </motion.div>
 
       <div className="grid gap-4 sm:grid-cols-3">
-        {/* Total budget card */}
+        {}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -111,7 +110,7 @@ export function BudgetHighlights({ trips }: BudgetHighlightsProps) {
           </p>
         </motion.div>
 
-        {/* Featured trip breakdown */}
+        {}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -129,7 +128,7 @@ export function BudgetHighlights({ trips }: BudgetHighlightsProps) {
             </div>
           </div>
 
-          {/* Category bars */}
+          {}
           <div className="flex flex-col gap-2.5">
             {categories.map(([cat, amount], i) => {
               const pct = featured.total > 0 ? (amount / featured.total) * 100 : 0;

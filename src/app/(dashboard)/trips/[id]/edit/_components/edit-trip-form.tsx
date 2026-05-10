@@ -55,7 +55,6 @@ export function EditTripForm({ trip }: EditTripFormProps) {
   );
   const [currency, setCurrency] = useState(trip.currency);
 
-  // Redirect on success
   useEffect(() => {
     if (state.success) {
       toast.success("Trip updated!");
@@ -76,7 +75,6 @@ export function EditTripForm({ trip }: EditTripFormProps) {
   const titleLength = title.length;
   const titleMax    = 100;
 
-  // Format dates for input[type=date]
   const fmtDate = (d: Date | null) =>
     d ? format(new Date(d), "yyyy-MM-dd") : "";
 
@@ -86,10 +84,10 @@ export function EditTripForm({ trip }: EditTripFormProps) {
 
       <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
 
-        {/* ── LEFT: Main fields ── */}
+        {}
         <div className="flex flex-col gap-6">
 
-          {/* Trip name */}
+          {}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -125,7 +123,7 @@ export function EditTripForm({ trip }: EditTripFormProps) {
             {state.errors?.title && <ErrorMsg messages={state.errors.title} />}
           </motion.div>
 
-          {/* Description */}
+          {}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -148,7 +146,7 @@ export function EditTripForm({ trip }: EditTripFormProps) {
             />
           </motion.div>
 
-          {/* Date range */}
+          {}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -187,14 +185,14 @@ export function EditTripForm({ trip }: EditTripFormProps) {
             </div>
           </motion.div>
 
-          {/* Currency + Visibility */}
+          {}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.2 }}
             className="grid grid-cols-2 gap-4"
           >
-            {/* Currency */}
+            {}
             <div className="flex flex-col gap-2">
               <Label className="text-sm font-semibold">
                 <DollarSign className="size-3.5 text-primary" />
@@ -225,7 +223,7 @@ export function EditTripForm({ trip }: EditTripFormProps) {
               </div>
             </div>
 
-            {/* Visibility */}
+            {}
             <div className="flex flex-col gap-2">
               <Label className="text-sm font-semibold">
                 <Globe className="size-3.5 text-primary" />
@@ -256,7 +254,7 @@ export function EditTripForm({ trip }: EditTripFormProps) {
             </div>
           </motion.div>
 
-          {/* Global error */}
+          {}
           <AnimatePresence>
             {state.message && (
               <motion.div
@@ -270,7 +268,7 @@ export function EditTripForm({ trip }: EditTripFormProps) {
             )}
           </AnimatePresence>
 
-          {/* Actions */}
+          {}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -303,7 +301,7 @@ export function EditTripForm({ trip }: EditTripFormProps) {
           </motion.div>
         </div>
 
-        {/* ── RIGHT: Cover photo ── */}
+        {}
         <motion.div
           initial={{ opacity: 0, x: 16 }}
           animate={{ opacity: 1, x: 0 }}
@@ -323,7 +321,7 @@ export function EditTripForm({ trip }: EditTripFormProps) {
             <CoverUpload value={coverImage} onChange={setCoverImage} />
           </div>
 
-          {/* Live preview */}
+          {}
           <AnimatePresence>
             {title && (
               <motion.div

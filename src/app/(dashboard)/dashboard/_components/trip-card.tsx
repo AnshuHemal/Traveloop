@@ -60,7 +60,7 @@ export function TripCard({ trip, index }: TripCardProps) {
       <Link href={`/trips/${trip.id}`} className="group block h-full">
         <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-200 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/8">
 
-          {/* Card header */}
+          {}
           <div className={cn("relative flex h-32 items-center justify-center bg-linear-to-br", gradient)}>
             <motion.span
               className="text-5xl"
@@ -70,7 +70,7 @@ export function TripCard({ trip, index }: TripCardProps) {
               {emoji}
             </motion.span>
 
-            {/* Top badges */}
+            {}
             <div className="absolute left-3 top-3 flex items-center gap-1.5">
               <span className={cn(
                 "flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold",
@@ -81,7 +81,7 @@ export function TripCard({ trip, index }: TripCardProps) {
               </span>
             </div>
 
-            {/* Visibility icon */}
+            {}
             <div className="absolute right-3 top-3">
               <span className="flex size-6 items-center justify-center rounded-full bg-background/80 text-muted-foreground backdrop-blur-sm">
                 {trip.visibility === "PUBLIC" ? (
@@ -94,7 +94,7 @@ export function TripCard({ trip, index }: TripCardProps) {
               </span>
             </div>
 
-            {/* Hover overlay */}
+            {}
             <div className="absolute inset-0 flex items-center justify-center bg-primary/0 transition-all duration-200 group-hover:bg-primary/5">
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -106,7 +106,7 @@ export function TripCard({ trip, index }: TripCardProps) {
             </div>
           </div>
 
-          {/* Card body */}
+          {}
           <div className="flex flex-1 flex-col p-4">
             <h3 className="mb-1 font-bold text-foreground group-hover:text-primary transition-colors line-clamp-1 text-sm">
               {trip.title}
@@ -118,7 +118,7 @@ export function TripCard({ trip, index }: TripCardProps) {
               </p>
             )}
 
-            {/* Meta row */}
+            {}
             <div className="mt-auto flex flex-wrap gap-2.5 text-xs text-muted-foreground">
               {trip._count.stops > 0 && (
                 <span className="flex items-center gap-1">
@@ -138,7 +138,7 @@ export function TripCard({ trip, index }: TripCardProps) {
               </span>
             </div>
 
-            {/* City badges */}
+            {}
             {trip.stops.length > 0 && (
               <div className="mt-3 flex flex-wrap gap-1">
                 {trip.stops.slice(0, 3).map((stop) => (

@@ -80,7 +80,7 @@ export function ItineraryBuilder({
   return (
     <div className="flex flex-col gap-6">
 
-      {/* Summary bar */}
+      {}
       {stops.length > 0 && (
         <motion.div
           initial={{ opacity: 0, y: -8 }}
@@ -125,7 +125,7 @@ export function ItineraryBuilder({
         </motion.div>
       )}
 
-      {/* Stops list with drag-to-reorder */}
+      {}
       {stops.length === 0 ? (
         <EmptyItinerary onAddStop={() => setShowAddStop(true)} />
       ) : (
@@ -154,7 +154,7 @@ export function ItineraryBuilder({
             </AnimatePresence>
           </Reorder.Group>
 
-          {/* Route connector hint */}
+          {}
           {stops.length > 1 && (
             <motion.div
               initial={{ opacity: 0 }}
@@ -171,7 +171,7 @@ export function ItineraryBuilder({
             </motion.div>
           )}
 
-          {/* Add another stop */}
+          {}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -191,7 +191,7 @@ export function ItineraryBuilder({
         </>
       )}
 
-      {/* Add stop modal */}
+      {}
       <AddStopModal
         tripId={tripId}
         open={showAddStop}

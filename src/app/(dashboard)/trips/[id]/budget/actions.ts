@@ -51,7 +51,6 @@ export async function addExpense(
   try {
     await assertTripOwner(tripId, user.id);
 
-    // If no stopId, attach to first stop of the trip
     let resolvedStopId = stopId;
     if (!resolvedStopId) {
       const firstStop = await prisma.stop.findFirst({

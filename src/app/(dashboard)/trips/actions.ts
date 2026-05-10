@@ -5,7 +5,6 @@ import { redirect } from "next/navigation";
 import { requireUser } from "@/lib/session";
 import { prisma } from "@/lib/prisma";
 
-// ── Delete a trip ─────────────────────────────────────────────────────────────
 export async function deleteTrip(tripId: string): Promise<{ error?: string }> {
   const user = await requireUser();
 
@@ -28,7 +27,6 @@ export async function deleteTrip(tripId: string): Promise<{ error?: string }> {
   return {};
 }
 
-// ── Duplicate a trip ──────────────────────────────────────────────────────────
 export async function duplicateTrip(tripId: string): Promise<{ error?: string; id?: string }> {
   const user = await requireUser();
 
@@ -63,7 +61,6 @@ export async function duplicateTrip(tripId: string): Promise<{ error?: string; i
   }
 }
 
-// ── Update trip status ────────────────────────────────────────────────────────
 export async function updateTripStatus(
   tripId: string,
   status: "DRAFT" | "PLANNED" | "ONGOING" | "COMPLETED",
@@ -89,7 +86,6 @@ export async function updateTripStatus(
   return {};
 }
 
-// ── Toggle visibility ─────────────────────────────────────────────────────────
 export async function toggleTripVisibility(
   tripId: string,
   visibility: "PRIVATE" | "PUBLIC",

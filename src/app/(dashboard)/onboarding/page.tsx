@@ -12,7 +12,6 @@ export const metadata: Metadata = {
 export default async function OnboardingPage() {
   const user = await requireUser();
 
-  // If already onboarded, skip to dashboard
   const done = await hasCompletedOnboarding();
   if (done) redirect("/dashboard");
 

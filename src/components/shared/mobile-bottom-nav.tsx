@@ -38,7 +38,7 @@ export function MobileBottomNav() {
                 active ? "text-primary" : "text-muted-foreground hover:text-foreground",
               )}
             >
-              {/* Active indicator */}
+              {}
               {active && (
                 <motion.div
                   layoutId="mobile-nav-indicator"
@@ -52,7 +52,7 @@ export function MobileBottomNav() {
           );
         })}
       </div>
-      {/* Safe area padding for iOS */}
+      {}
       <div className="h-safe-area-inset-bottom" />
     </nav>
   );

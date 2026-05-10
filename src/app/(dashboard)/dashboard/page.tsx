@@ -19,10 +19,8 @@ export const metadata: Metadata = {
 export default async function DashboardPage() {
   const user = await requireUser();
 
-  // Auto-sync trip statuses based on dates
   const { suggestCompleted } = await syncTripStatuses(user.id);
 
-  // Fetch trips with full data
   const trips = await prisma.trip.findMany({
     where: { userId: user.id },
     include: {
@@ -40,12 +38,10 @@ export default async function DashboardPage() {
     orderBy: { updatedAt: "desc" },
   });
 
-  // Derived stats
   const totalDestinations = trips.reduce((acc, t) => acc + t._count.stops, 0);
   const completedTrips    = trips.filter((t) => t.status === "COMPLETED").length;
   const ongoingTrips      = trips.filter((t) => t.status === "ONGOING" || t.status === "PLANNED").length;
 
-  // Recent trips (last 6 for the grid)
   const recentTrips = trips.slice(0, 6).map((t) => ({
     id:          t.id,
     title:       t.title,
@@ -59,7 +55,6 @@ export default async function DashboardPage() {
     stops:       t.stops.map((s) => ({ cityName: s.cityName, countryName: s.countryName })),
   }));
 
-  // Roadmap trips (need dates)
   const roadmapTrips = trips.map((t) => ({
     id:        t.id,
     title:     t.title,
@@ -70,7 +65,6 @@ export default async function DashboardPage() {
     stops:     t.stops.map((s) => ({ cityName: s.cityName })),
   }));
 
-  // Budget trips
   const budgetTrips = trips.map((t) => ({
     id:       t.id,
     title:    t.title,
@@ -84,18 +78,18 @@ export default async function DashboardPage() {
   return (
     <div className="flex flex-col gap-8 pb-12">
 
-      {/* ── Status nudge (trips that have ended) ── */}
+      {}
       {suggestCompleted.length > 0 && (
         <StatusNudge trips={suggestCompleted} />
       )}
 
-      {/* ── Hero banner with real search ── */}
+      {}
       <DashboardHero
         userName={user.name?.split(" ")[0] ?? "Traveler"}
         tripCount={trips.length}
       />
 
-      {/* ── Stats row ── */}
+      {}
       {trips.length > 0 && (
         <StatsRow
           totalTrips={trips.length}
@@ -105,21 +99,21 @@ export default async function DashboardPage() {
         />
       )}
 
-      {/* ── Quick actions ── */}
+      {}
       <QuickActions />
 
-      {/* ── Trip roadmap / timeline ── */}
+      {}
       {roadmapTrips.some((t) => t.startDate && t.endDate) && (
         <TripsRoadmap trips={roadmapTrips} />
       )}
 
-      {/* ── Top regional destinations ── */}
+      {}
       <TopDestinations />
 
-      {/* ── Previous trips ── */}
+      {}
       <RecentTripsSection trips={recentTrips} totalCount={trips.length} />
 
-      {/* ── Budget highlights ── */}
+      {}
       <BudgetHighlights trips={budgetTrips} />
 
     </div>

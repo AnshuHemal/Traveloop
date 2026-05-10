@@ -62,9 +62,9 @@ export function TripsToolbar({ totalCount, filteredCount }: TripsToolbarProps) {
       transition={{ duration: 0.35 }}
       className="flex flex-col gap-3"
     >
-      {/* Top row: search + view toggle */}
+      {}
       <div className="flex items-center gap-3">
-        {/* Search */}
+        {}
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
           <input
@@ -88,7 +88,7 @@ export function TripsToolbar({ totalCount, filteredCount }: TripsToolbarProps) {
           )}
         </div>
 
-        {/* View toggle */}
+        {}
         <div className="flex overflow-hidden rounded-xl border border-border bg-muted/30 p-0.5">
           {(["grid", "list"] as const).map((v) => (
             <button
@@ -108,11 +108,11 @@ export function TripsToolbar({ totalCount, filteredCount }: TripsToolbarProps) {
         </div>
       </div>
 
-      {/* Bottom row: filters + sort + count */}
+      {}
       <div className="flex flex-wrap items-center gap-2">
         <SlidersHorizontal className="size-3.5 text-muted-foreground" />
 
-        {/* Status filter */}
+        {}
         <div className="relative">
           <select
             value={status}
@@ -131,7 +131,7 @@ export function TripsToolbar({ totalCount, filteredCount }: TripsToolbarProps) {
           <ChevronDown className="pointer-events-none absolute right-2 top-1/2 size-3 -translate-y-1/2 text-muted-foreground" />
         </div>
 
-        {/* Sort */}
+        {}
         <div className="relative">
           <select
             value={sort}
@@ -149,7 +149,7 @@ export function TripsToolbar({ totalCount, filteredCount }: TripsToolbarProps) {
           <ChevronDown className="pointer-events-none absolute right-2 top-1/2 size-3 -translate-y-1/2 text-muted-foreground" />
         </div>
 
-        {/* Clear filters */}
+        {}
         {hasFilters && (
           <motion.button
             initial={{ opacity: 0, scale: 0.9 }}
@@ -167,7 +167,7 @@ export function TripsToolbar({ totalCount, filteredCount }: TripsToolbarProps) {
           </motion.button>
         )}
 
-        {/* Count */}
+        {}
         <span className="ml-auto text-xs text-muted-foreground">
           {filteredCount === totalCount
             ? `${totalCount} trip${totalCount !== 1 ? "s" : ""}`

@@ -17,8 +17,6 @@ export function Skeleton({ className }: SkeletonProps) {
   );
 }
 
-// ── Composed skeletons ────────────────────────────────────────────────────────
-
 export function TripCardSkeleton() {
   return (
     <div className="overflow-hidden rounded-2xl border border-border bg-card">

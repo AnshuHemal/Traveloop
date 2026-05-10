@@ -15,7 +15,7 @@ export default async function AuthLayout({
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center px-4 py-12 overflow-hidden">
 
-      {/* Animated gradient background */}
+      {}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
@@ -25,19 +25,19 @@ export default async function AuthLayout({
         }}
       />
 
-      {/* Grid pattern */}
+      {}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-size-[3.5rem_3.5rem] opacity-30"
       />
 
-      {/* Radial fade overlay */}
+      {}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_50%,transparent_35%,var(--background)_100%)]"
       />
 
-      {/* Floating decorative orbs */}
+      {}
       <div
         aria-hidden
         className="pointer-events-none absolute left-1/4 top-1/4 size-64 rounded-full bg-primary/8 blur-3xl"
@@ -47,17 +47,17 @@ export default async function AuthLayout({
         className="pointer-events-none absolute right-1/4 bottom-1/4 size-48 rounded-full bg-primary/6 blur-3xl"
       />
 
-      {/* Logo top-left */}
+      {}
       <FadeIn direction="down" className="absolute left-6 top-6 z-10">
         <Logo size={28} />
       </FadeIn>
 
-      {/* Main content */}
+      {}
       <main className="relative z-10 w-full max-w-sm">
         {children}
       </main>
 
-      {/* Footer links */}
+      {}
       <FadeIn
         direction="none"
         delay={0.4}

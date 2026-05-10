@@ -55,7 +55,6 @@ export function EditActivityModal({
   const [isPending, startTransition] = useTransition();
   const nameRef = useRef<HTMLInputElement>(null);
 
-  // Local state pre-filled
   const [name,        setName]        = useState(activity.name);
   const [description, setDescription] = useState(activity.description ?? "");
   const [category,    setCategory]    = useState(activity.category);
@@ -65,7 +64,6 @@ export function EditActivityModal({
   const [cost,        setCost]        = useState(String(activity.cost));
   const [booked,      setBooked]      = useState(activity.booked);
 
-  // Reset when activity changes
   useEffect(() => {
     setName(activity.name);
     setDescription(activity.description ?? "");
@@ -77,7 +75,6 @@ export function EditActivityModal({
     setBooked(activity.booked);
   }, [activity]);
 
-  // Focus name on open
   useEffect(() => {
     if (open) setTimeout(() => nameRef.current?.focus(), 100);
   }, [open]);
@@ -113,7 +110,7 @@ export function EditActivityModal({
     <AnimatePresence>
       {open && (
         <>
-          {/* Backdrop */}
+          {}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -123,7 +120,7 @@ export function EditActivityModal({
             onClick={onClose}
           />
 
-          {/* Modal */}
+          {}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -131,7 +128,7 @@ export function EditActivityModal({
             transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
             className="fixed inset-x-4 top-[8%] z-50 mx-auto max-w-lg overflow-hidden rounded-2xl border border-border bg-card shadow-2xl shadow-black/20 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 sm:w-full"
           >
-            {/* Header */}
+            {}
             <div className="flex items-center justify-between border-b border-border px-6 py-4">
               <div className="flex items-center gap-2.5">
                 <div className="flex size-8 items-center justify-center rounded-lg bg-primary/10">
@@ -150,11 +147,11 @@ export function EditActivityModal({
               </button>
             </div>
 
-            {/* Form */}
+            {}
             <form onSubmit={handleSubmit} className="max-h-[75vh] overflow-y-auto p-6">
               <div className="flex flex-col gap-5">
 
-                {/* Name */}
+                {}
                 <div className="flex flex-col gap-2">
                   <Label htmlFor="editActName" className="text-sm font-semibold">
                     <Zap className="size-3.5 text-primary" />
@@ -171,7 +168,7 @@ export function EditActivityModal({
                   />
                 </div>
 
-                {/* Category */}
+                {}
                 <div className="flex flex-col gap-2">
                   <Label className="text-sm font-semibold">
                     <Tag className="size-3.5 text-primary" />
@@ -200,7 +197,7 @@ export function EditActivityModal({
                   </div>
                 </div>
 
-                {/* Date + Times */}
+                {}
                 <div className="grid grid-cols-3 gap-3">
                   <div className="flex flex-col gap-2">
                     <Label htmlFor="editActDate" className="text-sm font-semibold">
@@ -246,7 +243,7 @@ export function EditActivityModal({
                   </div>
                 </div>
 
-                {/* Cost */}
+                {}
                 <div className="flex flex-col gap-2">
                   <Label htmlFor="editActCost" className="text-sm font-semibold">
                     <DollarSign className="size-3.5 text-primary" />
@@ -267,7 +264,7 @@ export function EditActivityModal({
                   </div>
                 </div>
 
-                {/* Description */}
+                {}
                 <div className="flex flex-col gap-2">
                   <Label htmlFor="editActDesc" className="text-sm font-semibold">
                     <FileText className="size-3.5 text-primary" />
@@ -284,7 +281,7 @@ export function EditActivityModal({
                   />
                 </div>
 
-                {/* Booked toggle */}
+                {}
                 <label className="flex cursor-pointer items-center gap-3 rounded-xl border border-border bg-muted/30 px-4 py-3">
                   <div
                     onClick={() => setBooked((v) => !v)}
@@ -302,7 +299,7 @@ export function EditActivityModal({
                   <span className="text-sm font-medium text-foreground">Already booked</span>
                 </label>
 
-                {/* Actions */}
+                {}
                 <div className="flex gap-3">
                   <button
                     type="button"

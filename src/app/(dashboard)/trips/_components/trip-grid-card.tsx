@@ -64,7 +64,7 @@ export function TripGridCard({ trip, index }: TripGridCardProps) {
     >
       <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-200 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/8">
 
-        {/* Card header */}
+        {}
         <Link href={`/trips/${trip.id}`} className="block">
           <div className={cn("relative flex h-32 items-center justify-center bg-linear-to-br", gradient)}>
             <motion.span
@@ -75,7 +75,7 @@ export function TripGridCard({ trip, index }: TripGridCardProps) {
               {emoji}
             </motion.span>
 
-            {/* Status badge */}
+            {}
             <div className="absolute left-3 top-3">
               <span className={cn(
                 "flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold",
@@ -86,7 +86,7 @@ export function TripGridCard({ trip, index }: TripGridCardProps) {
               </span>
             </div>
 
-            {/* Visibility */}
+            {}
             <div className="absolute right-3 top-3">
               <span className="flex size-6 items-center justify-center rounded-full bg-background/80 text-muted-foreground backdrop-blur-sm">
                 {trip.visibility === "PUBLIC" ? (
@@ -101,9 +101,9 @@ export function TripGridCard({ trip, index }: TripGridCardProps) {
           </div>
         </Link>
 
-        {/* Card body */}
+        {}
         <div className="flex flex-1 flex-col p-4">
-          {/* Title + actions */}
+          {}
           <div className="mb-1 flex items-start justify-between gap-2">
             <Link href={`/trips/${trip.id}`} className="min-w-0 flex-1">
               <h3 className="font-bold text-foreground group-hover:text-primary transition-colors line-clamp-1 text-sm">
@@ -113,14 +113,14 @@ export function TripGridCard({ trip, index }: TripGridCardProps) {
             <TripActionsMenu trip={trip} />
           </div>
 
-          {/* Description */}
+          {}
           {trip.description && (
             <p className="mb-2 text-xs text-muted-foreground line-clamp-2 leading-relaxed">
               {trip.description}
             </p>
           )}
 
-          {/* Meta */}
+          {}
           <div className="mt-auto flex flex-wrap gap-2 text-xs text-muted-foreground">
             {trip._count.stops > 0 && (
               <span className="flex items-center gap-1">
@@ -140,7 +140,7 @@ export function TripGridCard({ trip, index }: TripGridCardProps) {
             </span>
           </div>
 
-          {/* City badges */}
+          {}
           {trip.stops.length > 0 && (
             <div className="mt-2.5 flex flex-wrap gap-1">
               {trip.stops.slice(0, 3).map((stop) => (
@@ -156,7 +156,7 @@ export function TripGridCard({ trip, index }: TripGridCardProps) {
             </div>
           )}
 
-          {/* Updated at */}
+          {}
           <p className="mt-2.5 text-[10px] text-muted-foreground/60">
             Updated {formatDistanceToNow(new Date(trip.updatedAt), { addSuffix: true })}
           </p>

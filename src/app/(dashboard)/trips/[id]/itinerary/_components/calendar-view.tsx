@@ -40,7 +40,7 @@ interface CalendarViewProps {
 }
 
 export function CalendarView({ stops, currency, tripStartDate }: CalendarViewProps) {
-  // Find the first date with data
+
   const firstDate = stops.find((s) => s.arrivalDate)?.arrivalDate
     ?? tripStartDate
     ?? new Date();
@@ -52,14 +52,12 @@ export function CalendarView({ stops, currency, tripStartDate }: CalendarViewPro
   const monthEnd   = endOfMonth(currentMonth);
   const days       = eachDayOfInterval({ start: monthStart, end: monthEnd });
 
-  // Pad to start on Monday
-  const startPad = (monthStart.getDay() + 6) % 7; // 0=Mon
+  const startPad = (monthStart.getDay() + 6) % 7;
   const paddedDays: (Date | null)[] = [
     ...Array(startPad).fill(null),
     ...days,
   ];
 
-  // Build a map: dateStr → { activities, stops }
   const dayMap: Record<string, {
     activities: (ActivityData & { stopName: string; stopColor: string })[];
     stopNames: string[];
@@ -71,7 +69,6 @@ export function CalendarView({ stops, currency, tripStartDate }: CalendarViewPro
   stops.forEach((stop, si) => {
     const color = STOP_DOT_COLORS[si % STOP_DOT_COLORS.length];
 
-    // Mark arrival/departure
     if (stop.arrivalDate) {
       const k = format(new Date(stop.arrivalDate), "yyyy-MM-dd");
       if (!dayMap[k]) dayMap[k] = { activities: [], stopNames: [], isArrival: false, isDeparture: false, isInTrip: false };
@@ -84,7 +81,6 @@ export function CalendarView({ stops, currency, tripStartDate }: CalendarViewPro
       dayMap[k].isDeparture = true;
     }
 
-    // Mark in-trip days
     if (stop.arrivalDate && stop.departureDate) {
       const interval = { start: new Date(stop.arrivalDate), end: new Date(stop.departureDate) };
       days.forEach((d) => {
@@ -99,7 +95,6 @@ export function CalendarView({ stops, currency, tripStartDate }: CalendarViewPro
       });
     }
 
-    // Map activities
     stop.activities.forEach((act) => {
       if (!act.date) return;
       const k = format(new Date(act.date), "yyyy-MM-dd");
@@ -127,14 +122,14 @@ export function CalendarView({ stops, currency, tripStartDate }: CalendarViewPro
 
   return (
     <div className="flex flex-col gap-6 lg:flex-row lg:gap-8">
-      {/* Calendar */}
+      {}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
         className="flex-1 overflow-hidden rounded-2xl border border-border bg-card shadow-sm"
       >
-        {/* Month nav */}
+        {}
         <div className="flex items-center justify-between border-b border-border px-5 py-4">
           <button
             onClick={() => setCurrentMonth((m) => subMonths(m, 1))}
@@ -153,7 +148,7 @@ export function CalendarView({ stops, currency, tripStartDate }: CalendarViewPro
           </button>
         </div>
 
-        {/* Day headers */}
+        {}
         <div className="grid grid-cols-7 border-b border-border">
           {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((d) => (
             <div key={d} className="py-2 text-center text-xs font-semibold text-muted-foreground">
@@ -162,7 +157,7 @@ export function CalendarView({ stops, currency, tripStartDate }: CalendarViewPro
           ))}
         </div>
 
-        {/* Days grid */}
+        {}
         <div className="grid grid-cols-7">
           {paddedDays.map((day, i) => {
             if (!day) {
@@ -188,7 +183,7 @@ export function CalendarView({ stops, currency, tripStartDate }: CalendarViewPro
                   isInTrip && !isSelected && "bg-primary/5",
                 )}
               >
-                {/* Day number */}
+                {}
                 <span className={cn(
                   "flex size-6 items-center justify-center rounded-full font-medium",
                   isToday && "bg-primary text-primary-foreground",
@@ -198,7 +193,7 @@ export function CalendarView({ stops, currency, tripStartDate }: CalendarViewPro
                   {format(day, "d")}
                 </span>
 
-                {/* Arrival/departure markers */}
+                {}
                 {data?.isArrival && (
                   <span className="text-[8px] font-bold text-primary leading-none">✈ IN</span>
                 )}
@@ -206,7 +201,7 @@ export function CalendarView({ stops, currency, tripStartDate }: CalendarViewPro
                   <span className="text-[8px] font-bold text-muted-foreground leading-none">✈ OUT</span>
                 )}
 
-                {/* Activity dots */}
+                {}
                 {hasActivities && (
                   <div className="flex flex-wrap justify-center gap-0.5">
                     {data!.activities.slice(0, 3).map((act, ai) => (
@@ -225,7 +220,7 @@ export function CalendarView({ stops, currency, tripStartDate }: CalendarViewPro
           })}
         </div>
 
-        {/* Legend */}
+        {}
         <div className="flex flex-wrap items-center gap-3 border-t border-border px-5 py-3">
           {stops.slice(0, 4).map((stop, si) => (
             <span key={stop.id} className="flex items-center gap-1.5 text-xs text-muted-foreground">
@@ -236,7 +231,7 @@ export function CalendarView({ stops, currency, tripStartDate }: CalendarViewPro
         </div>
       </motion.div>
 
-      {/* Day detail panel */}
+      {}
       <motion.div
         initial={{ opacity: 0, x: 16 }}
         animate={{ opacity: 1, x: 0 }}

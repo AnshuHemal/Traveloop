@@ -52,7 +52,6 @@ export function PackingClient({ tripId, tripTitle, items }: PackingClientProps) 
   const [pendingAction, setPendingAction] = useState<string | null>(null);
   const searchRef = useRef<HTMLInputElement>(null);
 
-  // Filter items
   const filtered = items.filter((item) => {
     if (filterCategory !== "ALL" && item.category !== filterCategory) return false;
     if (filterPacked === "packed"   && !item.packed)  return false;
@@ -61,7 +60,6 @@ export function PackingClient({ tripId, tripTitle, items }: PackingClientProps) 
     return true;
   });
 
-  // Group by category
   const grouped = Object.entries(CATEGORY_CONFIG)
     .map(([cat, cfg]) => ({
       category: cat,
@@ -70,7 +68,6 @@ export function PackingClient({ tripId, tripTitle, items }: PackingClientProps) 
     }))
     .filter((g) => g.items.length > 0);
 
-  // Stats
   const totalItems  = items.length;
   const packedItems = items.filter((i) => i.packed).length;
   const pct         = totalItems > 0 ? Math.round((packedItems / totalItems) * 100) : 0;
@@ -119,7 +116,7 @@ export function PackingClient({ tripId, tripTitle, items }: PackingClientProps) 
     <>
       <div className="flex flex-col gap-6">
 
-        {/* ── Progress card ── */}
+        {}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -160,7 +157,7 @@ export function PackingClient({ tripId, tripTitle, items }: PackingClientProps) 
             </span>
           </div>
 
-          {/* Progress bar */}
+          {}
           <div className="h-2.5 overflow-hidden rounded-full bg-muted">
             <motion.div
               className={cn("h-full rounded-full", allPacked ? "bg-emerald-500" : "bg-primary")}
@@ -170,7 +167,7 @@ export function PackingClient({ tripId, tripTitle, items }: PackingClientProps) 
             />
           </div>
 
-          {/* Category mini-stats */}
+          {}
           {totalItems > 0 && (
             <div className="mt-3 flex flex-wrap gap-2">
               {Object.entries(CATEGORY_CONFIG).map(([cat, cfg]) => {
@@ -190,14 +187,14 @@ export function PackingClient({ tripId, tripTitle, items }: PackingClientProps) 
           )}
         </motion.div>
 
-        {/* ── Toolbar ── */}
+        {}
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35, delay: 0.05 }}
           className="flex flex-col gap-3"
         >
-          {/* Search */}
+          {}
           <div className="relative">
             <Search className="absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
             <input
@@ -220,11 +217,11 @@ export function PackingClient({ tripId, tripTitle, items }: PackingClientProps) 
             )}
           </div>
 
-          {/* Filter row */}
+          {}
           <div className="flex flex-wrap items-center gap-2">
             <SlidersHorizontal className="size-3.5 text-muted-foreground" />
 
-            {/* Category filter */}
+            {}
             <div className="relative">
               <select value={filterCategory} onChange={(e) => setFilterCategory(e.target.value)}
                 className={cn(
@@ -240,7 +237,7 @@ export function PackingClient({ tripId, tripTitle, items }: PackingClientProps) 
               <ChevronDown className="pointer-events-none absolute right-2 top-1/2 size-3 -translate-y-1/2 text-muted-foreground" />
             </div>
 
-            {/* Packed filter */}
+            {}
             <div className="flex overflow-hidden rounded-lg border border-border bg-muted/30 p-0.5">
               {(["all", "unpacked", "packed"] as const).map((f) => (
                 <button key={f} onClick={() => setFilterPacked(f)}
@@ -261,7 +258,7 @@ export function PackingClient({ tripId, tripTitle, items }: PackingClientProps) 
           </div>
         </motion.div>
 
-        {/* ── Empty state ── */}
+        {}
         {items.length === 0 ? (
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -305,7 +302,7 @@ export function PackingClient({ tripId, tripTitle, items }: PackingClientProps) 
             <p className="text-sm text-muted-foreground">No items match your filters</p>
           </motion.div>
         ) : (
-          /* ── Grouped items ── */
+
           <div className="flex flex-col gap-5">
             <AnimatePresence>
               {grouped.map((group, gi) => (
@@ -316,7 +313,7 @@ export function PackingClient({ tripId, tripTitle, items }: PackingClientProps) 
                   transition={{ duration: 0.35, delay: gi * 0.06 }}
                   className="flex flex-col gap-2"
                 >
-                  {/* Category header */}
+                  {}
                   <div className={cn(
                     "flex items-center justify-between rounded-xl px-3.5 py-2.5",
                     group.bg,
@@ -333,7 +330,7 @@ export function PackingClient({ tripId, tripTitle, items }: PackingClientProps) 
                     </span>
                   </div>
 
-                  {/* Items */}
+                  {}
                   <div className="flex flex-col gap-1.5 pl-1">
                     <AnimatePresence>
                       {group.items.map((item, ii) => (
@@ -352,7 +349,7 @@ export function PackingClient({ tripId, tripTitle, items }: PackingClientProps) 
           </div>
         )}
 
-        {/* ── Action bar ── */}
+        {}
         {items.length > 0 && (
           <motion.div
             initial={{ opacity: 0, y: 8 }}
@@ -383,7 +380,7 @@ export function PackingClient({ tripId, tripTitle, items }: PackingClientProps) 
           </motion.div>
         )}
 
-        {/* ── Confirm clear dialog ── */}
+        {}
         <AnimatePresence>
           {showConfirmClear && (
             <>
@@ -415,7 +412,7 @@ export function PackingClient({ tripId, tripTitle, items }: PackingClientProps) 
         </AnimatePresence>
       </div>
 
-      {/* Add item modal */}
+      {}
       <AddItemModal tripId={tripId} open={showAddModal} onClose={() => setShowAddModal(false)} />
     </>
   );

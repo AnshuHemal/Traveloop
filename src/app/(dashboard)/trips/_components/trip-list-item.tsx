@@ -69,7 +69,7 @@ export function TripListItem({ trip, index }: TripListItemProps) {
     >
       <div className="group flex items-center gap-4 rounded-2xl border border-border bg-card p-4 transition-all duration-200 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5">
 
-        {/* Emoji thumbnail */}
+        {}
         <Link href={`/trips/${trip.id}`} className="shrink-0">
           <div className={cn(
             "flex size-14 items-center justify-center rounded-xl bg-linear-to-br text-2xl transition-transform duration-200 group-hover:scale-105",
@@ -79,9 +79,9 @@ export function TripListItem({ trip, index }: TripListItemProps) {
           </div>
         </Link>
 
-        {/* Main content */}
+        {}
         <Link href={`/trips/${trip.id}`} className="flex min-w-0 flex-1 flex-col gap-1">
-          {/* Title + status */}
+          {}
           <div className="flex items-center gap-2">
             <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-1">
               {trip.title}
@@ -95,14 +95,14 @@ export function TripListItem({ trip, index }: TripListItemProps) {
             </span>
           </div>
 
-          {/* Description */}
+          {}
           {trip.description && (
             <p className="hidden text-xs text-muted-foreground line-clamp-1 sm:block">
               {trip.description}
             </p>
           )}
 
-          {/* Meta row */}
+          {}
           <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
             {trip._count.stops > 0 && (
               <span className="flex items-center gap-1">
@@ -126,7 +126,7 @@ export function TripListItem({ trip, index }: TripListItemProps) {
             </span>
           </div>
 
-          {/* City badges */}
+          {}
           {trip.stops.length > 0 && (
             <div className="hidden flex-wrap gap-1 sm:flex">
               {trip.stops.slice(0, 4).map((stop) => (
@@ -143,9 +143,9 @@ export function TripListItem({ trip, index }: TripListItemProps) {
           )}
         </Link>
 
-        {/* Right side: visibility + actions */}
+        {}
         <div className="flex shrink-0 items-center gap-2">
-          {/* Visibility */}
+          {}
           <span className="hidden size-7 items-center justify-center rounded-lg border border-border text-muted-foreground sm:flex">
             {trip.visibility === "PUBLIC" ? (
               <Globe className="size-3.5" />
@@ -156,7 +156,7 @@ export function TripListItem({ trip, index }: TripListItemProps) {
             )}
           </span>
 
-          {/* View button */}
+          {}
           <Link
             href={`/trips/${trip.id}`}
             className="hidden items-center gap-1 rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-muted-foreground hover:border-primary/40 hover:bg-primary/5 hover:text-primary transition-all sm:flex"
@@ -165,7 +165,7 @@ export function TripListItem({ trip, index }: TripListItemProps) {
             <ArrowRight className="size-3" />
           </Link>
 
-          {/* Actions menu */}
+          {}
           <TripActionsMenu trip={trip} />
         </div>
       </div>

@@ -3,7 +3,7 @@ import { StopCardSkeleton } from "@/components/shared/skeleton";
 export default function TripDetailLoading() {
   return (
     <div className="flex flex-col gap-0 pb-16">
-      {/* Header skeleton */}
+      {}
       <div className="overflow-hidden rounded-2xl bg-primary/20 px-6 py-8 sm:px-8 sm:py-10">
         <div className="flex flex-col gap-3">
           <div className="flex gap-2">
@@ -19,7 +19,7 @@ export default function TripDetailLoading() {
         </div>
       </div>
 
-      {/* Tab bar skeleton */}
+      {}
       <div className="mt-6 flex gap-0 border-b border-border">
         {["Overview", "Itinerary", "Budget", "Share", "Edit"].map((tab) => (
           <div key={tab} className="px-4 py-3">
@@ -28,7 +28,7 @@ export default function TripDetailLoading() {
         ))}
       </div>
 
-      {/* Content skeleton */}
+      {}
       <div className="mt-6 flex flex-col gap-4">
         <div className="flex items-center justify-between">
           <div className="h-5 w-32 animate-pulse rounded-lg bg-muted/60" />

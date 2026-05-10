@@ -17,7 +17,7 @@ export function CTABanner() {
           transition={{ duration: 0.5 }}
           className="relative overflow-hidden rounded-3xl bg-primary px-8 py-16 text-center shadow-2xl shadow-primary/25"
         >
-          {/* Background pattern */}
+          {}
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-size-[3rem_3rem]"

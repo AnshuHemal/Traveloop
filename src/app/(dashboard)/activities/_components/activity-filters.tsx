@@ -55,7 +55,7 @@ export function ActivityFilters({ totalCount, filteredCount }: ActivityFiltersPr
       transition={{ duration: 0.35 }}
       className="flex flex-col gap-4"
     >
-      {/* Search */}
+      {}
       <div className="relative">
         <Search className="absolute left-4 top-1/2 size-4.5 -translate-y-1/2 text-muted-foreground" />
         <input
@@ -80,7 +80,7 @@ export function ActivityFilters({ totalCount, filteredCount }: ActivityFiltersPr
         )}
       </div>
 
-      {/* Category tabs */}
+      {}
       <div className="flex flex-wrap gap-2">
         {ACTIVITY_CATEGORIES.map((cat) => (
           <button
@@ -99,11 +99,11 @@ export function ActivityFilters({ totalCount, filteredCount }: ActivityFiltersPr
         ))}
       </div>
 
-      {/* Secondary filters row */}
+      {}
       <div className="flex flex-wrap items-center gap-2">
         <SlidersHorizontal className="size-3.5 text-muted-foreground" />
 
-        {/* Duration */}
+        {}
         <div className="relative">
           <select
             value={duration}
@@ -121,7 +121,7 @@ export function ActivityFilters({ totalCount, filteredCount }: ActivityFiltersPr
           <ChevronDown className="pointer-events-none absolute right-2 top-1/2 size-3 -translate-y-1/2 text-muted-foreground" />
         </div>
 
-        {/* Cost tier */}
+        {}
         <div className="relative">
           <select
             value={costTier}
@@ -139,7 +139,7 @@ export function ActivityFilters({ totalCount, filteredCount }: ActivityFiltersPr
           <ChevronDown className="pointer-events-none absolute right-2 top-1/2 size-3 -translate-y-1/2 text-muted-foreground" />
         </div>
 
-        {/* Sort */}
+        {}
         <div className="relative">
           <select
             value={sort}
@@ -156,7 +156,7 @@ export function ActivityFilters({ totalCount, filteredCount }: ActivityFiltersPr
           <ChevronDown className="pointer-events-none absolute right-2 top-1/2 size-3 -translate-y-1/2 text-muted-foreground" />
         </div>
 
-        {/* Clear */}
+        {}
         {hasFilters && (
           <motion.button
             initial={{ opacity: 0, scale: 0.9 }}
@@ -169,7 +169,7 @@ export function ActivityFilters({ totalCount, filteredCount }: ActivityFiltersPr
           </motion.button>
         )}
 
-        {/* Count */}
+        {}
         <span className="ml-auto text-xs text-muted-foreground">
           {filteredCount === totalCount
             ? `${totalCount} activities`

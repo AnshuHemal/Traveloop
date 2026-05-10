@@ -78,12 +78,12 @@ export function ActivityItem({ activity, tripId, stopName, index }: ActivityItem
         layout
         className="group flex items-start gap-3 rounded-xl border border-border bg-background p-3 transition-all hover:border-primary/20 hover:shadow-sm"
       >
-        {/* Category icon */}
+        {}
         <div className={cn("mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-lg text-sm", cat.bg)}>
           {cat.emoji}
         </div>
 
-        {/* Content */}
+        {}
         <div className="flex min-w-0 flex-1 flex-col gap-1">
           <div className="flex items-start justify-between gap-2">
             <p className="text-sm font-semibold leading-tight text-foreground">
@@ -123,9 +123,9 @@ export function ActivityItem({ activity, tripId, stopName, index }: ActivityItem
           </div>
         </div>
 
-        {/* Actions — visible on hover */}
+        {}
         <div className="flex shrink-0 items-center gap-1 opacity-0 transition-opacity group-hover:opacity-100">
-          {/* Edit */}
+          {}
           <button
             onClick={() => setShowEdit(true)}
             title="Edit activity"
@@ -134,7 +134,7 @@ export function ActivityItem({ activity, tripId, stopName, index }: ActivityItem
             <Pencil className="size-3.5" />
           </button>
 
-          {/* Toggle booked */}
+          {}
           <button
             onClick={handleToggleBooked}
             disabled={isPending}
@@ -155,7 +155,7 @@ export function ActivityItem({ activity, tripId, stopName, index }: ActivityItem
             )}
           </button>
 
-          {/* Delete */}
+          {}
           <button
             onClick={handleDelete}
             disabled={isPending}
@@ -171,7 +171,7 @@ export function ActivityItem({ activity, tripId, stopName, index }: ActivityItem
         </div>
       </motion.div>
 
-      {/* Edit activity modal */}
+      {}
       <EditActivityModal
         activity={activity}
         tripId={tripId}

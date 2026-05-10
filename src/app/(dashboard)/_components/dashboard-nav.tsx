@@ -31,10 +31,10 @@ export function DashboardNav({ user }: DashboardNavProps) {
     <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
 
-        {/* Logo */}
+        {}
         <Logo size={26} />
 
-        {/* Desktop nav links */}
+        {}
         <nav className="hidden items-center gap-1 md:flex">
           <Link href="/dashboard" className="rounded-lg px-3.5 py-2 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-foreground transition-colors">
             Dashboard
@@ -50,9 +50,9 @@ export function DashboardNav({ user }: DashboardNavProps) {
           </Link>
         </nav>
 
-        {/* Right side */}
+        {}
         <div className="flex items-center gap-2">
-          {/* New trip button */}
+          {}
           <Link
             href="/trips/new"
             className={cn(buttonVariants({ size: "sm" }), "hidden gap-1.5 sm:inline-flex")}
@@ -61,12 +61,12 @@ export function DashboardNav({ user }: DashboardNavProps) {
             New trip
           </Link>
 
-          {/* Notifications */}
+          {}
           <button className="hidden size-9 items-center justify-center rounded-lg text-muted-foreground hover:bg-accent hover:text-foreground transition-colors sm:flex">
             <Bell className="size-4" />
           </button>
 
-          {/* User menu */}
+          {}
           <div className="relative">
             <button
               onClick={() => setUserMenuOpen((v) => !v)}
@@ -95,13 +95,13 @@ export function DashboardNav({ user }: DashboardNavProps) {
                     transition={{ duration: 0.15 }}
                     className="absolute right-0 top-full z-20 mt-1.5 w-52 overflow-hidden rounded-xl border border-border bg-popover shadow-xl shadow-black/10"
                   >
-                    {/* User info */}
+                    {}
                     <div className="border-b border-border px-4 py-3">
                       <p className="text-sm font-semibold text-foreground truncate">{user.name}</p>
                       <p className="text-xs text-muted-foreground truncate">{user.email}</p>
                     </div>
 
-                    {/* Menu items */}
+                    {}
                     <div className="p-1">
                       <Link
                         href="/settings"
@@ -136,7 +136,7 @@ export function DashboardNav({ user }: DashboardNavProps) {
             </AnimatePresence>
           </div>
 
-          {/* Mobile menu toggle */}
+          {}
           <button
             className="flex size-9 items-center justify-center rounded-lg text-muted-foreground hover:bg-accent transition-colors md:hidden"
             onClick={() => setMobileOpen((v) => !v)}
@@ -146,7 +146,7 @@ export function DashboardNav({ user }: DashboardNavProps) {
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div

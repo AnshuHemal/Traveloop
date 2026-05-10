@@ -15,7 +15,7 @@ export default async function DashboardLayout({
       <main className="flex-1 px-4 py-6 pb-24 sm:px-6 sm:pb-6 lg:px-8">
         <div className="mx-auto max-w-6xl">{children}</div>
       </main>
-      {/* Mobile bottom navigation */}
+      {}
       <MobileBottomNav />
     </div>
   );

@@ -9,7 +9,6 @@ type PackingCategory =
   | "DOCUMENTS" | "CLOTHING" | "ELECTRONICS" | "TOILETRIES"
   | "HEALTH" | "MONEY" | "ENTERTAINMENT" | "FOOD_SNACKS" | "OTHER";
 
-// ── helpers ───────────────────────────────────────────────────────────────────
 async function assertTripOwner(tripId: string, userId: string) {
   const trip = await prisma.trip.findUnique({ where: { id: tripId }, select: { userId: true } });
   if (!trip) throw new Error("Trip not found");
@@ -22,7 +21,6 @@ async function getOrCreateList(tripId: string) {
   return prisma.packingList.create({ data: { tripId } });
 }
 
-// ── Add item ──────────────────────────────────────────────────────────────────
 const AddItemSchema = z.object({
   tripId:    z.string(),
   name:      z.string().min(1, "Item name is required").max(100),
@@ -87,7 +85,6 @@ export async function addPackingItem(
   return { success: true };
 }
 
-// ── Toggle packed ─────────────────────────────────────────────────────────────
 export async function toggleItemPacked(
   itemId: string,
   tripId: string,
@@ -104,7 +101,6 @@ export async function toggleItemPacked(
   return {};
 }
 
-// ── Delete item ───────────────────────────────────────────────────────────────
 export async function deletePackingItem(
   itemId: string,
   tripId: string,
@@ -120,7 +116,6 @@ export async function deletePackingItem(
   return {};
 }
 
-// ── Reset all (unpack everything) ─────────────────────────────────────────────
 export async function resetPackingList(tripId: string): Promise<{ error?: string }> {
   const user = await requireUser();
   try {
@@ -138,7 +133,6 @@ export async function resetPackingList(tripId: string): Promise<{ error?: string
   return {};
 }
 
-// ── Clear all items ───────────────────────────────────────────────────────────
 export async function clearPackingList(tripId: string): Promise<{ error?: string }> {
   const user = await requireUser();
   try {
@@ -153,35 +147,34 @@ export async function clearPackingList(tripId: string): Promise<{ error?: string
   return {};
 }
 
-// ── Seed with defaults ────────────────────────────────────────────────────────
 const DEFAULT_ITEMS: { name: string; category: PackingCategory; essential: boolean }[] = [
-  // Documents
+
   { name: "Passport",                    category: "DOCUMENTS",    essential: true },
   { name: "Flight tickets (printed)",    category: "DOCUMENTS",    essential: true },
   { name: "Travel insurance",            category: "DOCUMENTS",    essential: true },
   { name: "Hotel booking confirmation",  category: "DOCUMENTS",    essential: false },
   { name: "Visa documents",              category: "DOCUMENTS",    essential: false },
-  // Clothing
+
   { name: "Casual shirts",               category: "CLOTHING",     essential: true },
   { name: "Trousers / jeans",            category: "CLOTHING",     essential: true },
   { name: "Comfortable walking shoes",   category: "CLOTHING",     essential: true },
   { name: "Light jacket / windbreaker",  category: "CLOTHING",     essential: false },
   { name: "Underwear & socks",           category: "CLOTHING",     essential: true },
-  // Electronics
+
   { name: "Phone charger",               category: "ELECTRONICS",  essential: true },
   { name: "Universal power adapter",     category: "ELECTRONICS",  essential: true },
   { name: "Earphones / headphones",      category: "ELECTRONICS",  essential: false },
   { name: "Camera",                      category: "ELECTRONICS",  essential: false },
-  // Toiletries
+
   { name: "Toothbrush & toothpaste",     category: "TOILETRIES",   essential: true },
   { name: "Shampoo & conditioner",       category: "TOILETRIES",   essential: true },
   { name: "Sunscreen",                   category: "TOILETRIES",   essential: false },
   { name: "Deodorant",                   category: "TOILETRIES",   essential: true },
-  // Health
+
   { name: "Prescription medications",    category: "HEALTH",       essential: true },
   { name: "Pain relievers",              category: "HEALTH",       essential: false },
   { name: "Hand sanitizer",              category: "HEALTH",       essential: false },
-  // Money
+
   { name: "Credit / debit cards",        category: "MONEY",        essential: true },
   { name: "Local currency (cash)",       category: "MONEY",        essential: true },
 ];
@@ -192,7 +185,6 @@ export async function seedDefaultItems(tripId: string): Promise<{ error?: string
     await assertTripOwner(tripId, user.id);
     const list = await getOrCreateList(tripId);
 
-    // Only seed if list is empty
     const count = await prisma.packingItem.count({ where: { packingListId: list.id } });
     if (count > 0) return {};
 

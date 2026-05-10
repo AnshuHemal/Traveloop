@@ -12,7 +12,6 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { completeOnboarding } from "../actions";
 
-// ── Step 1: Traveler type ─────────────────────────────────────────────────────
 const TRAVELER_TYPES = [
   { id: "adventure",  label: "Adventure Seeker",  emoji: "🧗", icon: Mountain,  desc: "Hiking, extreme sports, off the beaten path" },
   { id: "culture",    label: "Culture Explorer",  emoji: "🏛️", icon: Camera,    desc: "Museums, history, local traditions" },
@@ -22,7 +21,6 @@ const TRAVELER_TYPES = [
   { id: "explorer",   label: "Free Explorer",     emoji: "🗺️", icon: Compass,   desc: "No fixed plans, go wherever the wind takes you" },
 ];
 
-// ── Step 2: First trip quick-start ────────────────────────────────────────────
 const TRIP_TEMPLATES = [
   { id: "weekend",    label: "Weekend Getaway",   emoji: "🌆", desc: "2–3 days, 1 city",       days: 2 },
   { id: "week",       label: "Week-long Trip",    emoji: "✈️", desc: "7 days, 2–3 cities",     days: 7 },
@@ -73,13 +71,13 @@ export function OnboardingWizard({ userName }: OnboardingWizardProps) {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center px-4 py-12">
-      {/* Background */}
+      {}
       <div aria-hidden className="pointer-events-none fixed inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_20%,oklch(0.92_0.06_185/0.3)_0%,transparent_70%)]" />
       <div aria-hidden className="pointer-events-none fixed inset-0 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-size-[3.5rem_3.5rem] opacity-25" />
 
       <div className="relative z-10 w-full max-w-2xl">
 
-        {/* Progress bar */}
+        {}
         <div className="mb-8 flex items-center gap-3">
           {[0, 1, 2].map((i) => (
             <div key={i} className="flex-1">
@@ -94,14 +92,14 @@ export function OnboardingWizard({ userName }: OnboardingWizardProps) {
           ))}
         </div>
 
-        {/* Card */}
+        {}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
           className="overflow-hidden rounded-2xl border border-border bg-card/90 backdrop-blur-sm shadow-xl shadow-black/5"
         >
-          {/* Header */}
+          {}
           <div className="border-b border-border bg-linear-to-br from-primary/10 via-primary/5 to-transparent px-8 py-6">
             <div className="flex items-center gap-3">
               <div className="flex size-10 items-center justify-center rounded-xl bg-primary/15">
@@ -121,11 +119,11 @@ export function OnboardingWizard({ userName }: OnboardingWizardProps) {
             </p>
           </div>
 
-          {/* Step content */}
+          {}
           <div className="p-8">
             <AnimatePresence mode="wait">
 
-              {/* ── Step 0: Traveler type ── */}
+              {}
               {step === 0 && (
                 <motion.div
                   key="step0"
@@ -169,7 +167,7 @@ export function OnboardingWizard({ userName }: OnboardingWizardProps) {
                 </motion.div>
               )}
 
-              {/* ── Step 1: Trip template ── */}
+              {}
               {step === 1 && (
                 <motion.div
                   key="step1"
@@ -213,7 +211,7 @@ export function OnboardingWizard({ userName }: OnboardingWizardProps) {
                 </motion.div>
               )}
 
-              {/* ── Step 2: All set ── */}
+              {}
               {step === 2 && (
                 <motion.div
                   key="step2"
@@ -243,7 +241,7 @@ export function OnboardingWizard({ userName }: OnboardingWizardProps) {
                     </p>
                   </div>
 
-                  {/* Summary */}
+                  {}
                   <div className="flex flex-wrap justify-center gap-2">
                     {travelerType && (
                       <span className="flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/8 px-3 py-1.5 text-xs font-medium text-primary">
@@ -264,7 +262,7 @@ export function OnboardingWizard({ userName }: OnboardingWizardProps) {
             </AnimatePresence>
           </div>
 
-          {/* Footer navigation */}
+          {}
           <div className="flex items-center justify-between border-t border-border px-8 py-5">
             <button
               type="button"
@@ -325,7 +323,7 @@ export function OnboardingWizard({ userName }: OnboardingWizardProps) {
           </div>
         </motion.div>
 
-        {/* Skip link */}
+        {}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

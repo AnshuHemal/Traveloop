@@ -39,7 +39,6 @@ export default async function TripsPage({ searchParams }: PageProps) {
   const view   = params.view           ?? "grid";
   const page   = Math.max(1, parseInt(params.page ?? "1", 10));
 
-  // Build where clause
   const where = {
     userId: user.id,
     ...(status && { status: status as "DRAFT" | "PLANNED" | "ONGOING" | "COMPLETED" }),
@@ -52,10 +51,8 @@ export default async function TripsPage({ searchParams }: PageProps) {
     }),
   };
 
-  // Fetch all trips for total count
   const totalCount = await prisma.trip.count({ where: { userId: user.id } });
 
-  // Build orderBy
   const orderByMap = {
     updatedAt_desc: { updatedAt: "desc" as const },
     createdAt_desc: { createdAt: "desc" as const },
@@ -68,7 +65,6 @@ export default async function TripsPage({ searchParams }: PageProps) {
   const orderBy = orderByMap[(params.sort ?? "updatedAt_desc") as keyof typeof orderByMap]
     ?? { updatedAt: "desc" as const };
 
-  // Fetch filtered + sorted trips with pagination
   const trips = await prisma.trip.findMany({
     where,
     include: {
@@ -80,14 +76,13 @@ export default async function TripsPage({ searchParams }: PageProps) {
       },
     },
     orderBy,
-    take: PAGE_SIZE * page,   // accumulate pages (simpler UX than offset)
+    take: PAGE_SIZE * page,
   });
 
   const hasMore = trips.length < (await prisma.trip.count({ where }));
 
   const hasFilters = !!(q || status);
 
-  // Stats for the header
   const allTrips = await prisma.trip.findMany({
     where: { userId: user.id },
     select: { status: true },
@@ -99,10 +94,10 @@ export default async function TripsPage({ searchParams }: PageProps) {
   return (
     <div className="flex flex-col gap-8 pb-16">
 
-      {/* ── Page header ── */}
+      {}
       <FadeIn direction="down">
         <div className="relative overflow-hidden rounded-2xl bg-linear-to-br from-primary via-primary/90 to-primary/70 px-8 py-10">
-          {/* Decorative blobs */}
+          {}
           <div aria-hidden className="pointer-events-none absolute -right-16 -top-16 size-56 rounded-full bg-white/10 blur-3xl" />
           <div aria-hidden className="pointer-events-none absolute bottom-0 left-1/4 size-40 rounded-full bg-white/8 blur-2xl" />
 
@@ -135,7 +130,7 @@ export default async function TripsPage({ searchParams }: PageProps) {
             </Link>
           </div>
 
-          {/* Mini stats */}
+          {}
           {totalCount > 0 && (
             <div className="relative mt-6 flex flex-wrap gap-3">
               {[
@@ -160,14 +155,14 @@ export default async function TripsPage({ searchParams }: PageProps) {
         </div>
       </FadeIn>
 
-      {/* ── Toolbar ── */}
+      {}
       <FadeIn delay={0.1}>
         <Suspense>
           <TripsToolbar totalCount={totalCount} filteredCount={trips.length} />
         </Suspense>
       </FadeIn>
 
-      {/* ── Trip list / grid ── */}
+      {}
       <FadeIn delay={0.15}>
         {trips.length === 0 ? (
           <TripsEmpty hasFilters={hasFilters} />
@@ -186,7 +181,7 @@ export default async function TripsPage({ searchParams }: PageProps) {
         )}
       </FadeIn>
 
-      {/* ── Load more ── */}
+      {}
       {trips.length > 0 && (
         <FadeIn delay={0.2}>
           <Suspense>

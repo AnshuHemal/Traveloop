@@ -17,7 +17,7 @@ interface ActivitiesClientProps {
 }
 
 export function ActivitiesClient({ activities, stops }: ActivitiesClientProps) {
-  // Track which activities have been added to which stops
+
   const [addedMap, setAddedMap] = useState<Record<string, Set<string>>>({});
 
   function handleAdded(stopId: string, activityId: string) {

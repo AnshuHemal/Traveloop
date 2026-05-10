@@ -8,7 +8,6 @@ export function proxy(request: NextRequest) {
   const sessionCookie = getSessionCookie(request);
   const { pathname } = request.nextUrl;
 
-  // Redirect unauthenticated users away from protected routes
   const isProtected = PROTECTED_PREFIXES.some((p) => pathname.startsWith(p));
   if (isProtected && !sessionCookie) {
     const url = new URL("/login", request.url);
@@ -16,7 +15,6 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // Redirect authenticated users away from auth routes
   const isAuthRoute = AUTH_ROUTES.some((r) => pathname.startsWith(r));
   if (isAuthRoute && sessionCookie) {
     return NextResponse.redirect(new URL("/dashboard", request.url));

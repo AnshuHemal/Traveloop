@@ -35,12 +35,10 @@ export default async function ActivitiesPage({ searchParams }: PageProps) {
   const costTier = params.costTier ?? "ALL";
   const sort     = params.sort     ?? "popular";
 
-  // Filter activities
   const filtered = filterActivities(
     ACTIVITY_TEMPLATES, q, category, duration, costTier, sort,
   );
 
-  // Fetch user's active trip stops for "Add to trip" functionality
   const trips = await prisma.trip.findMany({
     where: { userId: user.id, status: { not: "COMPLETED" } },
     select: {
@@ -54,7 +52,6 @@ export default async function ActivitiesPage({ searchParams }: PageProps) {
     orderBy: { updatedAt: "desc" },
   });
 
-  // Flatten stops with tripId
   const stops = trips.flatMap((trip) =>
     trip.stops.map((stop) => ({
       id:       stop.id,
@@ -63,7 +60,6 @@ export default async function ActivitiesPage({ searchParams }: PageProps) {
     })),
   );
 
-  // Stats
   const freeCount     = ACTIVITY_TEMPLATES.filter((a) => a.costTier === "free").length;
   const popularCount  = ACTIVITY_TEMPLATES.filter((a) => a.popular).length;
   const avgRating     = (
@@ -73,14 +69,14 @@ export default async function ActivitiesPage({ searchParams }: PageProps) {
   return (
     <div className="flex flex-col gap-8 pb-16">
 
-      {/* ── Hero banner ── */}
+      {}
       <FadeIn direction="down">
         <div className="relative overflow-hidden rounded-2xl bg-linear-to-br from-primary via-primary/90 to-primary/70 px-6 py-10 sm:px-10 sm:py-14">
-          {/* Decorative blobs */}
+          {}
           <div aria-hidden className="pointer-events-none absolute -right-16 -top-16 size-64 rounded-full bg-white/10 blur-3xl" />
           <div aria-hidden className="pointer-events-none absolute bottom-0 left-1/4 size-48 rounded-full bg-white/8 blur-2xl" />
 
-          {/* Floating activity pills */}
+          {}
           <div className="absolute right-6 top-6 hidden flex-col gap-2 lg:flex">
             {["🏛️ Sightseeing", "🍜 Food Tours", "🧗 Adventure", "🧘 Wellness"].map((pill) => (
               <span key={pill} className="rounded-full bg-white/15 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
@@ -106,7 +102,7 @@ export default async function ActivitiesPage({ searchParams }: PageProps) {
               Browse sightseeing, food tours, adventures, and more. Add them directly to your trip stops.
             </p>
 
-            {/* Mini stats */}
+            {}
             <div className="flex flex-wrap gap-3">
               {[
                 { icon: Star,        label: `${avgRating} avg rating`,    bg: "bg-white/15" },
@@ -123,7 +119,7 @@ export default async function ActivitiesPage({ searchParams }: PageProps) {
         </div>
       </FadeIn>
 
-      {/* ── Context banner (if user has stops) ── */}
+      {}
       {stops.length > 0 ? (
         <FadeIn delay={0.08}>
           <div className="flex items-center gap-3 rounded-2xl border border-primary/20 bg-primary/5 px-5 py-3.5">
@@ -181,7 +177,7 @@ export default async function ActivitiesPage({ searchParams }: PageProps) {
         </FadeIn>
       )}
 
-      {/* ── Filters ── */}
+      {}
       <FadeIn delay={0.1}>
         <Suspense>
           <ActivityFilters
@@ -191,7 +187,7 @@ export default async function ActivitiesPage({ searchParams }: PageProps) {
         </Suspense>
       </FadeIn>
 
-      {/* ── Activity grid ── */}
+      {}
       <FadeIn delay={0.15}>
         <ActivitiesClient activities={filtered} stops={stops} />
       </FadeIn>

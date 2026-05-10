@@ -22,7 +22,6 @@ export function SecurityTab() {
   const [showConfirm, setShowConfirm] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
-  // Show toast + reset form on success
   useEffect(() => {
     if (state.success) {
       toast.success("Password changed successfully!");
@@ -35,7 +34,7 @@ export function SecurityTab() {
 
   return (
     <div className="flex flex-col gap-5">
-      {/* Change password card */}
+      {}
       <div className="rounded-2xl border border-border bg-card p-6">
         <div className="mb-6 flex items-center gap-3">
           <div className="flex size-10 items-center justify-center rounded-xl bg-primary/10">
@@ -51,7 +50,7 @@ export function SecurityTab() {
 
         <form ref={formRef} action={formAction} className="flex flex-col gap-5">
 
-          {/* Current password */}
+          {}
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
@@ -97,7 +96,7 @@ export function SecurityTab() {
             </AnimatePresence>
           </motion.div>
 
-          {/* New password */}
+          {}
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
@@ -144,7 +143,7 @@ export function SecurityTab() {
             </AnimatePresence>
           </motion.div>
 
-          {/* Confirm password */}
+          {}
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
@@ -190,7 +189,7 @@ export function SecurityTab() {
             </AnimatePresence>
           </motion.div>
 
-          {/* Success banner */}
+          {}
           <AnimatePresence>
             {state.success && (
               <motion.div
@@ -205,7 +204,7 @@ export function SecurityTab() {
             )}
           </AnimatePresence>
 
-          {/* Submit */}
+          {}
           <div className="flex justify-end">
             <button type="submit" className={cn(buttonVariants(), "gap-2 min-w-40")}>
               <Save className="size-4" />
@@ -215,7 +214,7 @@ export function SecurityTab() {
         </form>
       </div>
 
-      {/* Security tips card */}
+      {}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}

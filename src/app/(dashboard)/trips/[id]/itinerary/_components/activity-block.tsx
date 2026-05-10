@@ -82,16 +82,16 @@ export function ActivityBlock({ activity, index, compact = false }: ActivityBloc
         cat.border, cat.bg,
       )}
     >
-      {/* Left accent bar */}
+      {}
       <div className={cn("absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl", cat.bg.replace("/10", "/60"))} />
 
       <div className="flex items-start gap-3 pl-2">
-        {/* Icon */}
+        {}
         <div className={cn("flex size-10 shrink-0 items-center justify-center rounded-xl text-xl", cat.bg)}>
           {cat.emoji}
         </div>
 
-        {/* Content */}
+        {}
         <div className="flex min-w-0 flex-1 flex-col gap-1">
           <div className="flex items-start justify-between gap-2">
             <p className="font-semibold text-foreground leading-tight">{activity.name}</p>

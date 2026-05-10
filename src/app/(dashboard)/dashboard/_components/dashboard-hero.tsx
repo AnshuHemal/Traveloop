@@ -43,7 +43,7 @@ export function DashboardHero({ userName, tripCount }: DashboardHeroProps) {
     try {
       const res = await fetch(`/api/search?q=${encodeURIComponent(q)}`);
       if (res.ok) setResults(await res.json());
-    } catch { /* ignore */ }
+    } catch {  }
     setLoading(false);
   }, []);
 
@@ -68,11 +68,11 @@ export function DashboardHero({ userName, tripCount }: DashboardHeroProps) {
   return (
     <div className="relative overflow-hidden rounded-2xl">
       <div className="relative overflow-hidden rounded-2xl bg-linear-to-br from-primary via-primary/90 to-primary/70 px-6 py-10 sm:px-10 sm:py-14">
-        {/* Decorative blobs */}
+        {}
         <div aria-hidden className="pointer-events-none absolute -right-16 -top-16 size-64 rounded-full bg-white/10 blur-3xl" />
         <div aria-hidden className="pointer-events-none absolute -bottom-12 left-1/3 size-48 rounded-full bg-white/8 blur-2xl" />
 
-        {/* Floating pills */}
+        {}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -108,7 +108,7 @@ export function DashboardHero({ userName, tripCount }: DashboardHeroProps) {
               : "Start planning your dream adventure today."}
           </motion.p>
 
-          {/* Search bar */}
+          {}
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}
             data-search-container className="relative">
             <div className={cn(
@@ -137,7 +137,7 @@ export function DashboardHero({ userName, tripCount }: DashboardHeroProps) {
               )}
             </div>
 
-            {/* Results dropdown */}
+            {}
             <AnimatePresence>
               {showDropdown && (
                 <motion.div
@@ -157,7 +157,7 @@ export function DashboardHero({ userName, tripCount }: DashboardHeroProps) {
                     </div>
                   ) : (
                     <div className="p-1.5 max-h-80 overflow-y-auto">
-                      {/* Trips */}
+                      {}
                       {results!.trips.length > 0 && (
                         <>
                           <p className="px-2 py-1.5 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">Trips</p>
@@ -173,7 +173,7 @@ export function DashboardHero({ userName, tripCount }: DashboardHeroProps) {
                           ))}
                         </>
                       )}
-                      {/* Stops */}
+                      {}
                       {results!.stops.length > 0 && (
                         <>
                           <p className="px-2 py-1.5 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">Cities</p>
@@ -189,7 +189,7 @@ export function DashboardHero({ userName, tripCount }: DashboardHeroProps) {
                           ))}
                         </>
                       )}
-                      {/* Activities */}
+                      {}
                       {results!.activities.length > 0 && (
                         <>
                           <p className="px-2 py-1.5 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">Activities</p>
@@ -212,7 +212,7 @@ export function DashboardHero({ userName, tripCount }: DashboardHeroProps) {
             </AnimatePresence>
           </motion.div>
 
-          {/* Quick actions */}
+          {}
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.38 }}
             className="mt-4 flex flex-wrap items-center gap-2">
             <Link href="/trips/new" className={cn(buttonVariants({ size: "sm" }),

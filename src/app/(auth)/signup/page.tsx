@@ -16,10 +16,10 @@ export default function SignupPage() {
   return (
     <FadeIn className="flex flex-col gap-5">
 
-      {/* Card */}
+      {}
       <div className="rounded-2xl border border-border bg-card/80 backdrop-blur-sm px-8 py-9 shadow-xl shadow-black/5">
 
-        {/* Header */}
+        {}
         <FadeIn direction="down" delay={0.05} className="mb-7 flex flex-col gap-1.5 text-center">
           <div className="mb-3 flex justify-center">
             <span className="text-3xl">🌍</span>
@@ -32,24 +32,24 @@ export default function SignupPage() {
           </p>
         </FadeIn>
 
-        {/* OAuth */}
+        {}
         <FadeIn delay={0.1}>
           <OAuthButtons />
         </FadeIn>
 
-        {/* Divider */}
+        {}
         <FadeIn direction="none" delay={0.15} className="my-5 flex items-center gap-3">
           <Separator className="flex-1" />
           <span className="text-xs text-muted-foreground font-medium">or sign up with email</span>
           <Separator className="flex-1" />
         </FadeIn>
 
-        {/* Form */}
+        {}
         <FadeIn delay={0.2}>
           <SignupForm />
         </FadeIn>
 
-        {/* Terms */}
+        {}
         <FadeIn direction="none" delay={0.28}>
           <p className="mt-5 text-center text-xs text-muted-foreground leading-relaxed">
             By signing up you agree to our{" "}
@@ -66,7 +66,7 @@ export default function SignupPage() {
 
       </div>
 
-      {/* Login link */}
+      {}
       <FadeIn direction="none" delay={0.32}>
         <p className="text-center text-sm text-muted-foreground">
           Already have an account?{" "}

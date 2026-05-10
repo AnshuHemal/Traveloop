@@ -48,7 +48,7 @@ export default async function ItineraryViewPage({ params, searchParams }: PagePr
 
   return (
     <div className="flex flex-col gap-6">
-      {/* View controls */}
+      {}
       <div className="flex items-center justify-between gap-4">
         <div>
           <h2 className="text-lg font-bold text-foreground">Full Itinerary</h2>
@@ -63,7 +63,7 @@ export default async function ItineraryViewPage({ params, searchParams }: PagePr
         </Suspense>
       </div>
 
-      {/* Main content */}
+      {}
       <div className="grid gap-8 lg:grid-cols-[1fr_280px]">
         <div>
           {currentView === "timeline" && (
@@ -81,7 +81,7 @@ export default async function ItineraryViewPage({ params, searchParams }: PagePr
           )}
         </div>
 
-        {/* Budget sidebar */}
+        {}
         <div className="flex flex-col gap-5">
           <BudgetSummary stops={trip.stops} currency={trip.currency} />
         </div>

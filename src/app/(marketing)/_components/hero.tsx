@@ -23,7 +23,7 @@ const BUDGET_ITEMS = [
 function TripMockup() {
   return (
     <div className="relative overflow-hidden rounded-2xl border border-border bg-card shadow-2xl shadow-black/10">
-      {/* Browser chrome */}
+      {}
       <div className="flex items-center gap-1.5 border-b border-border bg-muted/40 px-4 py-3">
         <span className="size-2.5 rounded-full bg-red-400/70" />
         <span className="size-2.5 rounded-full bg-yellow-400/70" />
@@ -35,7 +35,7 @@ function TripMockup() {
       </div>
 
       <div className="p-5">
-        {/* Trip header */}
+        {}
         <div className="mb-4 flex items-start justify-between">
           <div>
             <h3 className="text-base font-bold text-foreground">European Adventure</h3>
@@ -49,7 +49,7 @@ function TripMockup() {
           </span>
         </div>
 
-        {/* Stops */}
+        {}
         <div className="mb-4 flex flex-col gap-2">
           {TRIP_STOPS.map((stop, i) => (
             <motion.div
@@ -72,7 +72,7 @@ function TripMockup() {
           ))}
         </div>
 
-        {/* Budget breakdown */}
+        {}
         <div className="rounded-xl border border-border bg-muted/30 p-3">
           <div className="mb-2.5 flex items-center justify-between">
             <span className="text-xs font-semibold text-foreground">Budget Breakdown</span>
@@ -112,7 +112,7 @@ function TripMockup() {
 export function Hero() {
   return (
     <section className="relative overflow-hidden px-6 pb-16 pt-20 lg:pt-28">
-      {/* Background effects */}
+      {}
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/4 top-0 h-[600px] w-[800px] -translate-x-1/2 rounded-full bg-primary/8 blur-[100px]" />
         <div className="absolute right-0 top-1/3 h-[400px] w-[500px] rounded-full bg-primary/5 blur-[80px]" />
@@ -123,9 +123,9 @@ export function Hero() {
       <div className="relative mx-auto max-w-6xl">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
 
-          {/* Left: copy */}
+          {}
           <div className="flex flex-col items-start gap-6">
-            {/* Badge */}
+            {}
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -135,7 +135,7 @@ export function Hero() {
               ✈️ Personalized travel planning made easy
             </motion.div>
 
-            {/* Headline */}
+            {}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -152,7 +152,7 @@ export function Hero() {
               </p>
             </motion.div>
 
-            {/* Feature pills */}
+            {}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -175,7 +175,7 @@ export function Hero() {
               ))}
             </motion.div>
 
-            {/* CTAs */}
+            {}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -213,7 +213,7 @@ export function Hero() {
             </motion.p>
           </div>
 
-          {/* Right: mockup */}
+          {}
           <motion.div
             initial={{ opacity: 0, y: 40, rotateX: 8 }}
             animate={{ opacity: 1, y: 0, rotateX: 3 }}

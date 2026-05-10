@@ -154,7 +154,7 @@ export function VerifyEmailForm() {
     <FadeIn className="flex flex-col gap-5">
       <div className="rounded-2xl border border-border bg-card/80 backdrop-blur-sm px-8 py-9 shadow-xl shadow-black/5">
 
-        {/* Header */}
+        {}
         <FadeIn direction="down" delay={0.05} className="mb-7 flex flex-col items-center gap-3 text-center">
           <motion.div
             className="flex size-16 items-center justify-center rounded-2xl bg-primary/10 ring-1 ring-primary/20"
@@ -202,7 +202,7 @@ export function VerifyEmailForm() {
           </div>
         </FadeIn>
 
-        {/* OTP inputs */}
+        {}
         <FadeIn delay={0.1} className="mb-6">
           <div
             className="flex items-center justify-center gap-2"
@@ -244,7 +244,7 @@ export function VerifyEmailForm() {
             ))}
           </div>
 
-          {/* Progress bar */}
+          {}
           <div className="mt-4 h-1 w-full overflow-hidden rounded-full bg-border">
             <motion.div
               className={cn(
@@ -257,7 +257,7 @@ export function VerifyEmailForm() {
           </div>
         </FadeIn>
 
-        {/* Status messages */}
+        {}
         <AnimatePresence mode="wait">
           {status === "success" && (
             <motion.div
@@ -286,7 +286,7 @@ export function VerifyEmailForm() {
           )}
         </AnimatePresence>
 
-        {/* Verify button */}
+        {}
         <FadeIn delay={0.15}>
           <Button
             className="h-11 w-full font-semibold"
@@ -315,7 +315,7 @@ export function VerifyEmailForm() {
           </Button>
         </FadeIn>
 
-        {/* Resend */}
+        {}
         <FadeIn direction="none" delay={0.2} className="mt-4 text-center">
           <p className="text-sm text-muted-foreground">
             Didn&apos;t receive the code?{" "}
@@ -338,7 +338,7 @@ export function VerifyEmailForm() {
 
       </div>
 
-      {/* Back link */}
+      {}
       <FadeIn direction="none" delay={0.28}>
         <p className="text-center text-sm text-muted-foreground">
           Wrong email?{" "}

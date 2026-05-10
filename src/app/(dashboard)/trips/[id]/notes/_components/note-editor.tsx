@@ -85,7 +85,7 @@ export function NoteEditor({ tripId, stops, open, onClose, editNote }: NoteEdito
               colorCfg.border, colorCfg.bg,
             )}
           >
-            {/* Header */}
+            {}
             <div className="flex items-center justify-between border-b border-border/50 px-6 py-4">
               <div className="flex items-center gap-2.5">
                 <div className="flex size-8 items-center justify-center rounded-lg bg-primary/10">
@@ -107,7 +107,7 @@ export function NoteEditor({ tripId, stops, open, onClose, editNote }: NoteEdito
               {isEdit && <input type="hidden" name="noteId" value={editNote!.id} />}
 
               <div className="flex flex-col gap-5">
-                {/* Title */}
+                {}
                 <div className="flex flex-col gap-2">
                   <Label htmlFor="noteTitle" className="text-sm font-semibold">
                     <FileText className="size-3.5 text-primary" />
@@ -125,7 +125,7 @@ export function NoteEditor({ tripId, stops, open, onClose, editNote }: NoteEdito
                   {state.errors?.title && <p className="text-xs text-destructive">{state.errors.title[0]}</p>}
                 </div>
 
-                {/* Content */}
+                {}
                 <div className="flex flex-col gap-2">
                   <Label htmlFor="noteContent" className="text-sm font-semibold">
                     Content <span className="text-destructive">*</span>
@@ -141,7 +141,7 @@ export function NoteEditor({ tripId, stops, open, onClose, editNote }: NoteEdito
                   {state.errors?.content && <p className="text-xs text-destructive">{state.errors.content[0]}</p>}
                 </div>
 
-                {/* Stop + Date row */}
+                {}
                 <div className="grid grid-cols-2 gap-3">
                   {stops.length > 0 && (
                     <div className="flex flex-col gap-2">
@@ -180,7 +180,7 @@ export function NoteEditor({ tripId, stops, open, onClose, editNote }: NoteEdito
                   </div>
                 </div>
 
-                {/* Color picker */}
+                {}
                 <div className="flex flex-col gap-2">
                   <Label className="text-sm font-semibold">Note color</Label>
                   <div className="flex gap-2">
@@ -201,7 +201,7 @@ export function NoteEditor({ tripId, stops, open, onClose, editNote }: NoteEdito
                   </div>
                 </div>
 
-                {/* Pin toggle */}
+                {}
                 <label className="flex cursor-pointer items-center gap-3 rounded-xl border border-border bg-muted/30 px-4 py-3">
                   <div
                     onClick={() => setPinned((v) => !v)}

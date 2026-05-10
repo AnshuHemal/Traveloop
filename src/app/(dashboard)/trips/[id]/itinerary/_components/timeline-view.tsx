@@ -61,9 +61,9 @@ export function TimelineView({ stops, currency }: TimelineViewProps) {
 
         return (
           <div key={stop.id} className="flex gap-5">
-            {/* Timeline spine */}
+            {}
             <div className="flex flex-col items-center">
-              {/* Dot */}
+              {}
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
@@ -75,7 +75,7 @@ export function TimelineView({ stops, currency }: TimelineViewProps) {
               >
                 {emoji}
               </motion.div>
-              {/* Connector line */}
+              {}
               {!isLast && (
                 <motion.div
                   initial={{ scaleY: 0 }}
@@ -87,14 +87,14 @@ export function TimelineView({ stops, currency }: TimelineViewProps) {
               )}
             </div>
 
-            {/* Stop content */}
+            {}
             <motion.div
               initial={{ opacity: 0, x: 16 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.4, delay: stopIdx * 0.1 }}
               className={cn("flex-1 pb-8", isLast && "pb-0")}
             >
-              {/* Stop header */}
+              {}
               <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                 <div>
                   <div className="flex items-center gap-2">
@@ -109,7 +109,7 @@ export function TimelineView({ stops, currency }: TimelineViewProps) {
                   <p className="text-sm text-muted-foreground">{stop.countryName}</p>
                 </div>
 
-                {/* Meta */}
+                {}
                 <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
                   {dateRange && (
                     <span className="flex items-center gap-1 rounded-lg border border-border bg-muted/50 px-2.5 py-1">
@@ -130,14 +130,14 @@ export function TimelineView({ stops, currency }: TimelineViewProps) {
                 </div>
               </div>
 
-              {/* Notes */}
+              {}
               {stop.notes && (
                 <div className="mb-4 rounded-xl border border-border bg-muted/30 px-4 py-3">
                   <p className="text-xs text-muted-foreground leading-relaxed">📝 {stop.notes}</p>
                 </div>
               )}
 
-              {/* Activities */}
+              {}
               {stop.activities.length > 0 ? (
                 <div className="flex flex-col gap-3">
                   {stop.activities

@@ -1,6 +1,4 @@
-// ─── Static city database ─────────────────────────────────────────────────────
-// Cost index: 1 (very cheap) → 5 (very expensive)
-// Popularity: 1 (hidden gem) → 5 (world-famous)
+
 
 export interface CityData {
   id: string;
@@ -10,9 +8,9 @@ export interface CityData {
   region: string;
   emoji: string;
   description: string;
-  costIndex: number;       // 1–5
-  popularity: number;      // 1–5
-  avgDailyBudget: number;  // USD
+  costIndex: number;
+  popularity: number;
+  avgDailyBudget: number;
   bestMonths: string[];
   tags: string[];
   highlights: string[];
@@ -20,7 +18,7 @@ export interface CityData {
 }
 
 export const CITIES: CityData[] = [
-  // ── Europe ──────────────────────────────────────────────────────────────────
+
   {
     id: "paris",
     name: "Paris",
@@ -150,7 +148,6 @@ export const CITIES: CityData[] = [
     gradient: "from-indigo-500/20 via-indigo-500/10 to-transparent",
   },
 
-  // ── Asia ─────────────────────────────────────────────────────────────────────
   {
     id: "tokyo",
     name: "Tokyo",
@@ -248,7 +245,6 @@ export const CITIES: CityData[] = [
     gradient: "from-orange-500/20 via-orange-500/10 to-transparent",
   },
 
-  // ── Americas ──────────────────────────────────────────────────────────────────
   {
     id: "new-york",
     name: "New York",
@@ -298,7 +294,6 @@ export const CITIES: CityData[] = [
     gradient: "from-yellow-500/20 via-yellow-500/10 to-transparent",
   },
 
-  // ── Africa & Oceania ──────────────────────────────────────────────────────────
   {
     id: "sydney",
     name: "Sydney",
@@ -363,7 +358,6 @@ export function filterCities(
 ): CityData[] {
   let result = [...cities];
 
-  // Search
   if (query.trim()) {
     const q = query.toLowerCase();
     result = result.filter(
@@ -376,17 +370,14 @@ export function filterCities(
     );
   }
 
-  // Region filter
   if (region && region !== "All") {
     result = result.filter((c) => c.region === region);
   }
 
-  // Cost filter
   if (maxCost > 0 && maxCost < 5) {
     result = result.filter((c) => c.costIndex <= maxCost);
   }
 
-  // Sort
   switch (sortBy) {
     case "popularity":
       result.sort((a, b) => b.popularity - a.popularity);
