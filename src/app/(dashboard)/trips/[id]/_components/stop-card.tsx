@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "motion/react";
 import {
   MapPin, Calendar, Moon, Trash2, Plus,
   ChevronDown, ChevronUp, GripVertical,
-  Loader2, FileText, DollarSign,
+  Loader2, FileText, DollarSign, Pencil,
 } from "lucide-react";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
@@ -14,6 +14,7 @@ import { format } from "date-fns";
 import { deleteStop } from "../actions";
 import { ActivityItem } from "./activity-item";
 import { AddActivityModal } from "./add-activity-modal";
+import { EditStopModal } from "./edit-stop-modal";
 
 const DESTINATION_EMOJIS: Record<string, string> = {
   France: "🗼", Italy: "🏛️", Spain: "🎨", Portugal: "🌊",
@@ -66,6 +67,7 @@ export function StopCard({
 }: StopCardProps) {
   const [expanded, setExpanded] = useState(true);
   const [showAddActivity, setShowAddActivity] = useState(false);
+  const [showEditStop, setShowEditStop] = useState(false);
   const [isPending, startTransition] = useTransition();
 
   const emoji = DESTINATION_EMOJIS[stop.countryName] ?? "📍";
@@ -150,6 +152,13 @@ export function StopCard({
 
             {/* Actions */}
             <div className="flex items-center gap-1">
+              <button
+                onClick={() => setShowEditStop(true)}
+                className="flex size-8 items-center justify-center rounded-lg text-muted-foreground hover:bg-black/10 hover:text-foreground transition-colors"
+                title="Edit stop"
+              >
+                <Pencil className="size-4" />
+              </button>
               <button
                 onClick={() => setExpanded((v) => !v)}
                 className="flex size-8 items-center justify-center rounded-lg text-muted-foreground hover:bg-black/10 hover:text-foreground transition-colors"
@@ -265,6 +274,7 @@ export function StopCard({
                             key={activity.id}
                             activity={activity}
                             tripId={tripId}
+                            stopName={stop.cityName}
                             index={i}
                           />
                         ))}
@@ -294,6 +304,14 @@ export function StopCard({
         stopName={stop.cityName}
         open={showAddActivity}
         onClose={() => setShowAddActivity(false)}
+      />
+
+      {/* Edit stop modal */}
+      <EditStopModal
+        stop={stop}
+        tripId={tripId}
+        open={showEditStop}
+        onClose={() => setShowEditStop(false)}
       />
     </>
   );

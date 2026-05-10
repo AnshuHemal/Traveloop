@@ -82,7 +82,7 @@ export function TopDestinations() {
       </motion.div>
 
       {/* Horizontal scroll on mobile, grid on desktop */}
-      <div className="flex gap-3 overflow-x-auto pb-2 sm:grid sm:grid-cols-5 sm:overflow-visible sm:pb-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div className="flex gap-3 overflow-x-auto pb-2 sm:grid sm:grid-cols-5 sm:overflow-visible sm:pb-0 scrollbar-none [&::-webkit-scrollbar]:hidden">
         {DESTINATIONS.map((dest, i) => (
           <motion.div
             key={dest.city}

@@ -280,3 +280,146 @@ export async function updateTripStatus(
   revalidatePath(`/trips/${tripId}`);
   return {};
 }
+
+// ── Full trip update (edit page) ──────────────────────────────────────────────
+
+const UpdateTripSchema = z.object({
+  tripId:      z.string(),
+  title:       z.string().min(1, "Trip name is required").max(100),
+  description: z.string().max(500).optional(),
+  startDate:   z.string().optional(),
+  endDate:     z.string().optional(),
+  currency:    z.string().default("USD"),
+  visibility:  z.enum(["PRIVATE", "PUBLIC"]).default("PRIVATE"),
+  coverImage:  z.string().optional(),
+});
+
+export type UpdateTripState = {
+  errors?: Partial<Record<keyof z.infer<typeof UpdateTripSchema>, string[]>>;
+  message?: string;
+  success?: boolean;
+};
+
+export async function updateTrip(
+  _prev: UpdateTripState,
+  formData: FormData,
+): Promise<UpdateTripState> {
+  const user = await requireUser();
+
+  const raw = {
+    tripId:      formData.get("tripId"),
+    title:       formData.get("title"),
+    description: formData.get("description"),
+    startDate:   formData.get("startDate"),
+    endDate:     formData.get("endDate"),
+    currency:    formData.get("currency") ?? "USD",
+    visibility:  formData.get("visibility") ?? "PRIVATE",
+    coverImage:  formData.get("coverImage"),
+  };
+
+  const parsed = UpdateTripSchema.safeParse(raw);
+  if (!parsed.success) return { errors: parsed.error.flatten().fieldErrors };
+
+  const { tripId, title, description, startDate, endDate, currency, visibility, coverImage } =
+    parsed.data;
+
+  if (startDate && endDate && new Date(startDate) > new Date(endDate)) {
+    return { errors: { endDate: ["End date must be after start date"] } };
+  }
+
+  try {
+    await assertTripOwner(tripId, user.id);
+    await prisma.trip.update({
+      where: { id: tripId },
+      data: {
+        title:       title.trim(),
+        description: description?.trim() || null,
+        startDate:   startDate ? new Date(startDate) : null,
+        endDate:     endDate   ? new Date(endDate)   : null,
+        currency,
+        visibility:  visibility as "PRIVATE" | "PUBLIC",
+        coverImage:  coverImage || null,
+      },
+    });
+  } catch (e) {
+    return { message: e instanceof Error ? e.message : "Failed to update trip." };
+  }
+
+  revalidatePath(`/trips/${tripId}`);
+  revalidatePath(`/trips/${tripId}/edit`);
+  revalidatePath("/trips");
+  revalidatePath("/dashboard");
+  return { success: true };
+}
+
+// ── Update activity ───────────────────────────────────────────────────────────
+
+const UpdateActivitySchema = z.object({
+  activityId:  z.string(),
+  tripId:      z.string(),
+  name:        z.string().min(1, "Activity name is required").max(200),
+  description: z.string().max(500).optional(),
+  category:    z.enum([
+    "SIGHTSEEING","FOOD","TRANSPORT","ACCOMMODATION",
+    "ADVENTURE","CULTURE","SHOPPING","NIGHTLIFE","WELLNESS","OTHER",
+  ]).default("SIGHTSEEING"),
+  date:        z.string().optional(),
+  startTime:   z.string().optional(),
+  endTime:     z.string().optional(),
+  cost:        z.coerce.number().min(0).default(0),
+  booked:      z.coerce.boolean().default(false),
+});
+
+export type UpdateActivityState = {
+  errors?: Partial<Record<string, string[]>>;
+  message?: string;
+  success?: boolean;
+};
+
+export async function updateActivity(
+  _prev: UpdateActivityState,
+  formData: FormData,
+): Promise<UpdateActivityState> {
+  const user = await requireUser();
+
+  const raw = {
+    activityId:  formData.get("activityId"),
+    tripId:      formData.get("tripId"),
+    name:        formData.get("name"),
+    description: formData.get("description"),
+    category:    formData.get("category") ?? "SIGHTSEEING",
+    date:        formData.get("date"),
+    startTime:   formData.get("startTime"),
+    endTime:     formData.get("endTime"),
+    cost:        formData.get("cost") ?? "0",
+    booked:      formData.get("booked") ?? "false",
+  };
+
+  const parsed = UpdateActivitySchema.safeParse(raw);
+  if (!parsed.success) return { errors: parsed.error.flatten().fieldErrors };
+
+  const { activityId, tripId, name, description, category, date, startTime, endTime, cost, booked } =
+    parsed.data;
+
+  try {
+    await assertTripOwner(tripId, user.id);
+    await prisma.activity.update({
+      where: { id: activityId },
+      data: {
+        name:        name.trim(),
+        description: description?.trim() || null,
+        category:    category as "SIGHTSEEING" | "FOOD" | "TRANSPORT" | "ACCOMMODATION" | "ADVENTURE" | "CULTURE" | "SHOPPING" | "NIGHTLIFE" | "WELLNESS" | "OTHER",
+        date:        date ? new Date(date) : null,
+        startTime:   startTime || null,
+        endTime:     endTime   || null,
+        cost,
+        booked,
+      },
+    });
+  } catch (e) {
+    return { message: e instanceof Error ? e.message : "Failed to update activity." };
+  }
+
+  revalidatePath(`/trips/${tripId}`);
+  return { success: true };
+}
