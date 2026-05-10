@@ -38,8 +38,7 @@ export default async function ItineraryViewPage({ params, searchParams }: PagePr
     },
   });
 
-  if (!trip) notFound();
-  if (trip.userId !== user.id) notFound();
+  if (!trip || trip.userId !== user.id) notFound();
 
   const totalActivities = trip.stops.reduce((acc, s) => acc + s.activities.length, 0);
 
