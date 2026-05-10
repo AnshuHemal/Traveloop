@@ -15,6 +15,7 @@ import { deleteStop } from "../actions";
 import { ActivityItem } from "./activity-item";
 import { AddActivityModal } from "./add-activity-modal";
 import { EditStopModal } from "./edit-stop-modal";
+import { formatCurrency } from "@/lib/currency";
 
 const DESTINATION_EMOJIS: Record<string, string> = {
   France: "🗼", Italy: "🏛️", Spain: "🎨", Portugal: "🌊",
@@ -56,6 +57,7 @@ interface StopCardProps {
       currency: string;
       booked: boolean;
     }[];
+    expenses?: { amount: number }[];
   };
   tripId: string;
   tripCurrency: string;
@@ -73,8 +75,10 @@ export function StopCard({
   const emoji = DESTINATION_EMOJIS[stop.countryName] ?? "📍";
   const gradient = STOP_GRADIENTS[index % STOP_GRADIENTS.length];
 
-  const totalCost = stop.activities.reduce((acc, a) => acc + a.cost, 0);
-  const bookedCount = stop.activities.filter((a) => a.booked).length;
+  const activityCost = stop.activities.reduce((acc, a) => acc + a.cost, 0);
+  const expenseCost  = (stop.expenses ?? []).reduce((acc, e) => acc + e.amount, 0);
+  const totalCost    = activityCost + expenseCost;
+  const bookedCount  = stop.activities.filter((a) => a.booked).length;
 
   const dateRange = stop.arrivalDate && stop.departureDate
     ? `${format(new Date(stop.arrivalDate), "MMM d")} – ${format(new Date(stop.departureDate), "MMM d, yyyy")}`
@@ -145,7 +149,7 @@ export function StopCard({
               {totalCost > 0 && (
                 <span className="flex items-center gap-1 rounded-full bg-background/70 px-2.5 py-1 text-xs font-medium text-foreground backdrop-blur-sm">
                   <DollarSign className="size-3 text-primary" />
-                  {totalCost.toLocaleString()}
+                  {formatCurrency(totalCost, tripCurrency)}
                 </span>
               )}
             </div>
@@ -284,11 +288,26 @@ export function StopCard({
 
                 {/* Stop budget summary */}
                 {totalCost > 0 && (
-                  <div className="mt-4 flex items-center justify-between rounded-xl bg-muted/30 px-4 py-2.5">
-                    <span className="text-xs text-muted-foreground">Stop total</span>
-                    <span className="text-sm font-bold text-foreground">
-                      {tripCurrency} {totalCost.toLocaleString()}
-                    </span>
+                  <div className="mt-4 flex flex-col gap-1.5 rounded-xl bg-muted/30 px-4 py-3">
+                    {activityCost > 0 && expenseCost > 0 && (
+                      <>
+                        <div className="flex items-center justify-between text-xs text-muted-foreground">
+                          <span>🎭 Activities</span>
+                          <span>{formatCurrency(activityCost, tripCurrency)}</span>
+                        </div>
+                        <div className="flex items-center justify-between text-xs text-muted-foreground">
+                          <span>🧾 Expenses</span>
+                          <span>{formatCurrency(expenseCost, tripCurrency)}</span>
+                        </div>
+                        <div className="my-1 h-px bg-border" />
+                      </>
+                    )}
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs text-muted-foreground">Stop total</span>
+                      <span className="text-sm font-bold text-foreground">
+                        {formatCurrency(totalCost, tripCurrency)}
+                      </span>
+                    </div>
                   </div>
                 )}
               </div>

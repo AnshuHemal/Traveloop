@@ -52,12 +52,14 @@ export function TripActionsMenu({ trip }: TripActionsMenuProps) {
       const result = await duplicateTrip(trip.id);
       if (result.error) {
         toast.error(result.error);
+        setPendingAction(null);
+        close();
       } else {
-        toast.success("Trip duplicated!");
-        router.push(`/trips/${result.id}`);
+        toast.success("Trip duplicated! Opening edit page…");
+        close();
+        // Hard navigate so the new trip's layout loads fresh
+        window.location.href = `/trips/${result.id}/edit`;
       }
-      setPendingAction(null);
-      close();
     });
   }
 

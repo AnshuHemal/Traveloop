@@ -6,10 +6,9 @@ import { motion, AnimatePresence } from "motion/react";
 import {
   ChevronLeft, Globe, Lock, Calendar,
   MapPin, DollarSign, ChevronDown, CheckCircle2,
-  Clock, Loader2, Share2,
+  Loader2,
 } from "lucide-react";
 import { toast } from "sonner";
-import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { updateTripStatus } from "../actions";
@@ -65,15 +64,6 @@ export function TripHeader({ trip }: TripHeaderProps) {
 
   return (
     <div className="flex flex-col gap-4">
-      {/* Back link */}
-      <Link
-        href="/trips"
-        className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
-      >
-        <ChevronLeft className="size-4" />
-        Back to trips
-      </Link>
-
       {/* Hero banner */}
       <div className={cn(
         "relative overflow-hidden rounded-2xl bg-linear-to-br px-6 py-8 sm:px-8 sm:py-10",
@@ -183,26 +173,14 @@ export function TripHeader({ trip }: TripHeaderProps) {
             </div>
           </div>
 
-          {/* Right: action buttons */}
+          {/* Right: action buttons — removed, tabs handle navigation */}
           <div className="flex flex-wrap items-center gap-2">
             <Link
-              href={`/trips/${trip.id}/edit`}
+              href="/trips"
               className="flex items-center gap-1.5 rounded-xl border border-border bg-background/80 px-4 py-2 text-sm font-medium text-foreground backdrop-blur-sm hover:bg-background transition-colors"
             >
-              Edit trip
-            </Link>
-            <Link
-              href={`/trips/${trip.id}/budget`}
-              className="flex items-center gap-1.5 rounded-xl border border-border bg-background/80 px-4 py-2 text-sm font-medium text-foreground backdrop-blur-sm hover:bg-background transition-colors"
-            >
-              Budget
-            </Link>
-            <Link
-              href={`/trips/${trip.id}/share`}
-              className="flex items-center gap-1.5 rounded-xl border border-border bg-background/80 px-4 py-2 text-sm font-medium text-foreground backdrop-blur-sm hover:bg-background transition-colors"
-            >
-              <Share2 className="size-4" />
-              Share
+              <ChevronLeft className="size-3.5" />
+              All trips
             </Link>
           </div>
         </div>

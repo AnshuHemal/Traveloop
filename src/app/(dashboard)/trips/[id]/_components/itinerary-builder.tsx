@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import { StopCard } from "./stop-card";
 import { AddStopModal } from "./add-stop-modal";
 import { reorderStops } from "../actions";
+import { formatCurrency } from "@/lib/currency";
 
 interface Stop {
   id: string;
@@ -31,6 +32,7 @@ interface Stop {
     currency: string;
     booked: boolean;
   }[];
+  expenses?: { amount: number }[];
 }
 
 interface ItineraryBuilderProps {
@@ -65,7 +67,10 @@ export function ItineraryBuilder({
   );
 
   const totalBudget = stops.reduce(
-    (acc, stop) => acc + stop.activities.reduce((a, act) => a + act.cost, 0),
+    (acc, stop) =>
+      acc +
+      stop.activities.reduce((a, act) => a + act.cost, 0) +
+      (stop.expenses ?? []).reduce((a, e) => a + e.amount, 0),
     0,
   );
 
@@ -106,7 +111,7 @@ export function ItineraryBuilder({
               <div className="flex items-center gap-1.5 text-sm">
                 <span className="text-lg">💰</span>
                 <span className="font-semibold text-foreground">
-                  {tripCurrency} {totalBudget.toLocaleString()}
+                  {formatCurrency(totalBudget, tripCurrency)}
                 </span>
                 <span className="text-muted-foreground">estimated</span>
               </div>

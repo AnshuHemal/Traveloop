@@ -5,7 +5,8 @@ import { motion, AnimatePresence } from "motion/react";
 import { Plus, DollarSign, TrendingUp, PieChart } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { BudgetDonut } from "./budget-chart";
+import { BudgetDonut, BudgetBarChart } from "./budget-chart";
+import { formatCurrency } from "@/lib/currency";
 import { ExpenseRow } from "./expense-row";
 import { AddExpenseModal } from "./add-expense-modal";
 
@@ -95,9 +96,9 @@ export function BudgetClient({ tripId, currency, stops }: BudgetClientProps) {
       {/* Stats row */}
       <div className="grid grid-cols-3 gap-4">
         {[
-          { icon: DollarSign, label: "Grand total",    value: `${currency} ${grandTotal.toLocaleString()}`,  color: "text-primary",    bg: "bg-primary/10" },
-          { icon: TrendingUp, label: "Activities",     value: `${currency} ${activityTotal.toLocaleString()}`, color: "text-violet-500", bg: "bg-violet-500/10" },
-          { icon: PieChart,   label: "Other expenses", value: `${currency} ${expenseTotal.toLocaleString()}`,  color: "text-amber-500",  bg: "bg-amber-500/10" },
+          { icon: DollarSign, label: "Grand total",    value: formatCurrency(grandTotal,    currency), color: "text-primary",    bg: "bg-primary/10" },
+          { icon: TrendingUp, label: "Activities",     value: formatCurrency(activityTotal, currency), color: "text-violet-500", bg: "bg-violet-500/10" },
+          { icon: PieChart,   label: "Other expenses", value: formatCurrency(expenseTotal,  currency), color: "text-amber-500",  bg: "bg-amber-500/10" },
         ].map((stat, i) => (
           <motion.div
             key={stat.label}
@@ -153,55 +154,66 @@ export function BudgetClient({ tripId, currency, stops }: BudgetClientProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="grid gap-6 lg:grid-cols-2"
+            className="flex flex-col gap-6"
           >
-            {/* Donut chart */}
-            <div className="rounded-2xl border border-border bg-card p-6">
-              <h3 className="mb-4 font-bold text-foreground">Spending breakdown</h3>
-              <BudgetDonut slices={donutSlices} total={grandTotal} currency={currency} />
+            {/* Top row: donut + category bars */}
+            <div className="grid gap-6 lg:grid-cols-2">
+              {/* Recharts Donut */}
+              <div className="rounded-2xl border border-border bg-card p-6">
+                <h3 className="mb-4 font-bold text-foreground">Spending breakdown</h3>
+                <BudgetDonut slices={donutSlices} total={grandTotal} currency={currency} />
+              </div>
+
+              {/* Category list */}
+              <div className="rounded-2xl border border-border bg-card p-6">
+                <h3 className="mb-4 font-bold text-foreground">By category</h3>
+                {donutSlices.length === 0 ? (
+                  <div className="flex flex-col items-center gap-2 py-8 text-center">
+                    <span className="text-4xl">💸</span>
+                    <p className="text-sm text-muted-foreground">No expenses yet</p>
+                  </div>
+                ) : (
+                  <div className="flex flex-col gap-3">
+                    {donutSlices.map((slice, i) => {
+                      const pct = grandTotal > 0 ? (slice.value / grandTotal) * 100 : 0;
+                      return (
+                        <div key={slice.label} className="flex items-center gap-3">
+                          <span className="text-xl w-7 shrink-0">{slice.emoji}</span>
+                          <div className="flex-1">
+                            <div className="flex items-center justify-between mb-1">
+                              <span className="text-sm font-medium text-foreground">{slice.label}</span>
+                              <span className="text-sm font-bold text-foreground">
+                                {formatCurrency(slice.value, currency)}
+                              </span>
+                            </div>
+                            <div className="h-2 overflow-hidden rounded-full bg-muted">
+                              <motion.div
+                                className="h-full rounded-full"
+                                style={{ backgroundColor: slice.color }}
+                                initial={{ width: 0 }}
+                                animate={{ width: `${pct}%` }}
+                                transition={{ duration: 0.6, delay: 0.2 + i * 0.07, ease: "easeOut" }}
+                              />
+                            </div>
+                          </div>
+                          <span className="w-10 shrink-0 text-right text-xs text-muted-foreground">
+                            {Math.round(pct)}%
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
             </div>
 
-            {/* Category list */}
-            <div className="rounded-2xl border border-border bg-card p-6">
-              <h3 className="mb-4 font-bold text-foreground">By category</h3>
-              {donutSlices.length === 0 ? (
-                <div className="flex flex-col items-center gap-2 py-8 text-center">
-                  <span className="text-4xl">💸</span>
-                  <p className="text-sm text-muted-foreground">No expenses yet</p>
-                </div>
-              ) : (
-                <div className="flex flex-col gap-3">
-                  {donutSlices.map((slice, i) => {
-                    const pct = grandTotal > 0 ? (slice.value / grandTotal) * 100 : 0;
-                    return (
-                      <div key={slice.label} className="flex items-center gap-3">
-                        <span className="text-xl w-7 shrink-0">{slice.emoji}</span>
-                        <div className="flex-1">
-                          <div className="flex items-center justify-between mb-1">
-                            <span className="text-sm font-medium text-foreground">{slice.label}</span>
-                            <span className="text-sm font-bold text-foreground">
-                              {currency} {slice.value.toLocaleString()}
-                            </span>
-                          </div>
-                          <div className="h-2 overflow-hidden rounded-full bg-muted">
-                            <motion.div
-                              className="h-full rounded-full"
-                              style={{ backgroundColor: slice.color }}
-                              initial={{ width: 0 }}
-                              animate={{ width: `${pct}%` }}
-                              transition={{ duration: 0.6, delay: 0.2 + i * 0.07, ease: "easeOut" }}
-                            />
-                          </div>
-                        </div>
-                        <span className="w-10 shrink-0 text-right text-xs text-muted-foreground">
-                          {Math.round(pct)}%
-                        </span>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-            </div>
+            {/* Recharts Bar chart by stop */}
+            {byStop.length > 1 && (
+              <div className="rounded-2xl border border-border bg-card p-6">
+                <h3 className="mb-4 font-bold text-foreground">Budget by city</h3>
+                <BudgetBarChart data={byStop} currency={currency} />
+              </div>
+            )}
           </motion.div>
         )}
 
@@ -236,7 +248,7 @@ export function BudgetClient({ tripId, currency, stops }: BudgetClientProps) {
                 </AnimatePresence>
                 <div className="mt-3 flex items-center justify-between rounded-xl bg-muted/30 px-4 py-3">
                   <span className="text-sm font-semibold text-foreground">Total expenses</span>
-                  <span className="text-base font-bold text-foreground">{currency} {expenseTotal.toLocaleString()}</span>
+                  <span className="text-base font-bold text-foreground">{formatCurrency(expenseTotal, currency)}</span>
                 </div>
               </div>
             )}
@@ -269,19 +281,19 @@ export function BudgetClient({ tripId, currency, stops }: BudgetClientProps) {
                 >
                   <div className="mb-3 flex items-center justify-between">
                     <h3 className="font-bold text-foreground">{stop.name}</h3>
-                    <span className="text-base font-bold text-primary">{currency} {stop.total.toLocaleString()}</span>
+                    <span className="text-base font-bold text-primary">{formatCurrency(stop.total, currency)}</span>
                   </div>
                   <div className="flex flex-col gap-2">
                     {stop.activities > 0 && (
                       <div className="flex items-center justify-between text-sm">
                         <span className="flex items-center gap-2 text-muted-foreground"><span>🎭</span> Activities</span>
-                        <span className="font-medium text-foreground">{currency} {stop.activities.toLocaleString()}</span>
+                        <span className="font-medium text-foreground">{formatCurrency(stop.activities, currency)}</span>
                       </div>
                     )}
                     {stop.expenses > 0 && (
                       <div className="flex items-center justify-between text-sm">
                         <span className="flex items-center gap-2 text-muted-foreground"><span>🧾</span> Expenses</span>
-                        <span className="font-medium text-foreground">{currency} {stop.expenses.toLocaleString()}</span>
+                        <span className="font-medium text-foreground">{formatCurrency(stop.expenses, currency)}</span>
                       </div>
                     )}
                   </div>

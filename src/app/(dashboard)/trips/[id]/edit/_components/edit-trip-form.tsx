@@ -279,7 +279,7 @@ export function EditTripForm({ trip }: EditTripFormProps) {
           >
             <button
               type="button"
-              onClick={() => router.push(`/trips/${trip.id}`)}
+              onClick={() => router.back()}
               disabled={isPending}
               className={cn(buttonVariants({ variant: "outline" }), "flex-1 h-12")}
             >
