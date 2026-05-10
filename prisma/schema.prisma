@@ -90,6 +90,8 @@ model Trip {
 
   user  User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   stops Stop[]
+  packingList PackingList?
+  notes TripNote[]
 
   @@index([userId])
   @@map("trips")
@@ -127,6 +129,7 @@ model Stop {
   trip       Trip       @relation(fields: [tripId], references: [id], onDelete: Cascade)
   activities Activity[]
   expenses   Expense[]
+  tripNotes  TripNote[]
 
   @@index([tripId])
   @@map("stops")
@@ -193,4 +196,80 @@ enum ExpenseCategory {
   VISA
   INSURANCE
   MISC
+}
+
+// ─── Packing Checklist ────────────────────────────────────────────────────────
+
+model PackingList {
+  id        String   @id @default(cuid())
+  tripId    String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  trip  Trip          @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  items PackingItem[]
+
+  @@map("packing_lists")
+}
+
+model PackingItem {
+  id             String              @id @default(cuid())
+  packingListId  String
+  name           String
+  category       PackingCategory     @default(OTHER)
+  packed         Boolean             @default(false)
+  essential      Boolean             @default(false)
+  quantity       Int                 @default(1)
+  notes          String?
+  order          Int                 @default(0)
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
+
+  packingList PackingList @relation(fields: [packingListId], references: [id], onDelete: Cascade)
+
+  @@index([packingListId])
+  @@map("packing_items")
+}
+
+enum PackingCategory {
+  DOCUMENTS
+  CLOTHING
+  ELECTRONICS
+  TOILETRIES
+  HEALTH
+  MONEY
+  ENTERTAINMENT
+  FOOD_SNACKS
+  OTHER
+}
+
+// ─── Trip Notes / Journal ─────────────────────────────────────────────────────
+
+model TripNote {
+  id        String    @id @default(cuid())
+  tripId    String
+  stopId    String?
+  title     String
+  content   String
+  color     NoteColor @default(DEFAULT)
+  pinned    Boolean   @default(false)
+  date      DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  trip Trip  @relation(fields: [tripId], references: [id], onDelete: Cascade)
+  stop Stop? @relation(fields: [stopId], references: [id], onDelete: SetNull)
+
+  @@index([tripId])
+  @@index([stopId])
+  @@map("trip_notes")
+}
+
+enum NoteColor {
+  DEFAULT
+  YELLOW
+  GREEN
+  BLUE
+  PINK
+  PURPLE
 }

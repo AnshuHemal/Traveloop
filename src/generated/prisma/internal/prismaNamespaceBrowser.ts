@@ -58,7 +58,10 @@ export const ModelName = {
   Trip: 'Trip',
   Stop: 'Stop',
   Activity: 'Activity',
-  Expense: 'Expense'
+  Expense: 'Expense',
+  PackingList: 'PackingList',
+  PackingItem: 'PackingItem',
+  TripNote: 'TripNote'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -207,6 +210,49 @@ export const ExpenseScalarFieldEnum = {
 } as const
 
 export type ExpenseScalarFieldEnum = (typeof ExpenseScalarFieldEnum)[keyof typeof ExpenseScalarFieldEnum]
+
+
+export const PackingListScalarFieldEnum = {
+  id: 'id',
+  tripId: 'tripId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PackingListScalarFieldEnum = (typeof PackingListScalarFieldEnum)[keyof typeof PackingListScalarFieldEnum]
+
+
+export const PackingItemScalarFieldEnum = {
+  id: 'id',
+  packingListId: 'packingListId',
+  name: 'name',
+  category: 'category',
+  packed: 'packed',
+  essential: 'essential',
+  quantity: 'quantity',
+  notes: 'notes',
+  order: 'order',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PackingItemScalarFieldEnum = (typeof PackingItemScalarFieldEnum)[keyof typeof PackingItemScalarFieldEnum]
+
+
+export const TripNoteScalarFieldEnum = {
+  id: 'id',
+  tripId: 'tripId',
+  stopId: 'stopId',
+  title: 'title',
+  content: 'content',
+  color: 'color',
+  pinned: 'pinned',
+  date: 'date',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TripNoteScalarFieldEnum = (typeof TripNoteScalarFieldEnum)[keyof typeof TripNoteScalarFieldEnum]
 
 
 export const SortOrder = {

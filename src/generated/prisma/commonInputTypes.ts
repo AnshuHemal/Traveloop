@@ -297,6 +297,40 @@ export type EnumExpenseCategoryWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumExpenseCategoryFilter<$PrismaModel>
 }
 
+export type EnumPackingCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.PackingCategory | Prisma.EnumPackingCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.PackingCategory[] | Prisma.ListEnumPackingCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PackingCategory[] | Prisma.ListEnumPackingCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPackingCategoryFilter<$PrismaModel> | $Enums.PackingCategory
+}
+
+export type EnumPackingCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.PackingCategory | Prisma.EnumPackingCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.PackingCategory[] | Prisma.ListEnumPackingCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PackingCategory[] | Prisma.ListEnumPackingCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPackingCategoryWithAggregatesFilter<$PrismaModel> | $Enums.PackingCategory
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumPackingCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumPackingCategoryFilter<$PrismaModel>
+}
+
+export type EnumNoteColorFilter<$PrismaModel = never> = {
+  equals?: $Enums.NoteColor | Prisma.EnumNoteColorFieldRefInput<$PrismaModel>
+  in?: $Enums.NoteColor[] | Prisma.ListEnumNoteColorFieldRefInput<$PrismaModel>
+  notIn?: $Enums.NoteColor[] | Prisma.ListEnumNoteColorFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumNoteColorFilter<$PrismaModel> | $Enums.NoteColor
+}
+
+export type EnumNoteColorWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.NoteColor | Prisma.EnumNoteColorFieldRefInput<$PrismaModel>
+  in?: $Enums.NoteColor[] | Prisma.ListEnumNoteColorFieldRefInput<$PrismaModel>
+  notIn?: $Enums.NoteColor[] | Prisma.ListEnumNoteColorFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumNoteColorWithAggregatesFilter<$PrismaModel> | $Enums.NoteColor
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumNoteColorFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumNoteColorFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -580,6 +614,40 @@ export type NestedEnumExpenseCategoryWithAggregatesFilter<$PrismaModel = never> 
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumExpenseCategoryFilter<$PrismaModel>
   _max?: Prisma.NestedEnumExpenseCategoryFilter<$PrismaModel>
+}
+
+export type NestedEnumPackingCategoryFilter<$PrismaModel = never> = {
+  equals?: $Enums.PackingCategory | Prisma.EnumPackingCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.PackingCategory[] | Prisma.ListEnumPackingCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PackingCategory[] | Prisma.ListEnumPackingCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPackingCategoryFilter<$PrismaModel> | $Enums.PackingCategory
+}
+
+export type NestedEnumPackingCategoryWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.PackingCategory | Prisma.EnumPackingCategoryFieldRefInput<$PrismaModel>
+  in?: $Enums.PackingCategory[] | Prisma.ListEnumPackingCategoryFieldRefInput<$PrismaModel>
+  notIn?: $Enums.PackingCategory[] | Prisma.ListEnumPackingCategoryFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumPackingCategoryWithAggregatesFilter<$PrismaModel> | $Enums.PackingCategory
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumPackingCategoryFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumPackingCategoryFilter<$PrismaModel>
+}
+
+export type NestedEnumNoteColorFilter<$PrismaModel = never> = {
+  equals?: $Enums.NoteColor | Prisma.EnumNoteColorFieldRefInput<$PrismaModel>
+  in?: $Enums.NoteColor[] | Prisma.ListEnumNoteColorFieldRefInput<$PrismaModel>
+  notIn?: $Enums.NoteColor[] | Prisma.ListEnumNoteColorFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumNoteColorFilter<$PrismaModel> | $Enums.NoteColor
+}
+
+export type NestedEnumNoteColorWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.NoteColor | Prisma.EnumNoteColorFieldRefInput<$PrismaModel>
+  in?: $Enums.NoteColor[] | Prisma.ListEnumNoteColorFieldRefInput<$PrismaModel>
+  notIn?: $Enums.NoteColor[] | Prisma.ListEnumNoteColorFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumNoteColorWithAggregatesFilter<$PrismaModel> | $Enums.NoteColor
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumNoteColorFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumNoteColorFilter<$PrismaModel>
 }
 
 

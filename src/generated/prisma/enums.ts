@@ -56,3 +56,30 @@ export const ExpenseCategory = {
 } as const
 
 export type ExpenseCategory = (typeof ExpenseCategory)[keyof typeof ExpenseCategory]
+
+
+export const PackingCategory = {
+  DOCUMENTS: 'DOCUMENTS',
+  CLOTHING: 'CLOTHING',
+  ELECTRONICS: 'ELECTRONICS',
+  TOILETRIES: 'TOILETRIES',
+  HEALTH: 'HEALTH',
+  MONEY: 'MONEY',
+  ENTERTAINMENT: 'ENTERTAINMENT',
+  FOOD_SNACKS: 'FOOD_SNACKS',
+  OTHER: 'OTHER'
+} as const
+
+export type PackingCategory = (typeof PackingCategory)[keyof typeof PackingCategory]
+
+
+export const NoteColor = {
+  DEFAULT: 'DEFAULT',
+  YELLOW: 'YELLOW',
+  GREEN: 'GREEN',
+  BLUE: 'BLUE',
+  PINK: 'PINK',
+  PURPLE: 'PURPLE'
+} as const
+
+export type NoteColor = (typeof NoteColor)[keyof typeof NoteColor]

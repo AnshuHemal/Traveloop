@@ -303,6 +303,7 @@ export type StopWhereInput = {
   trip?: Prisma.XOR<Prisma.TripScalarRelationFilter, Prisma.TripWhereInput>
   activities?: Prisma.ActivityListRelationFilter
   expenses?: Prisma.ExpenseListRelationFilter
+  tripNotes?: Prisma.TripNoteListRelationFilter
 }
 
 export type StopOrderByWithRelationInput = {
@@ -323,6 +324,7 @@ export type StopOrderByWithRelationInput = {
   trip?: Prisma.TripOrderByWithRelationInput
   activities?: Prisma.ActivityOrderByRelationAggregateInput
   expenses?: Prisma.ExpenseOrderByRelationAggregateInput
+  tripNotes?: Prisma.TripNoteOrderByRelationAggregateInput
 }
 
 export type StopWhereUniqueInput = Prisma.AtLeast<{
@@ -346,6 +348,7 @@ export type StopWhereUniqueInput = Prisma.AtLeast<{
   trip?: Prisma.XOR<Prisma.TripScalarRelationFilter, Prisma.TripWhereInput>
   activities?: Prisma.ActivityListRelationFilter
   expenses?: Prisma.ExpenseListRelationFilter
+  tripNotes?: Prisma.TripNoteListRelationFilter
 }, "id">
 
 export type StopOrderByWithAggregationInput = {
@@ -407,6 +410,7 @@ export type StopCreateInput = {
   trip: Prisma.TripCreateNestedOneWithoutStopsInput
   activities?: Prisma.ActivityCreateNestedManyWithoutStopInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutStopInput
+  tripNotes?: Prisma.TripNoteCreateNestedManyWithoutStopInput
 }
 
 export type StopUncheckedCreateInput = {
@@ -426,6 +430,7 @@ export type StopUncheckedCreateInput = {
   updatedAt?: Date | string
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutStopInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutStopInput
+  tripNotes?: Prisma.TripNoteUncheckedCreateNestedManyWithoutStopInput
 }
 
 export type StopUpdateInput = {
@@ -445,6 +450,7 @@ export type StopUpdateInput = {
   trip?: Prisma.TripUpdateOneRequiredWithoutStopsNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutStopNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutStopNestedInput
+  tripNotes?: Prisma.TripNoteUpdateManyWithoutStopNestedInput
 }
 
 export type StopUncheckedUpdateInput = {
@@ -464,6 +470,7 @@ export type StopUncheckedUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutStopNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutStopNestedInput
+  tripNotes?: Prisma.TripNoteUncheckedUpdateManyWithoutStopNestedInput
 }
 
 export type StopCreateManyInput = {
@@ -596,6 +603,11 @@ export type StopScalarRelationFilter = {
   isNot?: Prisma.StopWhereInput
 }
 
+export type StopNullableScalarRelationFilter = {
+  is?: Prisma.StopWhereInput | null
+  isNot?: Prisma.StopWhereInput | null
+}
+
 export type StopCreateNestedManyWithoutTripInput = {
   create?: Prisma.XOR<Prisma.StopCreateWithoutTripInput, Prisma.StopUncheckedCreateWithoutTripInput> | Prisma.StopCreateWithoutTripInput[] | Prisma.StopUncheckedCreateWithoutTripInput[]
   connectOrCreate?: Prisma.StopCreateOrConnectWithoutTripInput | Prisma.StopCreateOrConnectWithoutTripInput[]
@@ -682,6 +694,22 @@ export type StopUpdateOneRequiredWithoutExpensesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.StopUpdateToOneWithWhereWithoutExpensesInput, Prisma.StopUpdateWithoutExpensesInput>, Prisma.StopUncheckedUpdateWithoutExpensesInput>
 }
 
+export type StopCreateNestedOneWithoutTripNotesInput = {
+  create?: Prisma.XOR<Prisma.StopCreateWithoutTripNotesInput, Prisma.StopUncheckedCreateWithoutTripNotesInput>
+  connectOrCreate?: Prisma.StopCreateOrConnectWithoutTripNotesInput
+  connect?: Prisma.StopWhereUniqueInput
+}
+
+export type StopUpdateOneWithoutTripNotesNestedInput = {
+  create?: Prisma.XOR<Prisma.StopCreateWithoutTripNotesInput, Prisma.StopUncheckedCreateWithoutTripNotesInput>
+  connectOrCreate?: Prisma.StopCreateOrConnectWithoutTripNotesInput
+  upsert?: Prisma.StopUpsertWithoutTripNotesInput
+  disconnect?: Prisma.StopWhereInput | boolean
+  delete?: Prisma.StopWhereInput | boolean
+  connect?: Prisma.StopWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.StopUpdateToOneWithWhereWithoutTripNotesInput, Prisma.StopUpdateWithoutTripNotesInput>, Prisma.StopUncheckedUpdateWithoutTripNotesInput>
+}
+
 export type StopCreateWithoutTripInput = {
   id?: string
   cityName: string
@@ -698,6 +726,7 @@ export type StopCreateWithoutTripInput = {
   updatedAt?: Date | string
   activities?: Prisma.ActivityCreateNestedManyWithoutStopInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutStopInput
+  tripNotes?: Prisma.TripNoteCreateNestedManyWithoutStopInput
 }
 
 export type StopUncheckedCreateWithoutTripInput = {
@@ -716,6 +745,7 @@ export type StopUncheckedCreateWithoutTripInput = {
   updatedAt?: Date | string
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutStopInput
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutStopInput
+  tripNotes?: Prisma.TripNoteUncheckedCreateNestedManyWithoutStopInput
 }
 
 export type StopCreateOrConnectWithoutTripInput = {
@@ -780,6 +810,7 @@ export type StopCreateWithoutActivitiesInput = {
   updatedAt?: Date | string
   trip: Prisma.TripCreateNestedOneWithoutStopsInput
   expenses?: Prisma.ExpenseCreateNestedManyWithoutStopInput
+  tripNotes?: Prisma.TripNoteCreateNestedManyWithoutStopInput
 }
 
 export type StopUncheckedCreateWithoutActivitiesInput = {
@@ -798,6 +829,7 @@ export type StopUncheckedCreateWithoutActivitiesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutStopInput
+  tripNotes?: Prisma.TripNoteUncheckedCreateNestedManyWithoutStopInput
 }
 
 export type StopCreateOrConnectWithoutActivitiesInput = {
@@ -832,6 +864,7 @@ export type StopUpdateWithoutActivitiesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trip?: Prisma.TripUpdateOneRequiredWithoutStopsNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutStopNestedInput
+  tripNotes?: Prisma.TripNoteUpdateManyWithoutStopNestedInput
 }
 
 export type StopUncheckedUpdateWithoutActivitiesInput = {
@@ -850,6 +883,7 @@ export type StopUncheckedUpdateWithoutActivitiesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutStopNestedInput
+  tripNotes?: Prisma.TripNoteUncheckedUpdateManyWithoutStopNestedInput
 }
 
 export type StopCreateWithoutExpensesInput = {
@@ -868,6 +902,7 @@ export type StopCreateWithoutExpensesInput = {
   updatedAt?: Date | string
   trip: Prisma.TripCreateNestedOneWithoutStopsInput
   activities?: Prisma.ActivityCreateNestedManyWithoutStopInput
+  tripNotes?: Prisma.TripNoteCreateNestedManyWithoutStopInput
 }
 
 export type StopUncheckedCreateWithoutExpensesInput = {
@@ -886,6 +921,7 @@ export type StopUncheckedCreateWithoutExpensesInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutStopInput
+  tripNotes?: Prisma.TripNoteUncheckedCreateNestedManyWithoutStopInput
 }
 
 export type StopCreateOrConnectWithoutExpensesInput = {
@@ -920,6 +956,7 @@ export type StopUpdateWithoutExpensesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   trip?: Prisma.TripUpdateOneRequiredWithoutStopsNestedInput
   activities?: Prisma.ActivityUpdateManyWithoutStopNestedInput
+  tripNotes?: Prisma.TripNoteUpdateManyWithoutStopNestedInput
 }
 
 export type StopUncheckedUpdateWithoutExpensesInput = {
@@ -938,6 +975,99 @@ export type StopUncheckedUpdateWithoutExpensesInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutStopNestedInput
+  tripNotes?: Prisma.TripNoteUncheckedUpdateManyWithoutStopNestedInput
+}
+
+export type StopCreateWithoutTripNotesInput = {
+  id?: string
+  cityName: string
+  countryName: string
+  countryCode?: string | null
+  latitude?: number | null
+  longitude?: number | null
+  arrivalDate?: Date | string | null
+  departureDate?: Date | string | null
+  nights?: number
+  order: number
+  notes?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  trip: Prisma.TripCreateNestedOneWithoutStopsInput
+  activities?: Prisma.ActivityCreateNestedManyWithoutStopInput
+  expenses?: Prisma.ExpenseCreateNestedManyWithoutStopInput
+}
+
+export type StopUncheckedCreateWithoutTripNotesInput = {
+  id?: string
+  tripId: string
+  cityName: string
+  countryName: string
+  countryCode?: string | null
+  latitude?: number | null
+  longitude?: number | null
+  arrivalDate?: Date | string | null
+  departureDate?: Date | string | null
+  nights?: number
+  order: number
+  notes?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  activities?: Prisma.ActivityUncheckedCreateNestedManyWithoutStopInput
+  expenses?: Prisma.ExpenseUncheckedCreateNestedManyWithoutStopInput
+}
+
+export type StopCreateOrConnectWithoutTripNotesInput = {
+  where: Prisma.StopWhereUniqueInput
+  create: Prisma.XOR<Prisma.StopCreateWithoutTripNotesInput, Prisma.StopUncheckedCreateWithoutTripNotesInput>
+}
+
+export type StopUpsertWithoutTripNotesInput = {
+  update: Prisma.XOR<Prisma.StopUpdateWithoutTripNotesInput, Prisma.StopUncheckedUpdateWithoutTripNotesInput>
+  create: Prisma.XOR<Prisma.StopCreateWithoutTripNotesInput, Prisma.StopUncheckedCreateWithoutTripNotesInput>
+  where?: Prisma.StopWhereInput
+}
+
+export type StopUpdateToOneWithWhereWithoutTripNotesInput = {
+  where?: Prisma.StopWhereInput
+  data: Prisma.XOR<Prisma.StopUpdateWithoutTripNotesInput, Prisma.StopUncheckedUpdateWithoutTripNotesInput>
+}
+
+export type StopUpdateWithoutTripNotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  cityName?: Prisma.StringFieldUpdateOperationsInput | string
+  countryName?: Prisma.StringFieldUpdateOperationsInput | string
+  countryCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  arrivalDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  departureDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  nights?: Prisma.IntFieldUpdateOperationsInput | number
+  order?: Prisma.IntFieldUpdateOperationsInput | number
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  trip?: Prisma.TripUpdateOneRequiredWithoutStopsNestedInput
+  activities?: Prisma.ActivityUpdateManyWithoutStopNestedInput
+  expenses?: Prisma.ExpenseUpdateManyWithoutStopNestedInput
+}
+
+export type StopUncheckedUpdateWithoutTripNotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  tripId?: Prisma.StringFieldUpdateOperationsInput | string
+  cityName?: Prisma.StringFieldUpdateOperationsInput | string
+  countryName?: Prisma.StringFieldUpdateOperationsInput | string
+  countryCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  latitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  longitude?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  arrivalDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  departureDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  nights?: Prisma.IntFieldUpdateOperationsInput | number
+  order?: Prisma.IntFieldUpdateOperationsInput | number
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  activities?: Prisma.ActivityUncheckedUpdateManyWithoutStopNestedInput
+  expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutStopNestedInput
 }
 
 export type StopCreateManyTripInput = {
@@ -972,6 +1102,7 @@ export type StopUpdateWithoutTripInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   activities?: Prisma.ActivityUpdateManyWithoutStopNestedInput
   expenses?: Prisma.ExpenseUpdateManyWithoutStopNestedInput
+  tripNotes?: Prisma.TripNoteUpdateManyWithoutStopNestedInput
 }
 
 export type StopUncheckedUpdateWithoutTripInput = {
@@ -990,6 +1121,7 @@ export type StopUncheckedUpdateWithoutTripInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   activities?: Prisma.ActivityUncheckedUpdateManyWithoutStopNestedInput
   expenses?: Prisma.ExpenseUncheckedUpdateManyWithoutStopNestedInput
+  tripNotes?: Prisma.TripNoteUncheckedUpdateManyWithoutStopNestedInput
 }
 
 export type StopUncheckedUpdateManyWithoutTripInput = {
@@ -1016,11 +1148,13 @@ export type StopUncheckedUpdateManyWithoutTripInput = {
 export type StopCountOutputType = {
   activities: number
   expenses: number
+  tripNotes: number
 }
 
 export type StopCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   activities?: boolean | StopCountOutputTypeCountActivitiesArgs
   expenses?: boolean | StopCountOutputTypeCountExpensesArgs
+  tripNotes?: boolean | StopCountOutputTypeCountTripNotesArgs
 }
 
 /**
@@ -1047,6 +1181,13 @@ export type StopCountOutputTypeCountExpensesArgs<ExtArgs extends runtime.Types.E
   where?: Prisma.ExpenseWhereInput
 }
 
+/**
+ * StopCountOutputType without action
+ */
+export type StopCountOutputTypeCountTripNotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TripNoteWhereInput
+}
+
 
 export type StopSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1066,6 +1207,7 @@ export type StopSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   trip?: boolean | Prisma.TripDefaultArgs<ExtArgs>
   activities?: boolean | Prisma.Stop$activitiesArgs<ExtArgs>
   expenses?: boolean | Prisma.Stop$expensesArgs<ExtArgs>
+  tripNotes?: boolean | Prisma.Stop$tripNotesArgs<ExtArgs>
   _count?: boolean | Prisma.StopCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["stop"]>
 
@@ -1127,6 +1269,7 @@ export type StopInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   trip?: boolean | Prisma.TripDefaultArgs<ExtArgs>
   activities?: boolean | Prisma.Stop$activitiesArgs<ExtArgs>
   expenses?: boolean | Prisma.Stop$expensesArgs<ExtArgs>
+  tripNotes?: boolean | Prisma.Stop$tripNotesArgs<ExtArgs>
   _count?: boolean | Prisma.StopCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type StopIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1142,6 +1285,7 @@ export type $StopPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     trip: Prisma.$TripPayload<ExtArgs>
     activities: Prisma.$ActivityPayload<ExtArgs>[]
     expenses: Prisma.$ExpensePayload<ExtArgs>[]
+    tripNotes: Prisma.$TripNotePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1555,6 +1699,7 @@ export interface Prisma__StopClient<T, Null = never, ExtArgs extends runtime.Typ
   trip<T extends Prisma.TripDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TripDefaultArgs<ExtArgs>>): Prisma.Prisma__TripClient<runtime.Types.Result.GetResult<Prisma.$TripPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   activities<T extends Prisma.Stop$activitiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Stop$activitiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ActivityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   expenses<T extends Prisma.Stop$expensesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Stop$expensesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ExpensePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  tripNotes<T extends Prisma.Stop$tripNotesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Stop$tripNotesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TripNotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2044,6 +2189,30 @@ export type Stop$expensesArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   take?: number
   skip?: number
   distinct?: Prisma.ExpenseScalarFieldEnum | Prisma.ExpenseScalarFieldEnum[]
+}
+
+/**
+ * Stop.tripNotes
+ */
+export type Stop$tripNotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TripNote
+   */
+  select?: Prisma.TripNoteSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TripNote
+   */
+  omit?: Prisma.TripNoteOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TripNoteInclude<ExtArgs> | null
+  where?: Prisma.TripNoteWhereInput
+  orderBy?: Prisma.TripNoteOrderByWithRelationInput | Prisma.TripNoteOrderByWithRelationInput[]
+  cursor?: Prisma.TripNoteWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TripNoteScalarFieldEnum | Prisma.TripNoteScalarFieldEnum[]
 }
 
 /**

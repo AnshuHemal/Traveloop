@@ -391,7 +391,10 @@ export const ModelName = {
   Trip: 'Trip',
   Stop: 'Stop',
   Activity: 'Activity',
-  Expense: 'Expense'
+  Expense: 'Expense',
+  PackingList: 'PackingList',
+  PackingItem: 'PackingItem',
+  TripNote: 'TripNote'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -407,7 +410,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "session" | "account" | "verification" | "trip" | "stop" | "activity" | "expense"
+    modelProps: "user" | "session" | "account" | "verification" | "trip" | "stop" | "activity" | "expense" | "packingList" | "packingItem" | "tripNote"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1003,6 +1006,228 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    PackingList: {
+      payload: Prisma.$PackingListPayload<ExtArgs>
+      fields: Prisma.PackingListFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PackingListFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackingListPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PackingListFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackingListPayload>
+        }
+        findFirst: {
+          args: Prisma.PackingListFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackingListPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PackingListFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackingListPayload>
+        }
+        findMany: {
+          args: Prisma.PackingListFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackingListPayload>[]
+        }
+        create: {
+          args: Prisma.PackingListCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackingListPayload>
+        }
+        createMany: {
+          args: Prisma.PackingListCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PackingListCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackingListPayload>[]
+        }
+        delete: {
+          args: Prisma.PackingListDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackingListPayload>
+        }
+        update: {
+          args: Prisma.PackingListUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackingListPayload>
+        }
+        deleteMany: {
+          args: Prisma.PackingListDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PackingListUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PackingListUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackingListPayload>[]
+        }
+        upsert: {
+          args: Prisma.PackingListUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackingListPayload>
+        }
+        aggregate: {
+          args: Prisma.PackingListAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePackingList>
+        }
+        groupBy: {
+          args: Prisma.PackingListGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PackingListGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PackingListCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PackingListCountAggregateOutputType> | number
+        }
+      }
+    }
+    PackingItem: {
+      payload: Prisma.$PackingItemPayload<ExtArgs>
+      fields: Prisma.PackingItemFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PackingItemFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackingItemPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PackingItemFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackingItemPayload>
+        }
+        findFirst: {
+          args: Prisma.PackingItemFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackingItemPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PackingItemFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackingItemPayload>
+        }
+        findMany: {
+          args: Prisma.PackingItemFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackingItemPayload>[]
+        }
+        create: {
+          args: Prisma.PackingItemCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackingItemPayload>
+        }
+        createMany: {
+          args: Prisma.PackingItemCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PackingItemCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackingItemPayload>[]
+        }
+        delete: {
+          args: Prisma.PackingItemDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackingItemPayload>
+        }
+        update: {
+          args: Prisma.PackingItemUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackingItemPayload>
+        }
+        deleteMany: {
+          args: Prisma.PackingItemDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PackingItemUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PackingItemUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackingItemPayload>[]
+        }
+        upsert: {
+          args: Prisma.PackingItemUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PackingItemPayload>
+        }
+        aggregate: {
+          args: Prisma.PackingItemAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePackingItem>
+        }
+        groupBy: {
+          args: Prisma.PackingItemGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PackingItemGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PackingItemCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PackingItemCountAggregateOutputType> | number
+        }
+      }
+    }
+    TripNote: {
+      payload: Prisma.$TripNotePayload<ExtArgs>
+      fields: Prisma.TripNoteFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.TripNoteFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TripNotePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.TripNoteFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TripNotePayload>
+        }
+        findFirst: {
+          args: Prisma.TripNoteFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TripNotePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.TripNoteFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TripNotePayload>
+        }
+        findMany: {
+          args: Prisma.TripNoteFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TripNotePayload>[]
+        }
+        create: {
+          args: Prisma.TripNoteCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TripNotePayload>
+        }
+        createMany: {
+          args: Prisma.TripNoteCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.TripNoteCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TripNotePayload>[]
+        }
+        delete: {
+          args: Prisma.TripNoteDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TripNotePayload>
+        }
+        update: {
+          args: Prisma.TripNoteUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TripNotePayload>
+        }
+        deleteMany: {
+          args: Prisma.TripNoteDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.TripNoteUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.TripNoteUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TripNotePayload>[]
+        }
+        upsert: {
+          args: Prisma.TripNoteUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TripNotePayload>
+        }
+        aggregate: {
+          args: Prisma.TripNoteAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateTripNote>
+        }
+        groupBy: {
+          args: Prisma.TripNoteGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TripNoteGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.TripNoteCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TripNoteCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1174,6 +1399,49 @@ export const ExpenseScalarFieldEnum = {
 export type ExpenseScalarFieldEnum = (typeof ExpenseScalarFieldEnum)[keyof typeof ExpenseScalarFieldEnum]
 
 
+export const PackingListScalarFieldEnum = {
+  id: 'id',
+  tripId: 'tripId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PackingListScalarFieldEnum = (typeof PackingListScalarFieldEnum)[keyof typeof PackingListScalarFieldEnum]
+
+
+export const PackingItemScalarFieldEnum = {
+  id: 'id',
+  packingListId: 'packingListId',
+  name: 'name',
+  category: 'category',
+  packed: 'packed',
+  essential: 'essential',
+  quantity: 'quantity',
+  notes: 'notes',
+  order: 'order',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PackingItemScalarFieldEnum = (typeof PackingItemScalarFieldEnum)[keyof typeof PackingItemScalarFieldEnum]
+
+
+export const TripNoteScalarFieldEnum = {
+  id: 'id',
+  tripId: 'tripId',
+  stopId: 'stopId',
+  title: 'title',
+  content: 'content',
+  color: 'color',
+  pinned: 'pinned',
+  date: 'date',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TripNoteScalarFieldEnum = (typeof TripNoteScalarFieldEnum)[keyof typeof TripNoteScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1322,6 +1590,34 @@ export type EnumExpenseCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$
 export type ListEnumExpenseCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ExpenseCategory[]'>
     
 
+
+/**
+ * Reference to a field of type 'PackingCategory'
+ */
+export type EnumPackingCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PackingCategory'>
+    
+
+
+/**
+ * Reference to a field of type 'PackingCategory[]'
+ */
+export type ListEnumPackingCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PackingCategory[]'>
+    
+
+
+/**
+ * Reference to a field of type 'NoteColor'
+ */
+export type EnumNoteColorFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'NoteColor'>
+    
+
+
+/**
+ * Reference to a field of type 'NoteColor[]'
+ */
+export type ListEnumNoteColorFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'NoteColor[]'>
+    
+
 /**
  * Batch Payload for updateMany & deleteMany & createMany
  */
@@ -1440,6 +1736,9 @@ export type GlobalOmitConfig = {
   stop?: Prisma.StopOmit
   activity?: Prisma.ActivityOmit
   expense?: Prisma.ExpenseOmit
+  packingList?: Prisma.PackingListOmit
+  packingItem?: Prisma.PackingItemOmit
+  tripNote?: Prisma.TripNoteOmit
 }
 
 /* Types for Logging */

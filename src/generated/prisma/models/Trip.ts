@@ -248,6 +248,8 @@ export type TripWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Trip"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   stops?: Prisma.StopListRelationFilter
+  packingList?: Prisma.XOR<Prisma.PackingListNullableScalarRelationFilter, Prisma.PackingListWhereInput> | null
+  notes?: Prisma.TripNoteListRelationFilter
 }
 
 export type TripOrderByWithRelationInput = {
@@ -266,6 +268,8 @@ export type TripOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
   stops?: Prisma.StopOrderByRelationAggregateInput
+  packingList?: Prisma.PackingListOrderByWithRelationInput
+  notes?: Prisma.TripNoteOrderByRelationAggregateInput
 }
 
 export type TripWhereUniqueInput = Prisma.AtLeast<{
@@ -287,6 +291,8 @@ export type TripWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"Trip"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   stops?: Prisma.StopListRelationFilter
+  packingList?: Prisma.XOR<Prisma.PackingListNullableScalarRelationFilter, Prisma.PackingListWhereInput> | null
+  notes?: Prisma.TripNoteListRelationFilter
 }, "id" | "shareToken">
 
 export type TripOrderByWithAggregationInput = {
@@ -342,6 +348,8 @@ export type TripCreateInput = {
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutTripsInput
   stops?: Prisma.StopCreateNestedManyWithoutTripInput
+  packingList?: Prisma.PackingListCreateNestedOneWithoutTripInput
+  notes?: Prisma.TripNoteCreateNestedManyWithoutTripInput
 }
 
 export type TripUncheckedCreateInput = {
@@ -359,6 +367,8 @@ export type TripUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   stops?: Prisma.StopUncheckedCreateNestedManyWithoutTripInput
+  packingList?: Prisma.PackingListUncheckedCreateNestedOneWithoutTripInput
+  notes?: Prisma.TripNoteUncheckedCreateNestedManyWithoutTripInput
 }
 
 export type TripUpdateInput = {
@@ -376,6 +386,8 @@ export type TripUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutTripsNestedInput
   stops?: Prisma.StopUpdateManyWithoutTripNestedInput
+  packingList?: Prisma.PackingListUpdateOneWithoutTripNestedInput
+  notes?: Prisma.TripNoteUpdateManyWithoutTripNestedInput
 }
 
 export type TripUncheckedUpdateInput = {
@@ -393,6 +405,8 @@ export type TripUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   stops?: Prisma.StopUncheckedUpdateManyWithoutTripNestedInput
+  packingList?: Prisma.PackingListUncheckedUpdateOneWithoutTripNestedInput
+  notes?: Prisma.TripNoteUncheckedUpdateManyWithoutTripNestedInput
 }
 
 export type TripCreateManyInput = {
@@ -569,6 +583,34 @@ export type TripUpdateOneRequiredWithoutStopsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.TripUpdateToOneWithWhereWithoutStopsInput, Prisma.TripUpdateWithoutStopsInput>, Prisma.TripUncheckedUpdateWithoutStopsInput>
 }
 
+export type TripCreateNestedOneWithoutPackingListInput = {
+  create?: Prisma.XOR<Prisma.TripCreateWithoutPackingListInput, Prisma.TripUncheckedCreateWithoutPackingListInput>
+  connectOrCreate?: Prisma.TripCreateOrConnectWithoutPackingListInput
+  connect?: Prisma.TripWhereUniqueInput
+}
+
+export type TripUpdateOneRequiredWithoutPackingListNestedInput = {
+  create?: Prisma.XOR<Prisma.TripCreateWithoutPackingListInput, Prisma.TripUncheckedCreateWithoutPackingListInput>
+  connectOrCreate?: Prisma.TripCreateOrConnectWithoutPackingListInput
+  upsert?: Prisma.TripUpsertWithoutPackingListInput
+  connect?: Prisma.TripWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.TripUpdateToOneWithWhereWithoutPackingListInput, Prisma.TripUpdateWithoutPackingListInput>, Prisma.TripUncheckedUpdateWithoutPackingListInput>
+}
+
+export type TripCreateNestedOneWithoutNotesInput = {
+  create?: Prisma.XOR<Prisma.TripCreateWithoutNotesInput, Prisma.TripUncheckedCreateWithoutNotesInput>
+  connectOrCreate?: Prisma.TripCreateOrConnectWithoutNotesInput
+  connect?: Prisma.TripWhereUniqueInput
+}
+
+export type TripUpdateOneRequiredWithoutNotesNestedInput = {
+  create?: Prisma.XOR<Prisma.TripCreateWithoutNotesInput, Prisma.TripUncheckedCreateWithoutNotesInput>
+  connectOrCreate?: Prisma.TripCreateOrConnectWithoutNotesInput
+  upsert?: Prisma.TripUpsertWithoutNotesInput
+  connect?: Prisma.TripWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.TripUpdateToOneWithWhereWithoutNotesInput, Prisma.TripUpdateWithoutNotesInput>, Prisma.TripUncheckedUpdateWithoutNotesInput>
+}
+
 export type TripCreateWithoutUserInput = {
   id?: string
   title: string
@@ -583,6 +625,8 @@ export type TripCreateWithoutUserInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   stops?: Prisma.StopCreateNestedManyWithoutTripInput
+  packingList?: Prisma.PackingListCreateNestedOneWithoutTripInput
+  notes?: Prisma.TripNoteCreateNestedManyWithoutTripInput
 }
 
 export type TripUncheckedCreateWithoutUserInput = {
@@ -599,6 +643,8 @@ export type TripUncheckedCreateWithoutUserInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   stops?: Prisma.StopUncheckedCreateNestedManyWithoutTripInput
+  packingList?: Prisma.PackingListUncheckedCreateNestedOneWithoutTripInput
+  notes?: Prisma.TripNoteUncheckedCreateNestedManyWithoutTripInput
 }
 
 export type TripCreateOrConnectWithoutUserInput = {
@@ -660,6 +706,8 @@ export type TripCreateWithoutStopsInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutTripsInput
+  packingList?: Prisma.PackingListCreateNestedOneWithoutTripInput
+  notes?: Prisma.TripNoteCreateNestedManyWithoutTripInput
 }
 
 export type TripUncheckedCreateWithoutStopsInput = {
@@ -676,6 +724,8 @@ export type TripUncheckedCreateWithoutStopsInput = {
   endDate?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  packingList?: Prisma.PackingListUncheckedCreateNestedOneWithoutTripInput
+  notes?: Prisma.TripNoteUncheckedCreateNestedManyWithoutTripInput
 }
 
 export type TripCreateOrConnectWithoutStopsInput = {
@@ -708,6 +758,8 @@ export type TripUpdateWithoutStopsInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutTripsNestedInput
+  packingList?: Prisma.PackingListUpdateOneWithoutTripNestedInput
+  notes?: Prisma.TripNoteUpdateManyWithoutTripNestedInput
 }
 
 export type TripUncheckedUpdateWithoutStopsInput = {
@@ -724,6 +776,184 @@ export type TripUncheckedUpdateWithoutStopsInput = {
   endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  packingList?: Prisma.PackingListUncheckedUpdateOneWithoutTripNestedInput
+  notes?: Prisma.TripNoteUncheckedUpdateManyWithoutTripNestedInput
+}
+
+export type TripCreateWithoutPackingListInput = {
+  id?: string
+  title: string
+  description?: string | null
+  coverImage?: string | null
+  status?: $Enums.TripStatus
+  visibility?: $Enums.Visibility
+  shareToken?: string | null
+  currency?: string
+  startDate?: Date | string | null
+  endDate?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutTripsInput
+  stops?: Prisma.StopCreateNestedManyWithoutTripInput
+  notes?: Prisma.TripNoteCreateNestedManyWithoutTripInput
+}
+
+export type TripUncheckedCreateWithoutPackingListInput = {
+  id?: string
+  userId: string
+  title: string
+  description?: string | null
+  coverImage?: string | null
+  status?: $Enums.TripStatus
+  visibility?: $Enums.Visibility
+  shareToken?: string | null
+  currency?: string
+  startDate?: Date | string | null
+  endDate?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  stops?: Prisma.StopUncheckedCreateNestedManyWithoutTripInput
+  notes?: Prisma.TripNoteUncheckedCreateNestedManyWithoutTripInput
+}
+
+export type TripCreateOrConnectWithoutPackingListInput = {
+  where: Prisma.TripWhereUniqueInput
+  create: Prisma.XOR<Prisma.TripCreateWithoutPackingListInput, Prisma.TripUncheckedCreateWithoutPackingListInput>
+}
+
+export type TripUpsertWithoutPackingListInput = {
+  update: Prisma.XOR<Prisma.TripUpdateWithoutPackingListInput, Prisma.TripUncheckedUpdateWithoutPackingListInput>
+  create: Prisma.XOR<Prisma.TripCreateWithoutPackingListInput, Prisma.TripUncheckedCreateWithoutPackingListInput>
+  where?: Prisma.TripWhereInput
+}
+
+export type TripUpdateToOneWithWhereWithoutPackingListInput = {
+  where?: Prisma.TripWhereInput
+  data: Prisma.XOR<Prisma.TripUpdateWithoutPackingListInput, Prisma.TripUncheckedUpdateWithoutPackingListInput>
+}
+
+export type TripUpdateWithoutPackingListInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumTripStatusFieldUpdateOperationsInput | $Enums.TripStatus
+  visibility?: Prisma.EnumVisibilityFieldUpdateOperationsInput | $Enums.Visibility
+  shareToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutTripsNestedInput
+  stops?: Prisma.StopUpdateManyWithoutTripNestedInput
+  notes?: Prisma.TripNoteUpdateManyWithoutTripNestedInput
+}
+
+export type TripUncheckedUpdateWithoutPackingListInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumTripStatusFieldUpdateOperationsInput | $Enums.TripStatus
+  visibility?: Prisma.EnumVisibilityFieldUpdateOperationsInput | $Enums.Visibility
+  shareToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  stops?: Prisma.StopUncheckedUpdateManyWithoutTripNestedInput
+  notes?: Prisma.TripNoteUncheckedUpdateManyWithoutTripNestedInput
+}
+
+export type TripCreateWithoutNotesInput = {
+  id?: string
+  title: string
+  description?: string | null
+  coverImage?: string | null
+  status?: $Enums.TripStatus
+  visibility?: $Enums.Visibility
+  shareToken?: string | null
+  currency?: string
+  startDate?: Date | string | null
+  endDate?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutTripsInput
+  stops?: Prisma.StopCreateNestedManyWithoutTripInput
+  packingList?: Prisma.PackingListCreateNestedOneWithoutTripInput
+}
+
+export type TripUncheckedCreateWithoutNotesInput = {
+  id?: string
+  userId: string
+  title: string
+  description?: string | null
+  coverImage?: string | null
+  status?: $Enums.TripStatus
+  visibility?: $Enums.Visibility
+  shareToken?: string | null
+  currency?: string
+  startDate?: Date | string | null
+  endDate?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  stops?: Prisma.StopUncheckedCreateNestedManyWithoutTripInput
+  packingList?: Prisma.PackingListUncheckedCreateNestedOneWithoutTripInput
+}
+
+export type TripCreateOrConnectWithoutNotesInput = {
+  where: Prisma.TripWhereUniqueInput
+  create: Prisma.XOR<Prisma.TripCreateWithoutNotesInput, Prisma.TripUncheckedCreateWithoutNotesInput>
+}
+
+export type TripUpsertWithoutNotesInput = {
+  update: Prisma.XOR<Prisma.TripUpdateWithoutNotesInput, Prisma.TripUncheckedUpdateWithoutNotesInput>
+  create: Prisma.XOR<Prisma.TripCreateWithoutNotesInput, Prisma.TripUncheckedCreateWithoutNotesInput>
+  where?: Prisma.TripWhereInput
+}
+
+export type TripUpdateToOneWithWhereWithoutNotesInput = {
+  where?: Prisma.TripWhereInput
+  data: Prisma.XOR<Prisma.TripUpdateWithoutNotesInput, Prisma.TripUncheckedUpdateWithoutNotesInput>
+}
+
+export type TripUpdateWithoutNotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumTripStatusFieldUpdateOperationsInput | $Enums.TripStatus
+  visibility?: Prisma.EnumVisibilityFieldUpdateOperationsInput | $Enums.Visibility
+  shareToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutTripsNestedInput
+  stops?: Prisma.StopUpdateManyWithoutTripNestedInput
+  packingList?: Prisma.PackingListUpdateOneWithoutTripNestedInput
+}
+
+export type TripUncheckedUpdateWithoutNotesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumTripStatusFieldUpdateOperationsInput | $Enums.TripStatus
+  visibility?: Prisma.EnumVisibilityFieldUpdateOperationsInput | $Enums.Visibility
+  shareToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  startDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  endDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  stops?: Prisma.StopUncheckedUpdateManyWithoutTripNestedInput
+  packingList?: Prisma.PackingListUncheckedUpdateOneWithoutTripNestedInput
 }
 
 export type TripCreateManyUserInput = {
@@ -755,6 +985,8 @@ export type TripUpdateWithoutUserInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   stops?: Prisma.StopUpdateManyWithoutTripNestedInput
+  packingList?: Prisma.PackingListUpdateOneWithoutTripNestedInput
+  notes?: Prisma.TripNoteUpdateManyWithoutTripNestedInput
 }
 
 export type TripUncheckedUpdateWithoutUserInput = {
@@ -771,6 +1003,8 @@ export type TripUncheckedUpdateWithoutUserInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   stops?: Prisma.StopUncheckedUpdateManyWithoutTripNestedInput
+  packingList?: Prisma.PackingListUncheckedUpdateOneWithoutTripNestedInput
+  notes?: Prisma.TripNoteUncheckedUpdateManyWithoutTripNestedInput
 }
 
 export type TripUncheckedUpdateManyWithoutUserInput = {
@@ -795,10 +1029,12 @@ export type TripUncheckedUpdateManyWithoutUserInput = {
 
 export type TripCountOutputType = {
   stops: number
+  notes: number
 }
 
 export type TripCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   stops?: boolean | TripCountOutputTypeCountStopsArgs
+  notes?: boolean | TripCountOutputTypeCountNotesArgs
 }
 
 /**
@@ -818,6 +1054,13 @@ export type TripCountOutputTypeCountStopsArgs<ExtArgs extends runtime.Types.Exte
   where?: Prisma.StopWhereInput
 }
 
+/**
+ * TripCountOutputType without action
+ */
+export type TripCountOutputTypeCountNotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TripNoteWhereInput
+}
+
 
 export type TripSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -835,6 +1078,8 @@ export type TripSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   stops?: boolean | Prisma.Trip$stopsArgs<ExtArgs>
+  packingList?: boolean | Prisma.Trip$packingListArgs<ExtArgs>
+  notes?: boolean | Prisma.Trip$notesArgs<ExtArgs>
   _count?: boolean | Prisma.TripCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["trip"]>
 
@@ -892,6 +1137,8 @@ export type TripOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = run
 export type TripInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   stops?: boolean | Prisma.Trip$stopsArgs<ExtArgs>
+  packingList?: boolean | Prisma.Trip$packingListArgs<ExtArgs>
+  notes?: boolean | Prisma.Trip$notesArgs<ExtArgs>
   _count?: boolean | Prisma.TripCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type TripIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -906,6 +1153,8 @@ export type $TripPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   objects: {
     user: Prisma.$UserPayload<ExtArgs>
     stops: Prisma.$StopPayload<ExtArgs>[]
+    packingList: Prisma.$PackingListPayload<ExtArgs> | null
+    notes: Prisma.$TripNotePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1317,6 +1566,8 @@ export interface Prisma__TripClient<T, Null = never, ExtArgs extends runtime.Typ
   readonly [Symbol.toStringTag]: "PrismaPromise"
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   stops<T extends Prisma.Trip$stopsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Trip$stopsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StopPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  packingList<T extends Prisma.Trip$packingListArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Trip$packingListArgs<ExtArgs>>): Prisma.Prisma__PackingListClient<runtime.Types.Result.GetResult<Prisma.$PackingListPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  notes<T extends Prisma.Trip$notesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Trip$notesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TripNotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1781,6 +2032,49 @@ export type Trip$stopsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
   take?: number
   skip?: number
   distinct?: Prisma.StopScalarFieldEnum | Prisma.StopScalarFieldEnum[]
+}
+
+/**
+ * Trip.packingList
+ */
+export type Trip$packingListArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PackingList
+   */
+  select?: Prisma.PackingListSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PackingList
+   */
+  omit?: Prisma.PackingListOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PackingListInclude<ExtArgs> | null
+  where?: Prisma.PackingListWhereInput
+}
+
+/**
+ * Trip.notes
+ */
+export type Trip$notesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TripNote
+   */
+  select?: Prisma.TripNoteSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TripNote
+   */
+  omit?: Prisma.TripNoteOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TripNoteInclude<ExtArgs> | null
+  where?: Prisma.TripNoteWhereInput
+  orderBy?: Prisma.TripNoteOrderByWithRelationInput | Prisma.TripNoteOrderByWithRelationInput[]
+  cursor?: Prisma.TripNoteWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TripNoteScalarFieldEnum | Prisma.TripNoteScalarFieldEnum[]
 }
 
 /**

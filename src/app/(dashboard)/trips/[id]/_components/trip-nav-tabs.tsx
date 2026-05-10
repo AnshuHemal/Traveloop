@@ -4,7 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
 import {
-  LayoutDashboard, Map, DollarSign, Share2, Pencil,
+  LayoutDashboard, Map, DollarSign, Share2,
+  Pencil, Package, FileText,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -17,33 +18,13 @@ export function TripNavTabs({ tripId, stopCount }: TripNavTabsProps) {
   const pathname = usePathname();
 
   const TABS = [
-    {
-      label:  "Overview",
-      href:   `/trips/${tripId}`,
-      icon:   LayoutDashboard,
-      exact:  true,
-    },
-    {
-      label:  "Itinerary",
-      href:   `/trips/${tripId}/itinerary`,
-      icon:   Map,
-      badge:  stopCount > 0 ? stopCount : undefined,
-    },
-    {
-      label:  "Budget",
-      href:   `/trips/${tripId}/budget`,
-      icon:   DollarSign,
-    },
-    {
-      label:  "Share",
-      href:   `/trips/${tripId}/share`,
-      icon:   Share2,
-    },
-    {
-      label:  "Edit",
-      href:   `/trips/${tripId}/edit`,
-      icon:   Pencil,
-    },
+    { label: "Overview",  href: `/trips/${tripId}`,           icon: LayoutDashboard, exact: true },
+    { label: "Itinerary", href: `/trips/${tripId}/itinerary`, icon: Map,             badge: stopCount > 0 ? stopCount : undefined },
+    { label: "Budget",    href: `/trips/${tripId}/budget`,    icon: DollarSign },
+    { label: "Packing",   href: `/trips/${tripId}/packing`,   icon: Package },
+    { label: "Notes",     href: `/trips/${tripId}/notes`,     icon: FileText },
+    { label: "Share",     href: `/trips/${tripId}/share`,     icon: Share2 },
+    { label: "Edit",      href: `/trips/${tripId}/edit`,      icon: Pencil },
   ] as const;
 
   function isActive(tab: { href: string; exact?: boolean }) {
@@ -53,7 +34,6 @@ export function TripNavTabs({ tripId, stopCount }: TripNavTabsProps) {
 
   return (
     <div className="relative">
-      {/* Scrollable tab bar */}
       <div className="flex overflow-x-auto border-b border-border scrollbar-none [&::-webkit-scrollbar]:hidden">
         <div className="flex min-w-max gap-0">
           {TABS.map((tab) => {
@@ -64,9 +44,7 @@ export function TripNavTabs({ tripId, stopCount }: TripNavTabsProps) {
                 href={tab.href}
                 className={cn(
                   "relative flex items-center gap-2 px-4 py-3 text-sm font-medium transition-colors whitespace-nowrap",
-                  active
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground",
+                  active ? "text-primary" : "text-muted-foreground hover:text-foreground",
                 )}
               >
                 <tab.icon className="size-4 shrink-0" />
@@ -76,8 +54,6 @@ export function TripNavTabs({ tripId, stopCount }: TripNavTabsProps) {
                     {tab.badge}
                   </span>
                 )}
-
-                {/* Active underline */}
                 {active && (
                   <motion.div
                     layoutId="trip-tab-indicator"

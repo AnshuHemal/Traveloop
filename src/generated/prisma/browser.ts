@@ -57,3 +57,18 @@ export type Activity = Prisma.ActivityModel
  * 
  */
 export type Expense = Prisma.ExpenseModel
+/**
+ * Model PackingList
+ * 
+ */
+export type PackingList = Prisma.PackingListModel
+/**
+ * Model PackingItem
+ * 
+ */
+export type PackingItem = Prisma.PackingItemModel
+/**
+ * Model TripNote
+ * 
+ */
+export type TripNote = Prisma.TripNoteModel
