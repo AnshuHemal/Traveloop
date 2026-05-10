@@ -7,6 +7,7 @@ import { Plus, Bell, ChevronDown, LogOut, Settings, User, Menu, X } from "lucide
 import { Logo } from "@/components/shared/logo";
 import { buttonVariants } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ThemeToggle } from "@/components/shared/theme-toggle";
 import { signOut } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
 import type { User as AuthUser } from "@/lib/auth";
@@ -65,6 +66,8 @@ export function DashboardNav({ user }: DashboardNavProps) {
           <button className="hidden size-9 items-center justify-center rounded-lg text-muted-foreground hover:bg-accent hover:text-foreground transition-colors sm:flex">
             <Bell className="size-4" />
           </button>
+
+          <ThemeToggle />
 
           {}
           <div className="relative">

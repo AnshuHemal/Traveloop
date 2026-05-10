@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Logo } from "@/components/shared/logo";
 import { FadeIn } from "@/components/motion/fade-in";
+import { ThemeToggle } from "@/components/shared/theme-toggle";
 import { getSession } from "@/lib/session";
 
 export default async function AuthLayout({
@@ -51,6 +52,10 @@ export default async function AuthLayout({
       <FadeIn direction="down" className="absolute left-6 top-6 z-10">
         <Logo size={28} />
       </FadeIn>
+
+      <div className="absolute right-6 top-6 z-10">
+        <ThemeToggle />
+      </div>
 
       {}
       <main className="relative z-10 w-full max-w-sm">

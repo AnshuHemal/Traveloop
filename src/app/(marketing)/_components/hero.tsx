@@ -2,28 +2,30 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
-import { ArrowRight, MapPin, Calendar, DollarSign, Share2 } from "lucide-react";
+import {
+  ArrowRight, MapPin, Calendar, DollarSign, Share2,
+  Plane, Hotel, Utensils, Bus, CheckCircle2,
+} from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const TRIP_STOPS = [
-  { city: "Paris", country: "France", emoji: "🗼", nights: 3, color: "bg-rose-500/15 border-rose-500/30 text-rose-700 dark:text-rose-400" },
-  { city: "Rome", country: "Italy", emoji: "🏛️", nights: 4, color: "bg-amber-500/15 border-amber-500/30 text-amber-700 dark:text-amber-400" },
-  { city: "Barcelona", country: "Spain", emoji: "🎨", nights: 3, color: "bg-violet-500/15 border-violet-500/30 text-violet-700 dark:text-violet-400" },
-  { city: "Lisbon", country: "Portugal", emoji: "🌊", nights: 2, color: "bg-sky-500/15 border-sky-500/30 text-sky-700 dark:text-sky-400" },
+  { city: "Paris",     country: "France",   icon: MapPin,     nights: 3, color: "bg-rose-500/15 border-rose-500/30 text-rose-700 dark:text-rose-400" },
+  { city: "Rome",      country: "Italy",    icon: MapPin,     nights: 4, color: "bg-amber-500/15 border-amber-500/30 text-amber-700 dark:text-amber-400" },
+  { city: "Barcelona", country: "Spain",    icon: MapPin,     nights: 3, color: "bg-violet-500/15 border-violet-500/30 text-violet-700 dark:text-violet-400" },
+  { city: "Lisbon",    country: "Portugal", icon: MapPin,     nights: 2, color: "bg-sky-500/15 border-sky-500/30 text-sky-700 dark:text-sky-400" },
 ];
 
 const BUDGET_ITEMS = [
-  { label: "Accommodation", amount: 1240, icon: "🏨", pct: 42 },
-  { label: "Activities", amount: 680, icon: "🎭", pct: 23 },
-  { label: "Transport", amount: 520, icon: "✈️", pct: 18 },
-  { label: "Food & Dining", amount: 500, icon: "🍽️", pct: 17 },
+  { label: "Accommodation", amount: 1240, icon: Hotel,    pct: 42, color: "bg-violet-500" },
+  { label: "Activities",    amount: 680,  icon: MapPin,   pct: 23, color: "bg-primary" },
+  { label: "Transport",     amount: 520,  icon: Bus,      pct: 18, color: "bg-sky-500" },
+  { label: "Food & Dining", amount: 500,  icon: Utensils, pct: 17, color: "bg-amber-500" },
 ];
 
 function TripMockup() {
   return (
     <div className="relative overflow-hidden rounded-2xl border border-border bg-card shadow-2xl shadow-black/10">
-      {}
       <div className="flex items-center gap-1.5 border-b border-border bg-muted/40 px-4 py-3">
         <span className="size-2.5 rounded-full bg-red-400/70" />
         <span className="size-2.5 rounded-full bg-yellow-400/70" />
@@ -35,7 +37,6 @@ function TripMockup() {
       </div>
 
       <div className="p-5">
-        {}
         <div className="mb-4 flex items-start justify-between">
           <div>
             <h3 className="text-base font-bold text-foreground">European Adventure</h3>
@@ -49,7 +50,6 @@ function TripMockup() {
           </span>
         </div>
 
-        {}
         <div className="mb-4 flex flex-col gap-2">
           {TRIP_STOPS.map((stop, i) => (
             <motion.div
@@ -59,20 +59,19 @@ function TripMockup() {
               transition={{ delay: 0.5 + i * 0.1, duration: 0.35 }}
               className={`flex items-center gap-3 rounded-xl border px-3 py-2.5 ${stop.color}`}
             >
-              <span className="text-lg">{stop.emoji}</span>
+              <stop.icon className="size-4 shrink-0" />
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-semibold">{stop.city}</p>
                 <p className="text-xs opacity-70">{stop.country}</p>
               </div>
               <div className="flex items-center gap-1 text-xs opacity-70">
-                <MapPin className="size-3" />
+                <Calendar className="size-3" />
                 {stop.nights}n
               </div>
             </motion.div>
           ))}
         </div>
 
-        {}
         <div className="rounded-xl border border-border bg-muted/30 p-3">
           <div className="mb-2.5 flex items-center justify-between">
             <span className="text-xs font-semibold text-foreground">Budget Breakdown</span>
@@ -87,11 +86,11 @@ function TripMockup() {
                 transition={{ delay: 0.9 + i * 0.08 }}
                 className="flex items-center gap-2"
               >
-                <span className="text-sm">{item.icon}</span>
+                <item.icon className="size-3.5 shrink-0 text-muted-foreground" />
                 <span className="w-24 text-xs text-muted-foreground">{item.label}</span>
                 <div className="flex-1 overflow-hidden rounded-full bg-border h-1.5">
                   <motion.div
-                    className="h-full rounded-full bg-primary"
+                    className={cn("h-full rounded-full", item.color)}
                     initial={{ width: 0 }}
                     animate={{ width: `${item.pct}%` }}
                     transition={{ delay: 1.1 + i * 0.08, duration: 0.5, ease: "easeOut" }}
@@ -112,7 +111,6 @@ function TripMockup() {
 export function Hero() {
   return (
     <section className="relative overflow-hidden px-6 pb-16 pt-20 lg:pt-28">
-      {}
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/4 top-0 h-[600px] w-[800px] -translate-x-1/2 rounded-full bg-primary/8 blur-[100px]" />
         <div className="absolute right-0 top-1/3 h-[400px] w-[500px] rounded-full bg-primary/5 blur-[80px]" />
@@ -123,19 +121,17 @@ export function Hero() {
       <div className="relative mx-auto max-w-6xl">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
 
-          {}
           <div className="flex flex-col items-start gap-6">
-            {}
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
               className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/8 px-4 py-1.5 text-sm font-medium text-primary"
             >
-              ✈️ Personalized travel planning made easy
+              <Plane className="size-3.5" />
+              Personalized travel planning made easy
             </motion.div>
 
-            {}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -148,11 +144,10 @@ export function Hero() {
                 </span>
               </h1>
               <p className="mt-5 max-w-lg text-lg leading-relaxed text-muted-foreground">
-                Build multi-city itineraries, track budgets automatically, discover activities, and share your journey — all in one beautiful platform.
+                Build multi-city itineraries, track budgets automatically, discover activities, manage packing lists, write trip notes, and share your journey — all in one beautiful platform.
               </p>
             </motion.div>
 
-            {}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -160,60 +155,49 @@ export function Hero() {
               className="flex flex-wrap gap-2"
             >
               {[
-                { icon: <MapPin className="size-3.5" />, label: "Multi-city itineraries" },
-                { icon: <DollarSign className="size-3.5" />, label: "Auto budget tracking" },
-                { icon: <Calendar className="size-3.5" />, label: "Visual timeline" },
-                { icon: <Share2 className="size-3.5" />, label: "Share with friends" },
+                { icon: MapPin,      label: "Multi-city itineraries" },
+                { icon: DollarSign,  label: "Auto budget tracking" },
+                { icon: Calendar,    label: "Visual timeline" },
+                { icon: Share2,      label: "Share with friends" },
               ].map((pill) => (
-                <span
-                  key={pill.label}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/60 px-3 py-1 text-xs font-medium text-muted-foreground"
-                >
-                  {pill.icon}
+                <span key={pill.label}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/60 px-3 py-1 text-xs font-medium text-muted-foreground">
+                  <pill.icon className="size-3.5" />
                   {pill.label}
                 </span>
               ))}
             </motion.div>
 
-            {}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.3 }}
               className="flex flex-col gap-3 sm:flex-row"
             >
-              <Link
-                href="/signup"
-                className={cn(
-                  buttonVariants({ size: "lg" }),
-                  "gap-2 min-w-48 h-12 text-base font-semibold"
-                )}
-              >
+              <Link href="/signup" className={cn(buttonVariants({ size: "lg" }), "gap-2 min-w-48 h-12 text-base font-semibold")}>
                 Start planning free
                 <ArrowRight className="size-4" />
               </Link>
-              <Link
-                href="/login"
-                className={cn(
-                  buttonVariants({ variant: "outline", size: "lg" }),
-                  "min-w-36 h-12 text-base"
-                )}
-              >
+              <Link href="/login" className={cn(buttonVariants({ variant: "outline", size: "lg" }), "min-w-36 h-12 text-base")}>
                 Sign in
               </Link>
             </motion.div>
 
-            <motion.p
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.45 }}
-              className="text-sm text-muted-foreground"
+              className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground"
             >
-              Free forever · No credit card required · 2 min setup
-            </motion.p>
+              {["Free forever", "No credit card required", "2 min setup"].map((item) => (
+                <span key={item} className="flex items-center gap-1.5">
+                  <CheckCircle2 className="size-3.5 text-primary" />
+                  {item}
+                </span>
+              ))}
+            </motion.div>
           </div>
 
-          {}
           <motion.div
             initial={{ opacity: 0, y: 40, rotateX: 8 }}
             animate={{ opacity: 1, y: 0, rotateX: 3 }}

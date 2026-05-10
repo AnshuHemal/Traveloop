@@ -4,6 +4,8 @@ import { Hero } from "./(marketing)/_components/hero";
 import { Stats } from "./(marketing)/_components/stats";
 import { Features } from "./(marketing)/_components/features";
 import { HowItWorks } from "./(marketing)/_components/how-it-works";
+import { Testimonials } from "./(marketing)/_components/testimonials";
+import { Pricing } from "./(marketing)/_components/pricing";
 import { CTABanner } from "./(marketing)/_components/cta-banner";
 import { MarketingNav } from "./(marketing)/_components/marketing-nav";
 import { MarketingFooter } from "./(marketing)/_components/marketing-footer";
@@ -24,6 +26,8 @@ export default function HomePage() {
         <Stats />
         <Features />
         <HowItWorks />
+        <Testimonials />
+        <Pricing />
         <CTABanner />
       </main>
       <MarketingFooter />

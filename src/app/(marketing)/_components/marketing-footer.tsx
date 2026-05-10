@@ -2,6 +2,16 @@ import Link from "next/link";
 import { Logo } from "@/components/shared/logo";
 import { siteConfig } from "@/config/site";
 
+const FOOTER_LINKS = [
+  { label: "Features",    href: "#features" },
+  { label: "How it works",href: "#how-it-works" },
+  { label: "Pricing",     href: "#pricing" },
+  { label: "Privacy",     href: "/privacy" },
+  { label: "Terms",       href: "/terms" },
+  { label: "Sign in",     href: "/login" },
+  { label: "Get started", href: "/signup" },
+];
+
 export function MarketingFooter() {
   return (
     <footer className="border-t border-border bg-muted/20 px-6 py-12">
@@ -12,17 +22,18 @@ export function MarketingFooter() {
             <p className="text-sm text-muted-foreground">{siteConfig.tagline}</p>
           </div>
 
-          <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
-            <Link href="/privacy" className="hover:text-foreground transition-colors">Privacy</Link>
-            <Link href="/terms" className="hover:text-foreground transition-colors">Terms</Link>
-            <Link href="#features" className="hover:text-foreground transition-colors">Features</Link>
-            <Link href="/login" className="hover:text-foreground transition-colors">Sign in</Link>
-            <Link href="/signup" className="hover:text-foreground transition-colors font-medium text-primary">Get started</Link>
+          <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
+            {FOOTER_LINKS.map((link) => (
+              <Link key={link.href} href={link.href}
+                className="hover:text-foreground transition-colors">
+                {link.label}
+              </Link>
+            ))}
           </nav>
         </div>
 
         <div className="mt-8 border-t border-border pt-6 text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} {siteConfig.name}. Built with ❤️ for travelers everywhere.
+          &copy; {new Date().getFullYear()} {siteConfig.name}. Built for travelers everywhere.
         </div>
       </div>
     </footer>

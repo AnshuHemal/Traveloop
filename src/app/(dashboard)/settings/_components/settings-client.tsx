@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { User, Shield, Bell, Palette, LogOut } from "lucide-react";
+import { User, Shield, Bell, Palette, LogOut, Sun, Moon, Monitor } from "lucide-react";
 import { signOut } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
 import type { User as AuthUser } from "@/lib/auth";
 import { ProfileTab } from "./profile-tab";
 import { SecurityTab } from "./security-tab";
+import { ThemeToggle } from "@/components/shared/theme-toggle";
 
 const TABS = [
   { id: "profile",  label: "Profile",   icon: User },
@@ -128,33 +129,48 @@ function NotificationsTab() {
 }
 
 function AppearanceTab() {
-  const [theme, setTheme] = useState("system");
   return (
     <div className="rounded-2xl border border-border bg-card p-6">
-      <h2 className="mb-1 text-lg font-bold text-foreground">Appearance</h2>
-      <p className="mb-6 text-sm text-muted-foreground">Customize how Traveloop looks for you.</p>
-      <div className="flex flex-col gap-3">
-        <p className="text-sm font-semibold text-foreground">Theme</p>
-        <div className="grid grid-cols-3 gap-3">
-          {[
-            { value: "light",  label: "Light",  emoji: "☀️" },
-            { value: "dark",   label: "Dark",   emoji: "🌙" },
-            { value: "system", label: "System", emoji: "💻" },
-          ].map((t) => (
-            <button
-              key={t.value}
-              onClick={() => setTheme(t.value)}
-              className={cn(
-                "flex flex-col items-center gap-2 rounded-xl border-2 p-4 transition-all",
-                theme === t.value
-                  ? "border-primary bg-primary/8"
-                  : "border-border hover:border-primary/30",
-              )}
-            >
-              <span className="text-2xl">{t.emoji}</span>
-              <span className="text-xs font-medium text-foreground">{t.label}</span>
-            </button>
-          ))}
+      <div className="mb-6 flex items-center gap-3">
+        <div className="flex size-10 items-center justify-center rounded-xl bg-primary/10">
+          <Palette className="size-5 text-primary" />
+        </div>
+        <div>
+          <h2 className="text-lg font-bold text-foreground">Appearance</h2>
+          <p className="text-sm text-muted-foreground">Customize how Traveloop looks for you.</p>
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-3">
+          <p className="text-sm font-semibold text-foreground">Color theme</p>
+          <p className="text-xs text-muted-foreground">
+            Choose between light, dark, or follow your system preference.
+          </p>
+          <ThemeToggle variant="dropdown" className="w-fit" />
+        </div>
+
+        <div className="flex flex-col gap-3">
+          <p className="text-sm font-semibold text-foreground">Quick switch</p>
+          <p className="text-xs text-muted-foreground">
+            Use the toggle in the navigation bar to switch themes at any time.
+          </p>
+          <div className="flex items-center gap-3 rounded-xl border border-border bg-muted/30 px-4 py-3">
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <Sun className="size-4" />
+              <span>Light</span>
+            </div>
+            <div className="h-4 w-px bg-border" />
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <Moon className="size-4" />
+              <span>Dark</span>
+            </div>
+            <div className="h-4 w-px bg-border" />
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <Monitor className="size-4" />
+              <span>System</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>

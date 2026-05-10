@@ -4,13 +4,14 @@ import { motion } from "motion/react";
 import {
   MapPin, DollarSign, Calendar, Share2,
   Search, BarChart3, Globe, Zap,
+  Package, FileText, Receipt, ClipboardList,
 } from "lucide-react";
 
 const FEATURES = [
   {
     icon: MapPin,
     title: "Multi-city itineraries",
-    description: "Add unlimited stops to your trip. Drag to reorder, set arrival/departure dates, and track nights at each destination.",
+    description: "Add unlimited stops, drag to reorder, set arrival and departure dates, and track nights at each destination.",
     color: "text-rose-500",
     bg: "bg-rose-500/10",
   },
@@ -24,44 +25,72 @@ const FEATURES = [
   {
     icon: Calendar,
     title: "Visual timeline",
-    description: "See your entire journey laid out day by day. Activities slot into your calendar so you never double-book.",
+    description: "See your entire journey laid out day by day across Timeline, List, and Calendar views.",
     color: "text-primary",
     bg: "bg-primary/10",
   },
   {
     icon: Search,
     title: "Discover activities",
-    description: "Search cities and browse curated activities. Add them to your itinerary with one click and see the cost impact instantly.",
+    description: "Browse 20+ curated activities across 10 categories. Add them to your itinerary with one click.",
     color: "text-violet-500",
     bg: "bg-violet-500/10",
   },
   {
     icon: Share2,
     title: "Share your plans",
-    description: "Generate a public link to share your trip with friends and family. They can view your full itinerary without signing up.",
+    description: "Generate a public link to share your full itinerary. Viewers don't need an account.",
     color: "text-amber-500",
     bg: "bg-amber-500/10",
   },
   {
     icon: BarChart3,
     title: "Budget breakdown",
-    description: "Visual charts show exactly where your money goes — accommodation, food, transport, activities, and more.",
+    description: "Recharts-powered pie and bar charts show exactly where your money goes across all stops.",
     color: "text-sky-500",
     bg: "bg-sky-500/10",
   },
   {
-    icon: Globe,
-    title: "Any destination",
-    description: "Plan trips to any city in the world. Our destination database covers thousands of cities across every continent.",
+    icon: Package,
+    title: "Packing checklist",
+    description: "Track everything you need to pack. 9 categories, essential flags, progress bar, and default item seeding.",
+    color: "text-orange-500",
+    bg: "bg-orange-500/10",
+  },
+  {
+    icon: FileText,
+    title: "Trip notes & journal",
+    description: "Write notes per trip or per stop. Pin important ones, color-code them, and group by date or city.",
     color: "text-teal-500",
     bg: "bg-teal-500/10",
   },
   {
+    icon: Receipt,
+    title: "Expense invoice",
+    description: "Auto-generate a professional invoice from all activities and expenses with tax, discount, and grand total.",
+    color: "text-indigo-500",
+    bg: "bg-indigo-500/10",
+  },
+  {
+    icon: Globe,
+    title: "City explorer",
+    description: "Browse 20 curated destinations across 6 regions with cost index, ratings, and best travel months.",
+    color: "text-cyan-500",
+    bg: "bg-cyan-500/10",
+  },
+  {
+    icon: ClipboardList,
+    title: "Trip roadmap",
+    description: "See all your trips on a Gantt-style horizontal timeline. Status auto-syncs based on travel dates.",
+    color: "text-pink-500",
+    bg: "bg-pink-500/10",
+  },
+  {
     icon: Zap,
     title: "Lightning fast",
-    description: "Built on Next.js 16 with server components. Pages load instantly and updates happen in real time.",
-    color: "text-orange-500",
-    bg: "bg-orange-500/10",
+    description: "Built on Next.js 16 with server components, Turbopack, and real-time search. Pages load instantly.",
+    color: "text-yellow-500",
+    bg: "bg-yellow-500/10",
   },
 ];
 
@@ -69,7 +98,6 @@ export function Features() {
   return (
     <section id="features" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        {}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -87,11 +115,10 @@ export function Features() {
             </span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-            From dreaming to booking — Traveloop gives you every tool to plan the perfect trip without the spreadsheet chaos.
+            From dreaming to packing — Traveloop gives you every tool to plan the perfect trip without the spreadsheet chaos.
           </p>
         </motion.div>
 
-        {}
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {FEATURES.map((feature, i) => (
             <motion.div
@@ -99,7 +126,7 @@ export function Features() {
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.06 }}
+              transition={{ duration: 0.4, delay: i * 0.05 }}
               className="group rounded-2xl border border-border bg-card p-6 transition-all duration-200 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
             >
               <div className={`mb-4 inline-flex size-11 items-center justify-center rounded-xl ${feature.bg}`}>

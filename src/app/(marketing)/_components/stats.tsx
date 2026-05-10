@@ -1,12 +1,13 @@
 "use client";
 
 import { motion } from "motion/react";
+import { Users, Globe, TrendingUp, Star } from "lucide-react";
 
 const STATS = [
-  { value: "10K+", label: "Trips planned" },
-  { value: "150+", label: "Countries covered" },
-  { value: "$2M+", label: "Budgets tracked" },
-  { value: "4.9★", label: "Average rating" },
+  { value: "10K+",  label: "Trips planned",    icon: TrendingUp },
+  { value: "150+",  label: "Countries covered", icon: Globe },
+  { value: "$2M+",  label: "Budgets tracked",   icon: TrendingUp },
+  { value: "4.9",   label: "Average rating",    icon: Star },
 ];
 
 export function Stats() {
@@ -21,10 +22,13 @@ export function Stats() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.08 }}
-              className="text-center"
+              className="flex flex-col items-center gap-2 text-center"
             >
+              <div className="flex size-10 items-center justify-center rounded-xl bg-primary/10">
+                <stat.icon className="size-5 text-primary" />
+              </div>
               <div className="text-3xl font-bold text-foreground sm:text-4xl">{stat.value}</div>
-              <div className="mt-1 text-sm text-muted-foreground">{stat.label}</div>
+              <div className="text-sm text-muted-foreground">{stat.label}</div>
             </motion.div>
           ))}
         </div>

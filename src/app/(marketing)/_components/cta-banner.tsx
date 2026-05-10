@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Plane, CheckCircle2 } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -17,22 +17,32 @@ export function CTABanner() {
           transition={{ duration: 0.5 }}
           className="relative overflow-hidden rounded-3xl bg-primary px-8 py-16 text-center shadow-2xl shadow-primary/25"
         >
-          {}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-size-[3rem_3rem]"
-          />
+          <div aria-hidden className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-size-[3rem_3rem]" />
           <div aria-hidden className="pointer-events-none absolute left-1/4 top-0 h-64 w-64 -translate-y-1/2 rounded-full bg-white/10 blur-3xl" />
           <div aria-hidden className="pointer-events-none absolute right-1/4 bottom-0 h-48 w-48 translate-y-1/2 rounded-full bg-white/10 blur-3xl" />
 
           <div className="relative">
-            <div className="mb-4 text-5xl">🌍</div>
+            <div className="mb-5 flex justify-center">
+              <div className="flex size-16 items-center justify-center rounded-2xl bg-white/15 backdrop-blur-sm">
+                <Plane className="size-8 text-white" />
+              </div>
+            </div>
             <h2 className="text-3xl font-bold text-white sm:text-4xl">
               Your next adventure starts here
             </h2>
             <p className="mx-auto mt-4 max-w-lg text-lg text-white/80">
               Join thousands of travelers who plan smarter with Traveloop. Free forever for personal trips.
             </p>
+
+            <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm text-white/70">
+              {["No credit card required", "Free forever", "2 min setup"].map((item) => (
+                <span key={item} className="flex items-center gap-1.5">
+                  <CheckCircle2 className="size-4 text-white/60" />
+                  {item}
+                </span>
+              ))}
+            </div>
+
             <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <Link
                 href="/signup"
@@ -46,16 +56,11 @@ export function CTABanner() {
               </Link>
               <Link
                 href="/login"
-                className={cn(
-                  "inline-flex h-12 min-w-36 items-center justify-center rounded-md px-6 text-base font-medium text-white/90 transition-colors hover:bg-white/10 hover:text-white"
-                )}
+                className="inline-flex h-12 min-w-36 items-center justify-center rounded-md px-6 text-base font-medium text-white/90 transition-colors hover:bg-white/10 hover:text-white"
               >
                 Sign in
               </Link>
             </div>
-            <p className="mt-4 text-sm text-white/60">
-              No credit card · No setup fees · Cancel anytime
-            </p>
           </div>
         </motion.div>
       </div>
