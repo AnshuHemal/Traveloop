@@ -37,6 +37,9 @@ export function DashboardNav({ user }: DashboardNavProps) {
         {/* Desktop nav links */}
         <nav className="hidden items-center gap-1 md:flex">
           <Link href="/dashboard" className="rounded-lg px-3.5 py-2 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-foreground transition-colors">
+            Dashboard
+          </Link>
+          <Link href="/trips" className="rounded-lg px-3.5 py-2 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-foreground transition-colors">
             My Trips
           </Link>
           <Link href="/explore" className="rounded-lg px-3.5 py-2 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-foreground transition-colors">
@@ -152,6 +155,10 @@ export function DashboardNav({ user }: DashboardNavProps) {
           >
             <div className="flex flex-col gap-1 px-4 py-3">
               <Link href="/dashboard" onClick={() => setMobileOpen(false)}
+                className="rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-foreground transition-colors">
+                Dashboard
+              </Link>
+              <Link href="/trips" onClick={() => setMobileOpen(false)}
                 className="rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-foreground transition-colors">
                 My Trips
               </Link>
