@@ -82,7 +82,7 @@ export function Features() {
           </span>
           <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
             Travel planning,{" "}
-            <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               reimagined
             </span>
           </h2>

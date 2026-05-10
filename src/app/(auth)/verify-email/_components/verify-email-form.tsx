@@ -111,12 +111,12 @@ export function VerifyEmailForm() {
       const { error: signInError } = await signIn.email({
         email,
         password,
-        callbackURL: "/dashboard",
+        callbackURL: "/onboarding",
       });
 
       if (!signInError) {
         setStatus("success");
-        setTimeout(() => { window.location.href = "/dashboard"; }, 1200);
+        setTimeout(() => { window.location.href = "/onboarding"; }, 1200);
         return;
       }
     }

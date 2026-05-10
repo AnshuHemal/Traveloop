@@ -54,7 +54,7 @@ export function HowItWorks() {
           </span>
           <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
             Plan your trip in{" "}
-            <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               4 easy steps
             </span>
           </h2>
@@ -67,7 +67,7 @@ export function HowItWorks() {
           {/* Connector line */}
           <div
             aria-hidden
-            className="absolute left-1/2 top-8 hidden h-[calc(100%-4rem)] w-px -translate-x-1/2 bg-gradient-to-b from-primary/30 via-primary/20 to-transparent lg:block"
+            className="absolute left-1/2 top-8 hidden h-[calc(100%-4rem)] w-px -translate-x-1/2 bg-linear-to-b from-primary/30 via-primary/20 to-transparent lg:block"
           />
 
           <div className="grid gap-8 lg:grid-cols-2">
