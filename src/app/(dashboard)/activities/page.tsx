@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Suspense } from "react";
-import { Zap, Star, Clock, DollarSign } from "lucide-react";
+import { Zap, Star, DollarSign, Plus } from "lucide-react";
 import { requireUser } from "@/lib/session";
 import { prisma } from "@/lib/prisma";
 import { FadeIn } from "@/components/motion/fade-in";
@@ -123,7 +124,7 @@ export default async function ActivitiesPage({ searchParams }: PageProps) {
       </FadeIn>
 
       {/* ── Context banner (if user has stops) ── */}
-      {stops.length > 0 && (
+      {stops.length > 0 ? (
         <FadeIn delay={0.08}>
           <div className="flex items-center gap-3 rounded-2xl border border-primary/20 bg-primary/5 px-5 py-3.5">
             <div className="flex size-8 items-center justify-center rounded-lg bg-primary/10">
@@ -148,6 +149,33 @@ export default async function ActivitiesPage({ searchParams }: PageProps) {
                   +{stops.length - 3} more
                 </span>
               )}
+            </div>
+          </div>
+        </FadeIn>
+      ) : (
+        <FadeIn delay={0.08}>
+          <div className="flex items-center gap-4 rounded-2xl border border-amber-500/20 bg-amber-500/8 px-5 py-4">
+            <span className="text-2xl shrink-0">✈️</span>
+            <div className="flex-1">
+              <p className="text-sm font-semibold text-foreground">No trip stops yet</p>
+              <p className="text-xs text-muted-foreground">
+                Create a trip and add stops to start adding activities to your itinerary.
+              </p>
+            </div>
+            <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
+              <Link
+                href="/trips/new"
+                className="inline-flex items-center gap-1.5 rounded-xl bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
+              >
+                <Plus className="size-3.5" />
+                Create a trip
+              </Link>
+              <Link
+                href="/trips"
+                className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-background px-4 py-2 text-xs font-medium text-foreground hover:bg-muted transition-colors"
+              >
+                My trips
+              </Link>
             </div>
           </div>
         </FadeIn>

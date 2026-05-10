@@ -11,11 +11,14 @@ import { TripsToolbar } from "./_components/trips-toolbar";
 import { TripGridCard } from "./_components/trip-grid-card";
 import { TripListItem } from "./_components/trip-list-item";
 import { TripsEmpty } from "./_components/trips-empty";
+import { LoadMore } from "./_components/load-more";
 
 export const metadata: Metadata = {
   title: "My Trips — Traveloop",
   description: "View and manage all your travel plans.",
 };
+
+const PAGE_SIZE = 12;
 
 interface PageProps {
   searchParams: Promise<{
@@ -23,6 +26,7 @@ interface PageProps {
     status?: string;
     sort?:   string;
     view?:   string;
+    page?:   string;
   }>;
 }
 
@@ -33,6 +37,7 @@ export default async function TripsPage({ searchParams }: PageProps) {
   const q      = params.q?.trim()      ?? "";
   const status = params.status?.trim() ?? "";
   const view   = params.view           ?? "grid";
+  const page   = Math.max(1, parseInt(params.page ?? "1", 10));
 
   // Build where clause
   const where = {
@@ -63,7 +68,7 @@ export default async function TripsPage({ searchParams }: PageProps) {
   const orderBy = orderByMap[(params.sort ?? "updatedAt_desc") as keyof typeof orderByMap]
     ?? { updatedAt: "desc" as const };
 
-  // Fetch filtered + sorted trips
+  // Fetch filtered + sorted trips with pagination
   const trips = await prisma.trip.findMany({
     where,
     include: {
@@ -75,7 +80,10 @@ export default async function TripsPage({ searchParams }: PageProps) {
       },
     },
     orderBy,
+    take: PAGE_SIZE * page,   // accumulate pages (simpler UX than offset)
   });
+
+  const hasMore = trips.length < (await prisma.trip.count({ where }));
 
   const hasFilters = !!(q || status);
 
@@ -177,6 +185,20 @@ export default async function TripsPage({ searchParams }: PageProps) {
           </div>
         )}
       </FadeIn>
+
+      {/* ── Load more ── */}
+      {trips.length > 0 && (
+        <FadeIn delay={0.2}>
+          <Suspense>
+            <LoadMore
+              currentPage={page}
+              hasMore={hasMore}
+              totalCount={await prisma.trip.count({ where })}
+              shownCount={trips.length}
+            />
+          </Suspense>
+        </FadeIn>
+      )}
 
     </div>
   );
