@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
 import {
   LayoutDashboard, Map, DollarSign, Share2,
-  Pencil, Package, FileText,
+  Pencil, Package, FileText, Receipt,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -21,6 +21,7 @@ export function TripNavTabs({ tripId, stopCount }: TripNavTabsProps) {
     { label: "Overview",  href: `/trips/${tripId}`,           icon: LayoutDashboard, exact: true },
     { label: "Itinerary", href: `/trips/${tripId}/itinerary`, icon: Map,             badge: stopCount > 0 ? stopCount : undefined },
     { label: "Budget",    href: `/trips/${tripId}/budget`,    icon: DollarSign },
+    { label: "Invoice",   href: `/trips/${tripId}/invoice`,   icon: Receipt },
     { label: "Packing",   href: `/trips/${tripId}/packing`,   icon: Package },
     { label: "Notes",     href: `/trips/${tripId}/notes`,     icon: FileText },
     { label: "Share",     href: `/trips/${tripId}/share`,     icon: Share2 },
