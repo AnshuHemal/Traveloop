@@ -19,6 +19,12 @@ export const auth = betterAuth({
   baseURL: process.env.BETTER_AUTH_URL ?? process.env.NEXT_PUBLIC_APP_URL,
   secret: process.env.BETTER_AUTH_SECRET,
 
+  trustedOrigins: [
+    process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000",
+    "https://traveloop-web.vercel.app",
+    "http://localhost:3000",
+  ].filter(Boolean) as string[],
+
   database: prismaAdapter(prisma, {
     provider: "postgresql",
   }),
